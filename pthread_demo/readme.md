@@ -1,10 +1,14 @@
-# Compile
+# Pthreads demo
+
+Contact: bokaixu@link.cuhk.edu.cn
+
+## Compile
 
 ```bash
 g++ -o pthread_hello pthread_hello.cpp -lpthread
 ```
 
-# Run
+## Run
 
 ```bash
 ./pthread_hello

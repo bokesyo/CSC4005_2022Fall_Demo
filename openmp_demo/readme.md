@@ -1,10 +1,14 @@
-# Compile
+# OpenMP demo
+
+Contact: bokaixu@link.cuhk.edu.cn
+
+## Compile
 
 ```bash
 g++ -o openmp_hello -fopenmp
 ```
 
-# Run
+## Run
 
 ```bash
 ./openmp_hello

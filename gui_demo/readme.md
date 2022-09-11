@@ -1,18 +1,20 @@
-# Compile
+# GUI demo
+
+Contact: bokaixu@link.cuhk.edu.cn
+
+## Compile
 
 ```bash
-cd /home/csc4005/gui_demo
 g++ -I/usr/include -L/usr/local/lib -L/usr/lib -lglut -lGLU -lGL -lm gui_hello.cpp -o gui_hello
 ```
 
-# Run
+## Run
 
 ## Windows
 
 You need MobaXterm
 
 ```bash
-cd /home/csc4005/gui_demo
 ./gui_hello
 ```
 

@@ -1,11 +1,10 @@
-# MPI GUI
+# MPI GUI demo
 
-Version 0, Contact: bokaixu@link.cuhk.edu.cn
+Contact: bokaixu@link.cuhk.edu.cn
 
 ## Compile MPI GUI
 
 ```bash
-cd /home/csc4005/mpi_gui_demo
 mpic++ mpi_gui.cpp -o mpi_gui -I/usr/include -L/usr/local/lib -L/usr/lib -lglut -lGLU -lGL -lm -std=c++11 
 ```
 

@@ -1,18 +1,16 @@
 # MPI demo
 
-Version 0, Contact: bokaixu@link.cuhk.edu.cn
+Contact: bokaixu@link.cuhk.edu.cn
 
 ## Compile demo code
 
 ```bash
-cd /home/csc4005/mpi_demo
 mpic++ mpi_hello.cpp -o mpi_hello
 ```
 
 ## Run demo code
 
 ```bash
-cd /home/csc4005/mpi_demo
 mpirun -np 4 ./mpi_hello
 ```
 
