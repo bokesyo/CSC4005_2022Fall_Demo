@@ -19,5 +19,11 @@ git stash # if you have your own change, you have to use this line to store your
 git pull
 ```
 
-Maintainer: bokaixu@link.cuhk.edu.cn
+## Contribute
 
+Feel free to open an issue for bugs, suggestions, ...
+
+You are welcomed to create your own branch and upload it to Github, so we can improve this repo. 
+
+
+Maintainer: bokaixu@link.cuhk.edu.cn
