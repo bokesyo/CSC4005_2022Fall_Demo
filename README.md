@@ -51,4 +51,8 @@ Feel free to open an issue for bugs, suggestions, ...
 You are welcomed to create your own branch and upload it to Github, so we can improve this repo. 
 
 
-Maintainer: bokaixu@link.cuhk.edu.cn
+Maintainer: 
+
+yangzhixinluo@llink.cuhk.edu.cn
+
+bokaixu@link.cuhk.edu.cn
