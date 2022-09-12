@@ -39,6 +39,7 @@ We may update this repo for bug fix and new demo release, so you can use the fol
 
 ```bash
 cd ~/Desktop/CSC4005_2022Fall_Demo
+git fetch # check if there is an update version
 git stash # if you have your own change, you have to use this line to store your change first
 git pull
 ```
