@@ -6,7 +6,31 @@ This repo prepares some code templates and demos for CSC4005 programming project
 ## First use
 
 ```bash
-git clone https://github.com/bokesyo/CSC4005_2022Fall_Demo.git
+cd ~
+
+git clone https://github.com/bokesyo/CSC4005_2022Fall_Demo.git # clone all the files
+
+chmod -R 777 CSC4005_2022Fall_Demo # make downloaded files executable
+
+```
+
+## Run program
+
+```bash
+cd ~/CSC4005_2022Fall_Demo/mpi_demo
+
+mpirun -np 4 ./mpi_hello # start 4 process
+```
+
+output should be like:
+
+```
+
+hello world! Process 1 of 4 on localhost.localdomain
+hello world! Process 3 of 4 on localhost.localdomain
+hello world! Process 2 of 4 on localhost.localdomain
+hello world! Process 0 of 4 on localhost.localdomain
+
 ```
 
 ## Update
