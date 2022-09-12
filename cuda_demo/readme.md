@@ -5,7 +5,7 @@ Contact: bokaixu@link.cuhk.edu.cn
 ## Compile
 
 ```bash
-nvcc cuda-hello.cpp -o cuda-hello
+nvcc -o cuda-hello cuda-hello.cpp
 ```
 
 ## Run
