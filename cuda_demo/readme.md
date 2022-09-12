@@ -5,13 +5,13 @@ Contact: bokaixu@link.cuhk.edu.cn
 ## Compile
 
 ```bash
-nvcc cuda-hello.cpp -o cuda-hello
+nvcc -o cuda_hello cuda_hello.cpp
 ```
 
 ## Run
 
 ```bash
-./cuda-hello
+./cuda_hello
 ```
 
 Output should be like
