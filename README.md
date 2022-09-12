@@ -38,7 +38,7 @@ hello world! Process 0 of 4 on localhost.localdomain
 We may update this repo for bug fix and new demo release, so you can use the following command line to get the latest version.
 
 ```bash
-cd CSC4005_2022Fall_Demo
+cd ~/CSC4005_2022Fall_Demo
 git stash # if you have your own change, you have to use this line to store your change first
 git pull
 ```
