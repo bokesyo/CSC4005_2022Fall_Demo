@@ -5,7 +5,7 @@ Contact: bokaixu@link.cuhk.edu.cn
 ## Compile
 
 ```bash
-g++ -o openmp_hello openmp_hello.cpp -fopenmp
+g++ -o openmp_hello -fopenmp
 ```
 
 ## Run
