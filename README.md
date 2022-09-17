@@ -44,6 +44,9 @@ git stash # if you have your own change, you have to use this line to store your
 git pull
 ```
 
+## Remarks
+`template.sh` is the template `sbatch` shell script to run programs on the server. You can adjust the path, nodes, processes, and other parameters in it. Try and play around with it.
+
 ## Contribute
 
 Feel free to open an issue for bugs, suggestions, ...
