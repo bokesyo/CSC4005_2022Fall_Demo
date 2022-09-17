@@ -57,6 +57,6 @@ You are welcomed to create your own branch and upload it to Github, so we can im
 
 Maintainer: 
 
-yangzhixinluo@llink.cuhk.edu.cn
+yangzhixinluo@link.cuhk.edu.cn
 
 bokaixu@link.cuhk.edu.cn
