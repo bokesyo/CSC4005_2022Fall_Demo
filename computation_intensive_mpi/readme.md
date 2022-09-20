@@ -1,5 +1,8 @@
 # mpi-part-simulation
 
+- This repo provides a compiled computational intensive mpi application for you to test.
+- It can run on either CSC4005 VM or cluster. If you are using other OS, please configure mpi encironment and compile by yourself.
+
 MPI-backed parallel particle simulation (idal gas law, pV = nRT, verification).
 
 This is an MPI-backed parallel implementation of particle simulation and the verification of ideal gas law `PV = nRT` by simulating the particles movement and interaction. It also shows something called *Brownian* motion. Here, we assume that particles are hard with radius 1 and all collisions are elastic. The box is a 2-dimensional rectangle without any friction. In order to show the *Brownian* motion a particle with greater mass and radius has been inserted into the box. The trajectory of this big particle has been monitored. For more details about the problem, the reader is reffered to the `Particle Simulation (Problem Description).pdf` which is available in the `docs` directory.
