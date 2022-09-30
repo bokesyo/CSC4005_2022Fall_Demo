@@ -41,7 +41,7 @@ mpic++ odd_even_parallel_sort.cpp -o psort -std=c++11
 
 ```sh
 salloc -n8 -p Debug # allocate cpu for your task
-mpirun ./psort $number_of_elements_to_sort $path_to_input_file # Replace $variable with your own value.
+mpirun -np 8 ./psort $number_of_elements_to_sort $path_to_input_file # Replace $variable with your own value.
 
 ```
 
@@ -49,7 +49,7 @@ For example, to sort `./test_data/10000a.in` generated before, we can use
 
 ```sh
 salloc -n8 -p Debug # allocate cpu for your task
-mpirun ./psort 10000 ./test_data/10000a.in
+mpirun -np 8 ./psort 10000 ./test_data/10000a.in
 ```
 
 The program will generate an output file called `10000a.in.out` in `./test_data`.
