@@ -1,5 +1,12 @@
 # Project 1 Template
 
+Usage:
+
+```sh
+git clone https://github.com/bokesyo/CSC4005_2022Fall_Demo.git
+cd CSC4005_2022Fall_Demo/project1_template
+```
+
 
 ## Test data generator
 
