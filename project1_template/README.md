@@ -1,0 +1,85 @@
+# Project 1 Template
+
+
+## Test data generator
+
+`test_data_generator.cpp` is a test data generator. Please do not modify it. To use it, you should first compile it.
+
+```sh
+g++ test_data_generator.cpp -o gen -std=c++11
+```
+
+this operation will produce an executable named as `gen`.
+
+Then, specify the number of elements to be sorted, and the file name.
+
+```sh
+./gen $number_of_elements_to_sort $save_file_name # Replace $variable with your own value.
+```
+For example, to generate a dataset with `10000` elements and name it as `./test_data/10000a.in`, 
+```sh
+./gen 10000 ./test_data/10000a.in
+```
+Then you will find `10000a.in` in `./test_data` directory.
+
+You can generate many datasets and use it to test your program.
+
+
+## Main program
+
+`odd_even_parallel_sort.cpp` is main program. You are to write your implementation in this file.
+
+### Compile
+
+Use mpic++ to compile it .
+
+```sh
+mpic++ odd_even_parallel_sort.cpp -o psort -std=c++11
+```
+
+### Run
+
+```sh
+salloc -n8 -p Debug # allocate cpu for your task
+mpirun ./psort $number_of_elements_to_sort $path_to_input_file # Replace $variable with your own value.
+
+```
+
+For example, to sort `./test_data/10000a.in` generated before, we can use
+
+```sh
+salloc -n8 -p Debug # allocate cpu for your task
+mpirun ./psort 10000 ./test_data/10000a.in
+```
+
+The program will generate an output file called `10000a.in.out` in `./test_data`.
+
+
+## Check the correctness of your program
+
+`check_sorted.cpp` is a tool for you to check if your sorting reuslt is correct. 
+
+To use it, first you should compile it,
+
+```sh
+g++ check_sorted.cpp -o check --std=c++11
+```
+
+Then you can utilize it by
+
+```sh
+./check $number_of_elements_to_sort $path_to_output_file
+```
+
+For example, if we want to check the output file `./test_data/10000a.in`, you can use
+
+```sh
+./check 10000 ./test_data/10000a.in.out
+```
+
+The output will be like (but not identical):
+```
+Not Sorted. 4983 errors.
+```
+
+If you have any suggestions, please email TA.
