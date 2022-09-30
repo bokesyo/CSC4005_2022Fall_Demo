@@ -22,7 +22,7 @@ For example, to generate a dataset with `10000` elements and name it as `./test_
 ```
 Then you will find `10000a.in` in `./test_data` directory.
 
-You can generate many datasets and use it to test your program.
+You can generate many datasets and use them to test your program.
 
 
 ## Main program
