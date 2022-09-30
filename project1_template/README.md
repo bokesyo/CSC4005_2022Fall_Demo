@@ -1,6 +1,6 @@
 # Project 1 Template
 
-Usage:
+Usage
 
 ```sh
 git clone https://github.com/bokesyo/CSC4005_2022Fall_Demo.git
