@@ -13,7 +13,7 @@ cd CSC4005_2022Fall_Demo/project1_template
 `test_data_generator.cpp` is a test data generator. Please do not modify it. To use it, you should first compile it.
 
 ```sh
-g++ test_data_generator.cpp -o gen -std=c++11
+g++ test_data_generator.cpp -o gen
 ```
 
 this operation will produce an executable named as `gen`.
