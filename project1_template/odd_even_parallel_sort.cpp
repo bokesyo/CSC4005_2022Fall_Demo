@@ -41,7 +41,7 @@ int main (int argc, char **argv){
     }
 
     /* TODO BEGIN
-        Implement parallel odd even transportation sort
+        Implement parallel odd even transposition sort
         Code in this block is not a necessary. 
         Replace it with your own code.
         Useful MPI documentation: https://rookiehpc.github.io/mpi/docs

@@ -27,7 +27,7 @@ int main (int argc, char **argv){
     t1 = std::chrono::high_resolution_clock::now(); // record time
 
     /* TODO BEGIN
-        Implement sequential odd even transportation sort
+        Implement sequential odd even transposition sort
         Code in this block is not a necessary. 
         Replace it with your own code.
     */

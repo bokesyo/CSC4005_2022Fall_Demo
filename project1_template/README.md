@@ -33,9 +33,9 @@ You can generate many datasets and use them to test your program.
 
 
 
-## Sequential Odd Even Transportation Sort
+## Sequential Odd Even Transposition Sort
 
-Please implement Parallel Odd Even Transportation Sort in `odd_even_sequential_sort.cpp`.
+Please implement Parallel Odd Even Transposition Sort in `odd_even_sequential_sort.cpp`.
 
 ```sh
 g++ odd_even_sequential_sort.cpp -o ssort -std=c++11
@@ -58,9 +58,9 @@ The program will generate an output file called `10000a.in.out` in `./test_data`
 
 
 
-## Parallel Odd Even Transportation Sort
+## Parallel Odd Even Transposition Sort
 
-Please implement Parallel Odd Even Transportation Sort in `odd_even_parallel_sort.cpp`.
+Please implement Parallel Odd Even Transposition Sort in `odd_even_parallel_sort.cpp`.
 
 ### Compile
 
