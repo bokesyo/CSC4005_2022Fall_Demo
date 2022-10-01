@@ -54,6 +54,10 @@ For example,
 ```
 
 
+The program will generate an output file called `10000a.in.out` in `./test_data`.
+
+
+
 ## Parallel Odd Even Transportation Sort
 
 Please implement Parallel Odd Even Transportation Sort in `odd_even_parallel_sort.cpp`.
