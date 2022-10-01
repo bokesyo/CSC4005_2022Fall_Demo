@@ -38,7 +38,7 @@ You can generate many datasets and use them to test your program.
 Please implement Parallel Odd Even Transportation Sort in `odd_even_sequential_sort.cpp`.
 
 ```sh
-g++ odd_even_sequential_sort.cpp -o ssort -std=c++11
+g++ odd_even_sequential_sort.cpp -o ssort
 ```
 
 To run it, use
@@ -67,7 +67,7 @@ Please implement Parallel Odd Even Transportation Sort in `odd_even_parallel_sor
 Use mpic++ to compile it .
 
 ```sh
-mpic++ odd_even_parallel_sort.cpp -o psort -std=c++11
+mpic++ odd_even_parallel_sort.cpp -o psort
 ```
 
 ### Run
@@ -95,7 +95,7 @@ The program will generate an output file called `10000a.in.out` in `./test_data`
 To use it, first you should compile it,
 
 ```sh
-g++ check_sorted.cpp -o check --std=c++11
+g++ check_sorted.cpp -o check
 ```
 
 Then you can utilize it by
