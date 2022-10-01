@@ -32,9 +32,31 @@ Then you will find `10000a.in` in `./test_data` directory.
 You can generate many datasets and use them to test your program.
 
 
-## Main program
 
-`odd_even_parallel_sort.cpp` is main program. You are to write your implementation in this file.
+## Sequential Odd Even Transportation Sort
+
+Please implement Parallel Odd Even Transportation Sort in `odd_even_sequential_sort.cpp`.
+
+```sh
+g++ odd_even_sequential_sort.cpp -o ssort -std=c++11
+```
+
+To run it, use
+
+```sh
+./ssort $number_of_elements_to_sort $path_to_input_file # Replace $variable with your own value.
+```
+
+For example,
+
+```sh
+./ssort 10000 ./test_data/10000a.in
+```
+
+
+## Parallel Odd Even Transportation Sort
+
+Please implement Parallel Odd Even Transportation Sort in `odd_even_parallel_sort.cpp`.
 
 ### Compile
 

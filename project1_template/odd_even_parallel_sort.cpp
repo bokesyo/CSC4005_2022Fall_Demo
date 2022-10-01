@@ -63,7 +63,7 @@ int main (int argc, char **argv){
     }
 
     if (rank == 0){ // write result to file (only executed in master process)
-        std::ofstream output(argv[2]+std::string(".out"));
+        std::ofstream output(argv[2]+std::string(".out"), std::ios_base::out);
         for (int i = 0; i < num_elements; i++) {
             output << sorted_elements[i] << std::endl;
         }
