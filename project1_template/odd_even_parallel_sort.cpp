@@ -59,7 +59,7 @@ int main (int argc, char **argv){
         time_span = std::chrono::duration_cast<std::chrono::duration<double>>(t2 - t1);
         std::cout << "Run Time: " << time_span.count() << " seconds" << std::endl;
         std::cout << "Input Size: " << num_elements << std::endl;
-        std::cout << "Process Number: " << world_size << std::endl;   
+        std::cout << "Process Number: " << world_size << std::endl; 
     }
 
     if (rank == 0){ // write result to file (only executed in master process)
