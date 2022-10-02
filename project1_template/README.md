@@ -54,7 +54,7 @@ For example,
 ```
 
 
-The program will generate an output file called `10000a.in.out` in `./test_data`.
+The program will generate an output file called `10000a.in.seq.out` in `./test_data`.
 
 
 
@@ -85,7 +85,7 @@ salloc -n8 -p Debug # allocate cpu for your task
 mpirun -np 8 ./psort 10000 ./test_data/10000a.in
 ```
 
-The program will generate an output file called `10000a.in.out` in `./test_data`.
+The program will generate an output file called `10000a.in.parallel.out` in `./test_data`.
 
 
 ## Check the correctness of your program
@@ -104,10 +104,10 @@ Then you can utilize it by
 ./check $number_of_elements_to_sort $path_to_output_file
 ```
 
-For example, if we want to check the output file `./test_data/10000a.in`, you can use
+For example, if we want to check the output file `./test_data/10000a.parallel.out`, you can use
 
 ```sh
-./check 10000 ./test_data/10000a.in.out
+./check 10000 ./test_data/10000a.parallel.out
 ```
 
 The output will be like (but not identical):
