@@ -38,6 +38,9 @@ int main (int argc, char **argv){
 
     t2 = std::chrono::high_resolution_clock::now();  
     time_span = std::chrono::duration_cast<std::chrono::duration<double>>(t2 - t1);
+    std::cout << "Student ID: " << "119010001" << std::endl; // replace it with your student id
+    std::cout << "Name: " << "Your Name" << std::endl; // replace it with your name
+    std::cout << "Assignment 1" << std::endl;
     std::cout << "Run Time: " << time_span.count() << " seconds" << std::endl;
     std::cout << "Input Size: " << num_elements << std::endl;
     std::cout << "Process Number: " << 1 << std::endl;   

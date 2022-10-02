@@ -104,10 +104,10 @@ Then you can utilize it by
 ./check $number_of_elements_to_sort $path_to_output_file
 ```
 
-For example, if we want to check the output file `./test_data/10000a.parallel.out`, you can use
+For example, if we want to check the output file `./test_data/10000a.in.parallel.out`, you can use
 
 ```sh
-./check 10000 ./test_data/10000a.parallel.out
+./check 10000 ./test_data/10000a.in.parallel.out
 ```
 
 The output will be like (but not identical):
