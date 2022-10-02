@@ -42,7 +42,7 @@ int main (int argc, char **argv){
     std::cout << "Input Size: " << num_elements << std::endl;
     std::cout << "Process Number: " << 1 << std::endl;   
     
-    std::ofstream output(argv[2]+std::string(".out"), std::ios_base::out);
+    std::ofstream output(argv[2]+std::string(".seq.out"), std::ios_base::out);
     for (int i = 0; i < num_elements; i++) {
         output << sorted_elements[i] << std::endl;
     }
