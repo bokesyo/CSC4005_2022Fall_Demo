@@ -6,11 +6,6 @@
 #define random(a, b) (rand() % (b - a) + a)
 
 
-
-bool remove_exist() {
-    
-    }
-
 int main(int argc, char **argv){
     int num_elements; // number of elements to generate
     num_elements = atoi(argv[1]);
