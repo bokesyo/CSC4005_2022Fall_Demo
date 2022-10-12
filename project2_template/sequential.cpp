@@ -13,9 +13,7 @@ void sequentialCompute(){
 
 
 int main(int argc, char *argv[]) {
-	printf("%d", argc);
 	if ( argc == 4 ) {
-		
 		X_RESN = atoi(argv[1]);
 		Y_RESN = atoi(argv[2]);
 		max_iteration = atoi(argv[3]);
@@ -36,9 +34,24 @@ int main(int argc, char *argv[]) {
 	glutDisplayFunc(plot);
 
 	/* computation part begin */
+	std::chrono::high_resolution_clock::time_point t1;
+    std::chrono::high_resolution_clock::time_point t2;
+    std::chrono::duration<double> time_span;
+    t1 = std::chrono::high_resolution_clock::now();
+
 	initData();
 	sequentialCompute();
+
+	t2 = std::chrono::high_resolution_clock::now();  
+	time_span = std::chrono::duration_cast<std::chrono::duration<double>>(t2 - t1);
 	/* computation part end */
+
+	printf("Student ID: 119010001\n"); // replace it with your student id
+	printf("Name: Your Name\n"); // replace it with your name
+	printf("Assignment 2 Sequential\n");
+	printf("Run Time: %f seconds\n", time_span.count());
+	printf("Problem Size: %d * %d, %d\n", X_RESN, Y_RESN, max_iteration);
+	printf("Process Number: %d\n", 1);
 
 	glutMainLoop();
 

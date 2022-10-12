@@ -1,14 +1,15 @@
 # CSC4005 Project 2 Template
 
-## We have a header file
-
-Common functions and variables are included in `asg2.h` with some explaination.
-
 ## Where to run
 
-This code can run on CSC4005 VM (both arm64 and x86_64 version).
+This code can run on CSC4005 VM (both arm64 and x86_64 version). You have to run it using GUI Desktop of your VM.
 
-Due to lack of GUI support of HPC cluster, please remove GUI before you run experiment on cluster.
+![](images/gui_mpi.png)
+
+
+
+Due to the lack of GUI support of HPC cluster, please remove GUI before you run experiment on cluster.
+
 
 
 ## Description
@@ -19,21 +20,30 @@ Due to lack of GUI support of HPC cluster, please remove GUI before you run expe
 To do parallelization, you have multiple choices. You are encouraged to use some brand new method to partition the data. 
 
 
+
+## Source codes
+
+Header files: `asg2.h`. Common functions and variables are included in `asg2.h` with some explaination.
+
+
+Source codes: `sequential.cpp`, `pthread.cpp`, `mpi.cpp`.
+
+
 ## Compile
 
 ### Sequential version
 ```sh
-g++ -I/usr/include -L/usr/local/lib -L/usr/lib -lglut -lGLU -lGL -lm sequential.cpp -o sequential
+g++ -I/usr/include -L/usr/local/lib -L/usr/lib -lglut -lGLU -lGL -lm sequential.cpp -o sequential -std=c++11
 ```
 
 ### MPI version
 ```sh
-mpic++ -I/usr/include -L/usr/local/lib -L/usr/lib -lglut -lGLU -lGL -lm mpi.cpp -o mpi
+mpic++ -I/usr/include -L/usr/local/lib -L/usr/lib -lglut -lGLU -lGL -lm mpi.cpp -o mpi -std=c++11
 ```
 
 ### pthread version
 ```sh
-g++ -I/usr/include -L/usr/local/lib -L/usr/lib -lglut -lGLU -lGL -lm -lpthread pthread.cpp -o pthread
+g++ -I/usr/include -L/usr/local/lib -L/usr/lib -lglut -lGLU -lGL -lm -lpthread pthread.cpp -o pthread -std=c++11
 ```
 
 
@@ -61,6 +71,19 @@ mpirun -np $n_proc ./mpi $X_RESN $Y_RESN $max_iteration
 ```sh
 ./pthread $X_RESN $Y_RESN $max_iteration $n_thd
 ```
+
+
+
+## Check the correctness of your result
+
+`Not implemented.`
+
+
+
+## Keep track of running time of your program
+
+You can see terminal outputs.
+
 
 
 ## This code helps you understand the whole picture.
