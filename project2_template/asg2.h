@@ -1,4 +1,6 @@
 #include <GL/glut.h>
+#include <GL/gl.h>
+#include <GL/glu.h>
 
 /* define a struct called Compl to store information of a complex number*/
 typedef struct complextype { float real, imag; } Compl;

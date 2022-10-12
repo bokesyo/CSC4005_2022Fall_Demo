@@ -13,9 +13,17 @@ void sequentialCompute(){
 
 
 int main(int argc, char *argv[]) {
-	X_RESN = 1000;
-	Y_RESN = 1000;
-	max_iteration = 300;
+	printf("%d", argc);
+	if ( argc == 4 ) {
+		
+		X_RESN = atoi(argv[1]);
+		Y_RESN = atoi(argv[2]);
+		max_iteration = atoi(argv[3]);
+	} else {
+		X_RESN = 1000;
+		Y_RESN = 1000;
+		max_iteration = 300;
+	}
 	
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);

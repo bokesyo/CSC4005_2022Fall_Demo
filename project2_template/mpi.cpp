@@ -13,11 +13,13 @@ void master() {
 	// MPI_Gather...
 	// the following code is not a necessary, please replace it with MPI implementation.
 	
-	// Point* p = data;
-	// for (int index = 0; index < total_size; index++){
-	// 	compute(p);
-	// 	p++;
-	// }
+	Point* p = data;
+	for (int index = 0; index < total_size; index++){
+		compute(p);
+		p++;
+	}
+
+	//TODO END
 
 }
 
@@ -27,18 +29,20 @@ void slave() {
 	// MPI_Scatter...
 	// MPI_Gather...
 
-	// let me do nothing...
+	//TODO END
 }
 
 
 int main(int argc, char *argv[]) {
-	X_RESN = 1000;
-	Y_RESN = 1000;
-	max_iteration = 300;
-
-	MPI_Init(&argc, &argv);
-    MPI_Comm_rank(MPI_COMM_WORLD, &rank);
-    MPI_Comm_size(MPI_COMM_WORLD, &world_size);
+	if ( argc == 4 ) {
+		X_RESN = atoi(argv[1]);
+		Y_RESN = atoi(argv[2]);
+		max_iteration = atoi(argv[3]);
+	} else {
+		X_RESN = 1000;
+		Y_RESN = 1000;
+		max_iteration = 300;
+	}
 
 	if (rank == 0) {
 		glutInit(&argc, argv);
@@ -53,18 +57,24 @@ int main(int argc, char *argv[]) {
 	}
 
 	/* computation part begin */
+	MPI_Init(&argc, &argv);
+    MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+    MPI_Comm_size(MPI_COMM_WORLD, &world_size);
+
 	if (rank == 0) {
 		initData();
 		master();
 	} else {
 		slave();
 	}
+
+	MPI_Finalize();
 	/* computation part end */
 
 	if (rank == 0){
 		glutMainLoop();
 	}
-	
+
 	return 0;
 }
 

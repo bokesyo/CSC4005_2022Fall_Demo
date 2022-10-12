@@ -2,30 +2,51 @@
 #include <stdio.h>
 #include <pthread.h>
 
+int n_thd;
 
 typedef struct {
     //TODO: specify your arguments for threads
     int a;
     int b;
+    //TODO END
 } Args;
 
 
 void* worker(void* args) {
-    Args* my_arg = (Args*) args;
-    
     //TODO: procedure in each threads
-    // printf("Thread Id:%d", pthread_self());
+    // the code following is not a necessary, you can replace it.
+    
+    /* Pass in arguments */
+    Args* my_arg = (Args*) args;
+    int a = my_arg->a;
+    int b = my_arg->b;
 
-    // let me do nothing...
+    if (a == 0) {
+        Point* p = data;
+        for (int index = 0; index < total_size; index++){
+            compute(p);
+            p++;
+        }
+    }
+
+    //TODO END
+
 }
 
 
 int main(int argc, char *argv[]) {
-    int n_thd = 4;
 
-	X_RESN = 1000;
-	Y_RESN = 1000;
-	max_iteration = 300;
+	if ( argc == 5 ) {
+		X_RESN = atoi(argv[1]);
+		Y_RESN = atoi(argv[2]);
+		max_iteration = atoi(argv[3]);
+        n_thd = atoi(argv[4]);
+	} else {
+		X_RESN = 1000;
+		Y_RESN = 1000;
+		max_iteration = 300;
+        n_thd = 4;
+	}
 	
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
@@ -40,23 +61,16 @@ int main(int argc, char *argv[]) {
 	/* computation part begin */
     initData();
 
+    //TODO: assign jobs
     pthread_t thds[n_thd]; // thread pool
     Args args[n_thd]; // arguments for all threads
-
-    //TODO: 
     for (int thd = 0; thd < n_thd; thd++){
-        args[thd].a = 0;
-        args[thd].b = 1;
+        args[thd].a = thd;
+        args[thd].b = n_thd;
     }
-
-    for (int thd = 1; thd < n_thd; thd++){
-        pthread_create(&thds[thd], NULL, worker, &args[thd]);
-        printf("Thread %d/%d Start Working..\n", thd, n_thd);
-    }
-
-    for (int thd = 1; thd < n_thd; thd++){
-        pthread_join(thds[thd], NULL);
-    }
+    for (int thd = 0; thd < n_thd; thd++) pthread_create(&thds[thd], NULL, worker, &args[thd]);
+    for (int thd = 0; thd < n_thd; thd++) pthread_join(thds[thd], NULL);
+    //TODO END
 	/* computation part end */
 
 	glutMainLoop();
