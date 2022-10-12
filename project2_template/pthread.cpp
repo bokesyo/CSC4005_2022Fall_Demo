@@ -14,7 +14,7 @@ void* worker(void* args) {
     Args* my_arg = (Args*) args;
     
     //TODO: procedure in each threads
-    printf("Thread Id:%d", pthread_self());
+    // printf("Thread Id:%d", pthread_self());
 
     // let me do nothing...
 }
@@ -43,6 +43,7 @@ int main(int argc, char *argv[]) {
     pthread_t thds[n_thd]; // thread pool
     Args args[n_thd]; // arguments for all threads
 
+    //TODO: 
     for (int thd = 0; thd < n_thd; thd++){
         args[thd].a = 0;
         args[thd].b = 1;
