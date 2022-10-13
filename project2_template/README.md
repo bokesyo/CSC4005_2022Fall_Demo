@@ -26,7 +26,23 @@ Source code: `sequential.cpp`, `pthread.cpp`, `mpi.cpp`.
 
 
 # Getting started
+
 Don't worry! Please read `asg2.h` and `sequential.cpp` to understand the whole picture before you write your own implementation.
+
+
+# Dependencies
+
+<strong>No extra package is needed on VM or cluster.</strong>
+
+If you want to DIY environment, run:
+
+```sh
+apt-get install *mesa* *glut*
+```
+or 
+```sh
+yum install *mesa* *glut*
+```
 
 
 # Compile
@@ -39,12 +55,12 @@ NOTE:
 
 ### Sequential without GUI (completed, for reference)
 ```sh
-g++ sequential.cpp -o sequential -O2 -std=c++11
+g++ sequential.cpp -o seq -O2 -std=c++11
 ```
 
 ### Sequential with GUI (completed, for reference)
 ```sh
-g++ -I/usr/include -L/usr/local/lib -L/usr/lib -lglut -lGLU -lGL -lm sequential.cpp -o sequential -DGUI -O2 -std=c++11
+g++ -I/usr/include -L/usr/local/lib -L/usr/lib -lglut -lGLU -lGL -lm sequential.cpp -o seqg -DGUI -O2 -std=c++11
 ```
 
 ### MPI without GUI (finish `#TODO` by yourself)
@@ -54,7 +70,7 @@ mpic++ mpi.cpp -o mpi -std=c++11
 
 ### MPI with GUI (finish `#TODO` by yourself)
 ```sh
-mpic++ -I/usr/include -L/usr/local/lib -L/usr/lib -lglut -lGLU -lGL -lm mpi.cpp -o mpi -DGUI -std=c++11
+mpic++ -I/usr/include -L/usr/local/lib -L/usr/lib -lglut -lGLU -lGL -lm mpi.cpp -o mpig -DGUI -std=c++11
 ```
 
 
@@ -65,7 +81,7 @@ g++ pthread.cpp -lpthread -o pthread -O2 -std=c++11
 
 ### pthread with GUI (finish `#TODO` by yourself)
 ```sh
-g++ -I/usr/include -L/usr/local/lib -L/usr/lib -lglut -lGLU -lGL -lm -lpthread pthread.cpp -o pthread -DGUI -O2 -std=c++11
+g++ -I/usr/include -L/usr/local/lib -L/usr/lib -lglut -lGLU -lGL -lm -lpthread pthread.cpp -o pthreadg -DGUI -O2 -std=c++11
 ```
 
 ## About `#ifdef GUI` and `-DGUI`
@@ -137,17 +153,21 @@ Please refer to Tutorial 1. We have talked about it.
 
 ### Sequential
 ```sh
-./sequential $X_RESN $Y_RESN $max_iteration
+./seq $X_RESN $Y_RESN $max_iteration
+./seqg $X_RESN $Y_RESN $max_iteration
 ```
 
 ### MPI
 ```sh
 mpirun -np $n_proc ./mpi $X_RESN $Y_RESN $max_iteration
+mpirun -np $n_proc ./mpig $X_RESN $Y_RESN $max_iteration
+
 ```
 
 ### pthread
 ```sh
 ./pthread $X_RESN $Y_RESN $max_iteration $n_thd
+./pthreadg $X_RESN $Y_RESN $max_iteration $n_thd
 ```
 
 If you choose to build a GUI application, you should see a window as well when you execute it.
@@ -213,10 +233,5 @@ For a pthread program, we notice that sbatch script contains
 
 the meaning of these two lines are: only one process is started, it can create many threads, where threads are distributed to all available 20 cpu cores by OS. 
 
-
-```sh
-clean:
-	sudo rm sequential mpi pthread
-```
 
 Any questions about this template, please contact Bokai Xu.
