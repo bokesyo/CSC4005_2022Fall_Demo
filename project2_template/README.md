@@ -1,9 +1,9 @@
 # CSC4005 Project 2 Template
 
 
-This code can run on CSC4005 VM (both arm64 and x86_64 version). You have to run it using GUI Desktop of your VM.
+This code can run on CSC4005 VM (both arm64 and x86_64 version, both command line mode and GUI mode). 
 
-This code can also run on HPC cluster (only command line, no GUI, see instructions below). 
+This code can also run on HPC cluster (only command line mode, no GUI, see instructions below). 
 
 
 ![](gui.png)
