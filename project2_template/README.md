@@ -28,12 +28,12 @@ Source code: `sequential.cpp`, `pthread.cpp`, `mpi.cpp`.
 
 ### Sequential without GUI (completed, for reference)
 ```sh
-g++ sequential.cpp -o sequential -std=c++11
+g++ sequential.cpp -o sequential -std=c++11 -O2
 ```
 
 ### Sequential with GUI (completed, for reference)
 ```sh
-g++ -I/usr/include -L/usr/local/lib -L/usr/lib -lglut -lGLU -lGL -lm sequential.cpp -o sequential -std=c++11 -DGUI
+g++ -I/usr/include -L/usr/local/lib -L/usr/lib -lglut -lGLU -lGL -lm sequential.cpp -o sequential -std=c++11 -DGUI -O2
 ```
 
 ### MPI without GUI (finish #TODO by yourself)
@@ -49,17 +49,21 @@ mpic++ -I/usr/include -L/usr/local/lib -L/usr/lib -lglut -lGLU -lGL -lm mpi.cpp 
 
 ### pthread without GUI (finish `#TODO` by yourself)
 ```sh
-g++ pthread.cpp -o pthread -std=c++11
+g++ pthread.cpp -o pthread -std=c++11 -O2
 ```
 
 ### pthread with GUI (finish `#TODO` by yourself)
 ```sh
-g++ -I/usr/include -L/usr/local/lib -L/usr/lib -lglut -lGLU -lGL -lm -lpthread pthread.cpp -o pthread -std=c++11 -DGUI
+g++ -I/usr/include -L/usr/local/lib -L/usr/lib -lglut -lGLU -lGL -lm -lpthread pthread.cpp -o pthread -std=c++11 -DGUI -O2
 ```
 
 ## About `#ifdef GUI` and `-DGUI`
 
 This command is to control if the compiler should output a GUI application. To enable it, use `gcc xxxx -DGUI` to let compiler know it should output a GUI application. To disable it, just omit `-DGUI` so the compiler will output a command line application.
+
+## About `-O2`
+
+This argument is a optimization method for your program. Why we want to use it among all versions (`mpi`, `pthread`, `sequential`)? Because `mpic++` by default utilize `O2` optimization. It is not fair for `sequential` and `pthread` version. 
 
 ## About usage of `-I -L -l` 
 
@@ -97,6 +101,12 @@ If you choose to build a GUI application, you should see a window as well when y
 # Check the correctness of your result
 
 `Not implemented.`
+
+
+
+# Run your job on HPC cluster
+
+For mpi program, you can 
 
 
 

@@ -21,6 +21,12 @@ void* worker(void* args) {
     // int a = my_arg->a;
     // int b = my_arg->b;
 
+    Point* p = data;
+	for (int index = 0; index < total_size; index++){
+		compute(p);
+		p++;
+	}
+
     //TODO END
 
 }
