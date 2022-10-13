@@ -36,7 +36,7 @@ g++ sequential.cpp -o sequential -std=c++11 -O2
 g++ -I/usr/include -L/usr/local/lib -L/usr/lib -lglut -lGLU -lGL -lm sequential.cpp -o sequential -std=c++11 -DGUI -O2
 ```
 
-### MPI without GUI (finish #TODO by yourself)
+### MPI without GUI (finish `#TODO` by yourself)
 ```sh
 mpic++ mpi.cpp -o mpi -std=c++11
 ```
@@ -59,7 +59,53 @@ g++ -I/usr/include -L/usr/local/lib -L/usr/lib -lglut -lGLU -lGL -lm -lpthread p
 
 ## About `#ifdef GUI` and `-DGUI`
 
-This command is to control if the compiler should output a GUI application. To enable it, use `gcc xxxx -DGUI` to let compiler know it should output a GUI application. To disable it, just omit `-DGUI` so the compiler will output a command line application.
+`#ifdef GUI` and `-DGUI` is to control if the compiler should output a GUI application. To enable it, use `gcc xxxx -DGUI` to let compiler know it should output a GUI application. To disable it, just omit `-DGUI` so the compiler will output a command line application.
+
+The implementation is like this:
+write some `#ifdef GUI [some cpp code] #endif` in headers and cpp source codes. If the variable GUI is defined (pass -DGUI to g++), the code inside #ifdef GUI #endif will be executed in compilation. It will directly produce a GUI executable (no need to configure after compilation). 
+
+In this template, we have some `#ifdef GUI` in `asg2.h`.
+
+```c++
+#ifdef GUI
+#include <GL/glut.h>
+#include <GL/gl.h>
+#include <GL/glu.h>
+#endif
+
+...
+
+#ifdef GUI
+void plot() {
+...
+}
+
+#endif
+```
+
+we also have some `#ifdef GUI` in source code.
+
+```c++
+
+#ifdef GUI
+glutInit(&argc, argv);
+glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
+glutInitWindowSize(500, 500);
+glutInitWindowPosition(0, 0);
+glutCreateWindow("Sequential");
+glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+glMatrixMode(GL_PROJECTION);
+gluOrtho2D(0, X_RESN, 0, Y_RESN);
+glutDisplayFunc(plot);
+#endif
+
+...
+
+#ifdef GUI
+glutMainLoop();
+#endif
+```
+
 
 ## About `-O2`
 
