@@ -13,8 +13,8 @@ This code can also run on HPC cluster (only command line, no GUI, see instructio
 
 The template includes the following component:
 
-- Sequential version is completed for your reference.
-- MPI version and pthread version are not completed.
+1. Sequential version is completed for your reference.
+2. MPI version and pthread version are not completed.
 
 To do parallelization, you have multiple choices. You are encouraged to use some brand new method to partition the data. 
 
