@@ -5,7 +5,7 @@ This code can run on CSC4005 VM (both arm64 and x86_64 version). You have to run
 This code can also run on HPC cluster (only command line, no GUI, see instructions below). 
 
 
-![](gui_mpi.png)
+![](gui.png)
 
 
 # Description
@@ -106,9 +106,57 @@ If you choose to build a GUI application, you should see a window as well when y
 
 # Run your job on HPC cluster
 
-For mpi program, you can 
+For example, we want to use 20 cores for experiment.
+
+For MPI program, you can use
+
+```sh
+#!/bin/bash
+#SBATCH --job-name=your_job_name # Job name
+#SBATCH --nodes=1                    # Run all processes on a single node	
+#SBATCH --ntasks=20                   # number of processes = 20
+#SBATCH --cpus-per-task=1      # Number of CPU cores allocated to each process (please use 1 here, in comparison with pthread)
+#SBATCH --partition=Project            # Partition name: Project or Debug (Debug is default)
+
+cd /nfsmnt/119010355/CSC4005_2022Fall_Demo/project2_template/
+mpirun -np 4 ./mpi 1000 1000 100
+mpirun -np 20 ./mpi 1000 1000 100
+mpirun -np 40 ./mpi 1000 1000 100
 
 
+```
+
+For pthread program, you can use
+
+```sh
+#!/bin/bash
+#SBATCH --job-name=your_job_name # Job name
+#SBATCH --nodes=1                    # Run all processes on a single node	
+#SBATCH --ntasks=1                   # number of processes = 1 
+#SBATCH --cpus-per-task=20      # Number of CPU cores allocated to each process
+#SBATCH --partition=Project            # Partition name: Project or Debug (Debug is default)
+
+cd /nfsmnt/119010355/CSC4005_2022Fall_Demo/project2_template/
+./pthread 1000 1000 100 4
+./pthread 1000 1000 100 20
+./pthread 1000 1000 100 40
+./pthread 1000 1000 100 80
+./pthread 1000 1000 100 120
+./pthread 1000 1000 100 200
+...
+
+```
+
+here you can create as many threads as you want while the number of cpu cores are fixed.
+
+For a pthread program, we notice that sbatch script contains
+
+```sh
+#SBATCH --ntasks=1                   # number of processes = 1 
+#SBATCH --cpus-per-task=20      # Number of CPU cores allocated to each process
+```
+
+the meaning of these two lines are: only one process is started, it can create many threads, where threads are distributed to all available 20 cpu cores by OS. 
 
 # This code helps you understand the whole picture.
 
@@ -281,3 +329,9 @@ int main(int argc, char *argv[]) {
 
 
 Any questions about this template, please contact Bokai Xu.
+
+
+```sh
+clean:
+	sudo rm sequential mpi pthread
+```

@@ -1,3 +1,5 @@
+
+
 #ifdef GUI
 #include <GL/glut.h>
 #include <GL/gl.h>
@@ -12,7 +14,7 @@
 typedef struct complextype { float real, imag; } Compl;
 
 /* define a struct called Point to store information of each point */
-typedef struct pointtype { int x, y, color; } Point;
+typedef struct pointtype { int x, y; float color; } Point;
 
 /*
 X_RESN = resolution of x axis
@@ -92,11 +94,7 @@ void compute(Point* p) {
 
 	/* math block end */ 
 
-	if (k == max_iteration){
-		p->color = 1;
-	} else {
-		p->color = 0;
-	}
+	p->color = (float) k / max_iteration;
 
 }
 
@@ -114,14 +112,13 @@ void plot() {
 	glPointSize(pointSize);
 	glBegin(GL_POINTS);
 		glClear(GL_COLOR_BUFFER_BIT);
-		glColor3f(1.0f, 0.0f, 0.0f);
+		
 		
 		int count;
 		Point* p = data;
 		for (count = 0; count < total_size; count++){
-			if (p->color == 1) {
-				glVertex2f(p->x, p->y);
-			}
+			glColor3f(1.0f-p->color, 1.0f-p->color, 1.0f-p->color);
+			glVertex2f(p->x, p->y);
 			p ++;
 		}
 		

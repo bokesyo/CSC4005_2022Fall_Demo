@@ -1,3 +1,4 @@
+
 #include "asg2.h"
 #include <stdio.h>
 
@@ -20,7 +21,7 @@ int main(int argc, char *argv[]) {
 	} else {
 		X_RESN = 1000;
 		Y_RESN = 1000;
-		max_iteration = 300;
+		max_iteration = 100;
 	}
 
 	#ifdef GUI
