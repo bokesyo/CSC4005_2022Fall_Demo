@@ -27,8 +27,45 @@ Source code: `sequential.cpp`, `pthread.cpp`, `mpi.cpp`.
 
 # Getting started
 
-Don't worry! Please read `asg2.h` and `sequential.cpp` to understand the whole picture before you write your own implementation.
+Don't worry! Please read `asg2.h` and `sequential.cpp` to understand the whole picture before you write your own implementation. (Sequential version is completed, for your reference.)
 
+Don't worry about the mathematics part. We have prepared a completed atom function for computing the color given a point! Your only job in this project is to smartly partition all data to all workers.
+
+```sh
+void compute(Point* p) {
+	/* 
+	Give a Point p, compute its color.
+	Mandelbrot Set Computation.
+	No need to modify this 'atom' function. 
+	*/
+
+	Compl z, c;
+	float lengthsq, temp;
+	int k;
+
+	/* scale [0, X_RESN] x [0, Y_RESN] to [-1, 1] x [-1, 1] */
+	c.real = ((float) p->x - X_RESN / 2) / (X_RESN / 2);
+	c.imag = ((float) p->y - Y_RESN / 2) / (Y_RESN / 2);
+
+	/* the following block is about math. */ 
+
+	z.real = z.imag = 0.0;
+    k = 0;
+
+	do { 
+		temp = z.real*z.real - z.imag*z.imag + c.real;
+		z.imag = 2.0*z.real*z.imag + c.imag;
+		z.real = temp;
+		lengthsq = z.real*z.real+z.imag*z.imag;
+		k++;
+	} while (lengthsq < 4.0 && k < max_iteration);
+
+	/* math block end */ 
+
+	p->color = (float) k / max_iteration;
+
+}
+```
 
 # Dependencies
 
