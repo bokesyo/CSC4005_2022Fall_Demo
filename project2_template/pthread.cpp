@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <pthread.h>
 
-int n_thd;
+int n_thd; // number of threads
 
 typedef struct {
     //TODO: specify your arguments for threads
@@ -16,16 +16,9 @@ void* worker(void* args) {
     //TODO: procedure in each threads
     // the code following is not a necessary, you can replace it.
     
-    /* Pass in arguments */
     // Args* my_arg = (Args*) args;
     // int a = my_arg->a;
     // int b = my_arg->b;
-
-    Point* p = data;
-	for (int index = 0; index < total_size; index++){
-		compute(p);
-		p++;
-	}
 
     //TODO END
 

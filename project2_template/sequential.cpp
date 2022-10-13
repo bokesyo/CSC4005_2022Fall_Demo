@@ -14,6 +14,7 @@ void sequentialCompute(){
 
 
 int main(int argc, char *argv[]) {
+	/* pass in metadata for computation */
 	if ( argc == 4 ) {
 		X_RESN = atoi(argv[1]);
 		Y_RESN = atoi(argv[2]);
@@ -38,11 +39,8 @@ int main(int argc, char *argv[]) {
 
 	/* computation part begin */
     t1 = std::chrono::high_resolution_clock::now();
-
 	initData();
-	
 	sequentialCompute();
-
 	t2 = std::chrono::high_resolution_clock::now();  
 	time_span = t2 - t1;
 	/* computation part end */

@@ -58,7 +58,6 @@ void initData() {
         for (j = 0; j < Y_RESN; j++) {
 			p->x = i;
 			p->y = j;
-			// p->color = 1;
 			p ++;
 		}
 	}
@@ -69,6 +68,7 @@ void compute(Point* p) {
 	/* 
 	Give a Point p, compute its color.
 	Mandelbrot Set Computation.
+	No need to modify this 'atom' function. 
 	*/
 
 	Compl z, c;
@@ -101,9 +101,7 @@ void compute(Point* p) {
 
 #ifdef GUI
 void plot() {
-	/*
-	Plot all the points to screen.
-	*/
+	/* Plot all the points to screen. */
 
 	glClear(GL_COLOR_BUFFER_BIT);
 	glColor3f(0.0f, 0.0f, 0.0f);
@@ -113,12 +111,11 @@ void plot() {
 	glBegin(GL_POINTS);
 		glClear(GL_COLOR_BUFFER_BIT);
 		
-		
 		int count;
 		Point* p = data;
 		for (count = 0; count < total_size; count++){
-			glColor3f(1.0f-p->color, 1.0f-p->color, 1.0f-p->color);
-			glVertex2f(p->x, p->y);
+			glColor3f(1.0f-p->color, 1.0f-p->color, 1.0f-p->color); // control the color
+			glVertex2f(p->x, p->y); // plot a point
 			p ++;
 		}
 		

@@ -13,12 +13,6 @@ void master() {
 	// MPI_Gather...
 	// the following code is not a necessary, please replace it with MPI implementation.
 	
-	Point* p = data;
-	for (int index = 0; index < total_size; index++){
-		compute(p);
-		p++;
-	}
-
 	//TODO END
 
 }
