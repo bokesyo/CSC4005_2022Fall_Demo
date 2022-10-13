@@ -1,18 +1,16 @@
 # CSC4005 Project 2 Template
 
-## Where to run
-
 This code can run on CSC4005 VM (both arm64 and x86_64 version). You have to run it using GUI Desktop of your VM.
 
-![](images/gui_mpi.png)
+This code can also run on HPC cluster (only command line, no GUI, see instructions below). 
 
 
-
-Due to the lack of GUI support of HPC cluster, please remove GUI before you run experiment on cluster.
-
+![](gui_mpi.png)
 
 
-## Description
+# Description
+
+The template includes the following component:
 
 - Sequential version is completed for your reference.
 - MPI version and pthread version are not completed.
@@ -20,34 +18,55 @@ Due to the lack of GUI support of HPC cluster, please remove GUI before you run 
 To do parallelization, you have multiple choices. You are encouraged to use some brand new method to partition the data. 
 
 
-
-## Source codes
-
 Header files: `asg2.h`. Common functions and variables are included in `asg2.h` with some explaination.
 
 
-Source codes: `sequential.cpp`, `pthread.cpp`, `mpi.cpp`.
+Source code: `sequential.cpp`, `pthread.cpp`, `mpi.cpp`.
 
 
-## Compile
+# Compile
 
-### Sequential version
+### Sequential without GUI (completed, for reference)
 ```sh
-g++ -I/usr/include -L/usr/local/lib -L/usr/lib -lglut -lGLU -lGL -lm sequential.cpp -o sequential -std=c++11
+g++ sequential.cpp -o sequential -std=c++11
 ```
 
-### MPI version
+### Sequential with GUI (completed, for reference)
 ```sh
-mpic++ -I/usr/include -L/usr/local/lib -L/usr/lib -lglut -lGLU -lGL -lm mpi.cpp -o mpi -std=c++11
+g++ -I/usr/include -L/usr/local/lib -L/usr/lib -lglut -lGLU -lGL -lm sequential.cpp -o sequential -std=c++11 -DGUI
 ```
 
-### pthread version
+### MPI without GUI (finish #TODO by yourself)
 ```sh
-g++ -I/usr/include -L/usr/local/lib -L/usr/lib -lglut -lGLU -lGL -lm -lpthread pthread.cpp -o pthread -std=c++11
+mpic++ mpi.cpp -o mpi -std=c++11
+```
+
+### MPI with GUI (finish `#TODO` by yourself)
+```sh
+mpic++ -I/usr/include -L/usr/local/lib -L/usr/lib -lglut -lGLU -lGL -lm mpi.cpp -o mpi -std=c++11 -DGUI
 ```
 
 
-## Run
+### pthread without GUI (finish `#TODO` by yourself)
+```sh
+g++ pthread.cpp -o pthread -std=c++11
+```
+
+### pthread with GUI (finish `#TODO` by yourself)
+```sh
+g++ -I/usr/include -L/usr/local/lib -L/usr/lib -lglut -lGLU -lGL -lm -lpthread pthread.cpp -o pthread -std=c++11 -DGUI
+```
+
+## About `#ifdef GUI` and `-DGUI`
+
+This command is to control if the compiler should output a GUI application. To enable it, use `gcc xxxx -DGUI` to let compiler know it should output a GUI application. To disable it, just omit `-DGUI` so the compiler will output a command line application.
+
+## About usage of `-I -L -l` 
+
+Please refer to Tutorial 1. We have talked about it.
+
+
+# Run
 
 `X_RESN` means the resolution of x axis, `Y_RESN` means the resolution of y axis.
 
@@ -57,36 +76,31 @@ g++ -I/usr/include -L/usr/local/lib -L/usr/lib -lglut -lGLU -lGL -lm -lpthread p
 
 `n_thd` is the number of threads of pthread.
 
-### Sequential version
+### Sequential
 ```sh
 ./sequential $X_RESN $Y_RESN $max_iteration
 ```
 
-### MPI version
+### MPI
 ```sh
 mpirun -np $n_proc ./mpi $X_RESN $Y_RESN $max_iteration
 ```
 
-### pthread version
+### pthread
 ```sh
 ./pthread $X_RESN $Y_RESN $max_iteration $n_thd
 ```
 
+If you choose to build a GUI application, you should see a window as well when you execute it.
 
 
-## Check the correctness of your result
+# Check the correctness of your result
 
 `Not implemented.`
 
 
 
-## Keep track of running time of your program
-
-You can see terminal outputs.
-
-
-
-## This code helps you understand the whole picture.
+# This code helps you understand the whole picture.
 
 ```c++
 #include <stdio.h>

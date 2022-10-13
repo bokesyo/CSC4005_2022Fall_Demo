@@ -1,7 +1,11 @@
+#ifdef GUI
 #include <GL/glut.h>
 #include <GL/gl.h>
 #include <GL/glu.h>
+#endif
+#include <cstdlib>
 #include <chrono>
+
 
 
 /* define a struct called Compl to store information of a complex number*/
@@ -20,6 +24,11 @@ int X_RESN, Y_RESN, total_size, max_iteration;
 
 /* to store all the points, it will be initialized later */
 Point* data;
+
+/* to keep track of time */
+std::chrono::high_resolution_clock::time_point t1;
+std::chrono::high_resolution_clock::time_point t2;
+std::chrono::duration<double> time_span;
 
 
 void initData() {
@@ -92,6 +101,7 @@ void compute(Point* p) {
 }
 
 
+#ifdef GUI
 void plot() {
 	/*
 	Plot all the points to screen.
@@ -114,8 +124,10 @@ void plot() {
 			}
 			p ++;
 		}
+		
 	glEnd();
 	glFlush();
 	
 }
 
+#endif

@@ -13,11 +13,11 @@ void master() {
 	// MPI_Gather...
 	// the following code is not a necessary, please replace it with MPI implementation.
 	
-	Point* p = data;
-	for (int index = 0; index < total_size; index++){
-		compute(p);
-		p++;
-	}
+	// Point* p = data;
+	// for (int index = 0; index < total_size; index++){
+	// 	compute(p);
+	// 	p++;
+	// }
 
 	//TODO END
 
@@ -45,6 +45,7 @@ int main(int argc, char *argv[]) {
 	}
 
 	if (rank == 0) {
+		#ifdef GUI
 		glutInit(&argc, argv);
 		glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
 		glutInitWindowSize(500, 500); 
@@ -54,6 +55,7 @@ int main(int argc, char *argv[]) {
 		glMatrixMode(GL_PROJECTION);
 		gluOrtho2D(0, X_RESN, 0, Y_RESN);
 		glutDisplayFunc(plot);
+		#endif
 	}
 
 	/* computation part begin */
@@ -62,8 +64,21 @@ int main(int argc, char *argv[]) {
     MPI_Comm_size(MPI_COMM_WORLD, &world_size);
 
 	if (rank == 0) {
+		t1 = std::chrono::high_resolution_clock::now();
+
 		initData();
 		master();
+
+		t2 = std::chrono::high_resolution_clock::now();  
+		time_span = t2 - t1;
+
+		printf("Student ID: 119010001\n"); // replace it with your student id
+		printf("Name: Your Name\n"); // replace it with your name
+		printf("Assignment 2 MPI\n");
+		printf("Run Time: %f seconds\n", time_span.count());
+		printf("Problem Size: %d * %d, %d\n", X_RESN, Y_RESN, max_iteration);
+		printf("Process Number: %d\n", world_size);
+		
 	} else {
 		slave();
 	}
@@ -72,7 +87,9 @@ int main(int argc, char *argv[]) {
 	/* computation part end */
 
 	if (rank == 0){
+		#ifdef GUI
 		glutMainLoop();
+		#endif
 	}
 
 	return 0;

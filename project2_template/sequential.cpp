@@ -22,7 +22,8 @@ int main(int argc, char *argv[]) {
 		Y_RESN = 1000;
 		max_iteration = 300;
 	}
-	
+
+	#ifdef GUI
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
 	glutInitWindowSize(500, 500);
@@ -32,18 +33,17 @@ int main(int argc, char *argv[]) {
 	glMatrixMode(GL_PROJECTION);
 	gluOrtho2D(0, X_RESN, 0, Y_RESN);
 	glutDisplayFunc(plot);
+	#endif
 
 	/* computation part begin */
-	std::chrono::high_resolution_clock::time_point t1;
-    std::chrono::high_resolution_clock::time_point t2;
-    std::chrono::duration<double> time_span;
     t1 = std::chrono::high_resolution_clock::now();
 
 	initData();
+	
 	sequentialCompute();
 
 	t2 = std::chrono::high_resolution_clock::now();  
-	time_span = std::chrono::duration_cast<std::chrono::duration<double>>(t2 - t1);
+	time_span = t2 - t1;
 	/* computation part end */
 
 	printf("Student ID: 119010001\n"); // replace it with your student id
@@ -53,7 +53,9 @@ int main(int argc, char *argv[]) {
 	printf("Problem Size: %d * %d, %d\n", X_RESN, Y_RESN, max_iteration);
 	printf("Process Number: %d\n", 1);
 
+	#ifdef GUI
 	glutMainLoop();
+	#endif
 
 	return 0;
 }

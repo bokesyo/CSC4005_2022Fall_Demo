@@ -17,17 +17,9 @@ void* worker(void* args) {
     // the code following is not a necessary, you can replace it.
     
     /* Pass in arguments */
-    Args* my_arg = (Args*) args;
-    int a = my_arg->a;
-    int b = my_arg->b;
-
-    if (a == 0) {
-        Point* p = data;
-        for (int index = 0; index < total_size; index++){
-            compute(p);
-            p++;
-        }
-    }
+    // Args* my_arg = (Args*) args;
+    // int a = my_arg->a;
+    // int b = my_arg->b;
 
     //TODO END
 
@@ -47,18 +39,22 @@ int main(int argc, char *argv[]) {
 		max_iteration = 300;
         n_thd = 4;
 	}
-	
+
+    #ifdef GUI
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
 	glutInitWindowSize(500, 500);
 	glutInitWindowPosition(0, 0);
-	glutCreateWindow("Sequential");
+	glutCreateWindow("Pthread");
 	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 	glMatrixMode(GL_PROJECTION);
 	gluOrtho2D(0, X_RESN, 0, Y_RESN);
 	glutDisplayFunc(plot);
+    #endif
 
 	/* computation part begin */
+    t1 = std::chrono::high_resolution_clock::now();
+
     initData();
 
     //TODO: assign jobs
@@ -71,9 +67,21 @@ int main(int argc, char *argv[]) {
     for (int thd = 0; thd < n_thd; thd++) pthread_create(&thds[thd], NULL, worker, &args[thd]);
     for (int thd = 0; thd < n_thd; thd++) pthread_join(thds[thd], NULL);
     //TODO END
+
+    t2 = std::chrono::high_resolution_clock::now();  
+	time_span = t2 - t1;
 	/* computation part end */
 
+    printf("Student ID: 119010001\n"); // replace it with your student id
+	printf("Name: Your Name\n"); // replace it with your name
+	printf("Assignment 2 Pthread\n");
+	printf("Run Time: %f seconds\n", time_span.count());
+	printf("Problem Size: %d * %d, %d\n", X_RESN, Y_RESN, max_iteration);
+	printf("Thread Number: %d\n", n_thd);
+
+    #ifdef GUI
 	glutMainLoop();
+    #endif
 
 	return 0;
 }
