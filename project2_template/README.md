@@ -31,6 +31,12 @@ Don't worry! Please read `asg2.h` and `sequential.cpp` to understand the whole p
 
 # Compile
 
+NOTE: 
+
+1. All compilation can be finished on VM.
+
+2. HPC cluster only supports compilation of non-GUI versions.
+
 ### Sequential without GUI (completed, for reference)
 ```sh
 g++ sequential.cpp -o sequential -O2 -std=c++11
