@@ -31,7 +31,7 @@ Don't worry! Please read `asg2.h` and `sequential.cpp` to understand the whole p
 
 Don't worry about the mathematics part. We have prepared a completed atom function for computing the color given a point! Your only job in this project is to smartly partition all data to all workers.
 
-```sh
+```c++
 void compute(Point* p) {
 	/* 
 	Give a Point p, compute its color.
