@@ -68,7 +68,8 @@ void compute(Point* p) {
 	/* 
 	Give a Point p, compute its color.
 	Mandelbrot Set Computation.
-	No need to modify this 'atom' function. 
+	It is not necessary to modify this function, because it is a completed one.
+	*** However, to further improve the performance, you may change this function to do batch computation.
 	*/
 
 	Compl z, c;

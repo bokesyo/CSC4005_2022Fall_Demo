@@ -36,7 +36,8 @@ void compute(Point* p) {
 	/* 
 	Give a Point p, compute its color.
 	Mandelbrot Set Computation.
-	No need to modify this 'atom' function. 
+	It is not necessary to modify this function, because it is a completed one.
+	*** However, to further improve the performance, you may change this function to do batch computation.
 	*/
 
 	Compl z, c;
@@ -220,6 +221,8 @@ If you choose to build a GUI application, you should see a window as well when y
 
 For example, we want to use 20 cores for experiment.
 
+# sbatch script
+
 For MPI program, you can use
 
 ```sh
@@ -269,6 +272,32 @@ For a pthread program, we notice that sbatch script contains
 ```
 
 the meaning of these two lines are: only one process is started, it can create many threads, where threads are distributed to all available 20 cpu cores by OS. 
+
+To submit your job, use
+
+```sh
+sbatch xxx.sh
+```
+
+# Interactive: salloc
+
+If you want to run your program using interactive mode, use
+
+
+For MPI porgram, we have learned before:
+
+```sh
+salloc -n20 -c1 # -c1 can be omitted.
+mpirun -np 20 ./mpi 1000 1000 100
+```
+
+
+For pthread program,
+
+```sh
+salloc -n1 -c20 -p Project # we have only 1 process, 20 is the number of cores allocated per process. 
+srun ./pthread 1000 1000 100 20 # 20 is the number of threads.
+```
 
 
 Any questions about this template, please contact Bokai Xu.
