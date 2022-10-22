@@ -16,8 +16,11 @@ The computation resources are limited, and we have more than 300 students (CSC40
 
 ## Contact
 If you have any questions while using the cluster or following this user guide, please ask help from:
+
 **Name:** Liu Yuxuan
+
 **Email:** [118010200@link.cuhk.edu.cn](mailto:118010200@link.cuhk.edu.cn)
+
 **Position:** 2022-23Fall CSC4005 TA
 
 ## Overview
@@ -33,7 +36,7 @@ Most of the content in this user guide is retrieved from the following websites.
 ## Architecture
 ### Management and Compute Nodes
 Slurm consists of a slurmd daemon running on each compute node and a central slurmctld daemon running on a management node. The slurmd daemons provide fault-tolerant hierarchical communications. In our cluster, we have 28 machines in total, therefore, 1 management node + 27 compute nodes.
-![Slurm Architecture](./images/Slurm%20Architecture.png)
+![Slurm Architecture](./images/Slurm_Architecture.png)
 
 ### Cluster Environment
 The following information holds for every machine in the cluster.

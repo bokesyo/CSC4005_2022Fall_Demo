@@ -5,8 +5,11 @@ This instruction is for students who suffer from typing the complicated password
 
 ## Contact
 If you encounter any problem following this instruction, please first have a look at the FAQ part and ask help if nothing helps:
+
 **Name:** Liu Yuxuan
+
 **Email:** [118010200@link.cuhk.edu.cn](mailto:118010200@link.cuhk.edu.cn)
+
 **Position:** 2022-23Fall CSC4005 TA
 
 ## 1. Generate SSH Key Pair on Your Local Machine
