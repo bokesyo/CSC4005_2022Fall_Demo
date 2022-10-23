@@ -67,7 +67,6 @@ void initData() {
 void compute(Point* p) {
 	/* 
 	Give a Point p, compute its color.
-	Mandelbrot Set Computation.
 	It is not necessary to modify this function, because it is a completed one.
 	*** However, to further improve the performance, you may change this function to do batch computation.
 	*/
@@ -81,7 +80,6 @@ void compute(Point* p) {
 	c.imag = ((float) p->y - Y_RESN / 2) / (Y_RESN / 2);
 
 	/* the following block is about math. */ 
-
 	z.real = z.imag = 0.0;
     k = 0;
 

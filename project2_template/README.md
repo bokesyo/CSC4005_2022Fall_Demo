@@ -3,7 +3,7 @@
 
 This code can run on CSC4005 VM (both arm64 and x86_64 version, both command line mode and GUI mode). 
 
-This code can also run on HPC cluster (only command line mode, no GUI, see instructions below). 
+This code can also run on HPC cluster (***only command line mode, no GUI***, see instructions below). 
 
 
 ![](gui.png)
@@ -27,15 +27,18 @@ Source code: `sequential.cpp`, `pthread.cpp`, `mpi.cpp`.
 
 # Getting started
 
-Don't worry! Please read `asg2.h` and `sequential.cpp` to understand the whole picture before you write your own implementation. (Sequential version is completed, for your reference.)
+Don't worry about the mathematics part! Please read `asg2.h` and `sequential.cpp` to understand the whole picture before you write your own implementation. (Sequential version is completed, for your reference.)
 
-Don't worry about the mathematics part. We have prepared a completed atom function for computing the color given a point! Your only job in this project is to smartly partition all data to all workers.
+We have prepared a completed atom function for computing the color given a point! Your only job in this project is to smartly partition all data to all workers.
 
 ```c++
+/* define a struct called Point to store information of each point */
+typedef struct pointtype { int x, y; float color; } Point;
+
+
 void compute(Point* p) {
 	/* 
 	Give a Point p, compute its color.
-	Mandelbrot Set Computation.
 	It is not necessary to modify this function, because it is a completed one.
 	*** However, to further improve the performance, you may change this function to do batch computation.
 	*/
@@ -72,16 +75,6 @@ void compute(Point* p) {
 
 <strong>No extra package is needed on VM or cluster.</strong>
 
-If you want to DIY environment, run:
-
-```sh
-apt-get install *mesa* *glut*
-```
-or 
-```sh
-yum install *mesa* *glut*
-```
-
 
 # Compile
 
@@ -89,7 +82,7 @@ NOTE:
 
 1. All compilation can be finished on VM.
 
-2. HPC cluster only supports compilation of non-GUI versions.
+2. ***HPC cluster only supports compilation of non-GUI versions.***
 
 ### Sequential without GUI (completed, for reference)
 ```sh

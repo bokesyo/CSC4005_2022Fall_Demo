@@ -7,6 +7,13 @@ int rank;
 int world_size;
 
 
+//TODO: you may need to create a new MPI data type for Point type.
+// Reference: https://www.mpich.org/static/docs/v3.1/www3/MPI_Type_create_struct.html
+
+
+//TODO: you may need to decalre more variables.
+
+
 void master() {
 	//TODO: procedure run in master process
 	// MPI_Scatter...
@@ -61,20 +68,23 @@ int main(int argc, char *argv[]) {
 		t1 = std::chrono::high_resolution_clock::now();
 
 		initData();
+
 		master();
 
 		t2 = std::chrono::high_resolution_clock::now();  
 		time_span = t2 - t1;
 
+	} else {
+		slave();
+	}
+
+	if (rank == 0){
 		printf("Student ID: 119010001\n"); // replace it with your student id
 		printf("Name: Your Name\n"); // replace it with your name
 		printf("Assignment 2 MPI\n");
 		printf("Run Time: %f seconds\n", time_span.count());
 		printf("Problem Size: %d * %d, %d\n", X_RESN, Y_RESN, max_iteration);
 		printf("Process Number: %d\n", world_size);
-		
-	} else {
-		slave();
 	}
 
 	MPI_Finalize();

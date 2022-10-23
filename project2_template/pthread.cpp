@@ -2,7 +2,9 @@
 #include <stdio.h>
 #include <pthread.h>
 
+
 int n_thd; // number of threads
+
 
 typedef struct {
     //TODO: specify your arguments for threads
