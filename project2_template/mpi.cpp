@@ -7,28 +7,15 @@ int rank;
 int world_size;
 
 
-//TODO: you may need to create a new MPI data type for Point type.
-// Reference: https://www.mpich.org/static/docs/v3.1/www3/MPI_Type_create_struct.html
-
-
-//TODO: you may need to decalre more variables.
-
-
 void master() {
 	//TODO: procedure run in master process
-	// MPI_Scatter...
-	// MPI_Gather...
-	// the following code is not a necessary, please replace it with MPI implementation.
 	
 	//TODO END
-
 }
 
 
 void slave() {
 	//TODO: procedure run in slave process
-	// MPI_Scatter...
-	// MPI_Gather...
 
 	//TODO END
 }
@@ -61,21 +48,25 @@ int main(int argc, char *argv[]) {
 
 	/* computation part begin */
 	MPI_Init(&argc, &argv);
-    MPI_Comm_rank(MPI_COMM_WORLD, &rank);
-    MPI_Comm_size(MPI_COMM_WORLD, &world_size);
+    	MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+    	MPI_Comm_size(MPI_COMM_WORLD, &world_size);
+	
+	if (rank == 0){
+		initData();
+		t1 = std::chrono::high_resolution_clock::now();
+	}
 
 	if (rank == 0) {
-		t1 = std::chrono::high_resolution_clock::now();
-
-		initData();
-
+		// you may change this part
 		master();
-
+	} else {
+		// you may change this part
+		slave();
+	}
+	
+	if (rank == 0){
 		t2 = std::chrono::high_resolution_clock::now();  
 		time_span = t2 - t1;
-
-	} else {
-		slave();
 	}
 
 	if (rank == 0){
