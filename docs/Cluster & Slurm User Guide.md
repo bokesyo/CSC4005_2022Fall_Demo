@@ -278,6 +278,32 @@ srun cuda_exe
 Submitted batch job 10694
 ```
 
+#### Cancel Jobs
+`scancel` is used to signal jobs that are under the control of Slurm.
+
+**Example**
+1. Cancel job 1234 along with all of its steps:
+```bash
+[118010200@node21 CUDA_Demo]$ scancel 1234
+## No Output Expected
+```
+
+2. Cancel all pending jobs belonging to user "118010200" in partition "Debug":
+```bash
+scancel --state=PENDING --user=118010200 --partition=Debug
+```
+
+3. Delete all jobs of yourself:
+```bash
+scancel -u `Student ID`
+```
+
+For more examples and detailed command options, please refer to [Scancel Command Handbook](https://slurm.schedmd.com/scancel.html).
+
+**Notes**
+- Deal with the jobs submitted by yourself only. Do not touch anyone else's jobs even if they are pending because of a certain limit error. The best way to handle this problem is to let TA know and they will cancel those jobs ASAP.
+- TA will cancel invalid jobs daily without notification.
+
 ### Check Cluster Information
 #### Node States
 `sinfo` reports the state of partitions and nodes managed by Slurm. It has a wide variety of filtering, sorting, and formatting options.
@@ -425,8 +451,11 @@ View [squeue documentation](https://slurm.schedmd.com/squeue.html#SECTION_JOB-RE
 This documentation would not have been possible without the following contributors:
 
 **Zhu Yifan** (2021-22Fall CSC4005 USTF)
+
 **Wenlong Sun** (2021-22Fall CSC4005 USTF)
+
 **Bokai Xu** (2022-23Fall CSC4005 USTF)
+
 **YangZhixin Luo** (2022-23Fall CSC4005 USTF)
 
 We are still trying to refine this documentation for better user experience. Feel free to open an issue or create a pull request if you want to make a contribution.
