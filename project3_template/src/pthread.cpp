@@ -125,10 +125,8 @@ int main(int argc, char *argv[]) {
 	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 	glMatrixMode(GL_PROJECTION);
 	gluOrtho2D(0, X_RESN, 0, Y_RESN);
-	glutDisplayFunc(master);
-	glutMainLoop();
-    #else
     #endif
+    master();
 
 	return 0;
 }
