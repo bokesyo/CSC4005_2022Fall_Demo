@@ -84,33 +84,33 @@ NOTE:
 
 ### Sequential without GUI (completed, for reference)
 ```sh
-g++ sequential.cpp -o seq -O2 -std=c++11
+g++ ./src/sequential.cpp -o seq -O2 -std=c++11
 ```
 
 ### Sequential with GUI (completed, for reference)
 ```sh
-g++ sequential.cpp -o seqg -I/usr/include -L/usr/local/lib -L/usr/lib -lglut -lGLU -lGL -lm -DGUI -O2 -std=c++11
+g++ ./src/sequential.cpp -o seqg -I/usr/include -L/usr/local/lib -L/usr/lib -lglut -lGLU -lGL -lm -DGUI -O2 -std=c++11
 ```
 
 ### MPI without GUI (finish `#TODO` by yourself)
 ```sh
-mpic++ mpi.cpp -o mpi -std=c++11
+mpic++ ./src/mpi.cpp -o mpi -std=c++11
 ```
 
 ### MPI with GUI (finish `#TODO` by yourself)
 ```sh
-mpic++ mpi.cpp -o mpig -I/usr/include -L/usr/local/lib -L/usr/lib -lglut -lGLU -lGL -lm -DGUI -std=c++11
+mpic++ ./src/mpi.cpp -o mpig -I/usr/include -L/usr/local/lib -L/usr/lib -lglut -lGLU -lGL -lm -DGUI -std=c++11
 ```
 
 
 ### pthread without GUI (finish `#TODO` by yourself)
 ```sh
-g++ pthread.cpp -o pthread -lpthread -O2 -std=c++11
+g++ ./src/pthread.cpp -o pthread -lpthread -O2 -std=c++11
 ```
 
 ### pthread with GUI (finish `#TODO` by yourself)
 ```sh
-g++ pthread.cpp  -o pthreadg -I/usr/include -L/usr/local/lib -L/usr/lib -lglut -lGLU -lGL -lm -lpthread -DGUI -O2 -std=c++11
+g++ ./src/pthread.cpp  -o pthreadg -I/usr/include -L/usr/local/lib -L/usr/lib -lglut -lGLU -lGL -lm -lpthread -DGUI -O2 -std=c++11
 ```
 
 
