@@ -11,7 +11,7 @@
 #include <GL/glu.h>
 #endif
 
-#include "physics.h"
+#include "./headers/physics.h"
 
 #define block_size 1024
 
@@ -131,12 +131,10 @@ int main(int argc, char *argv[]){
     glutInitWindowSize(500, 500);
     glutCreateWindow("N Body Simulation CUDA Implementation");
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-    glutDisplayFunc(&master);
     gluOrtho2D(0, bound_x, 0, bound_y);
-    glutMainLoop();
-    #else
-    master();
     #endif
+
+    master();
 
     printf("Student ID: 119010001\n"); // replace it with your student id
     printf("Name: Your Name\n"); // replace it with your name

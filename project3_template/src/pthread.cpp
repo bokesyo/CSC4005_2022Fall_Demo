@@ -10,7 +10,7 @@
 #include <GL/glu.h>
 #endif
 
-#include "physics.h"
+#include "./headers/physics.h"
 
 
 int n_thd; // number of threads
@@ -62,10 +62,9 @@ void* worker(void* args) {
     // int a = my_arg->a;
     // int b = my_arg->b;
     // TODO: pthread routine
-    update_velocity(m, x, y, vx, vy, n_body);
-    update_position(x, y, vx, vy, n_body);
-    // TODO End
-    //TODO END
+    // update_velocity(m, x, y, vx, vy, n_body);
+    // update_position(x, y, vx, vy, n_body);
+    // TODO END
 }
 
 
@@ -125,10 +124,8 @@ int main(int argc, char *argv[]) {
 	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 	glMatrixMode(GL_PROJECTION);
 	gluOrtho2D(0, X_RESN, 0, Y_RESN);
-	glutDisplayFunc(master);
-	glutMainLoop();
-    #else
     #endif
+    master();
 
 	return 0;
 }

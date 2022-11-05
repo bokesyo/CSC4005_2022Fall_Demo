@@ -10,7 +10,7 @@
 #include <GL/glu.h>
 #endif
 
-#include "physics.h"
+#include "./headers/physics.h"
 
 
 int n_body;
@@ -137,11 +137,8 @@ int main(int argc, char *argv[]) {
 		glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 		glMatrixMode(GL_PROJECTION);
 		gluOrtho2D(0, X_RESN, 0, Y_RESN);
-		glutDisplayFunc(master);
-        glutMainLoop();
-        #else
-        master();
 		#endif
+        master();
 	} else {
         slave();
     }
