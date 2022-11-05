@@ -1,5 +1,6 @@
+# CSC4005 Project 3 Template
 
-# Compile
+## Compile
 
 Sequential (command line application):
 
@@ -50,7 +51,7 @@ nvcc ./src/cuda.cu -o cudag -I/usr/include -L/usr/local/lib -L/usr/lib -lglut -l
 ```
 
 
-# Run
+## Run
 
 Sequential (command line mode):
 
@@ -101,3 +102,13 @@ CUDA (GUI mode): if you have both nvcc and GUI desktop, you can try this.
 ./cuda $n_body $n_iterations
 ```
 
+
+## Makefile
+
+Makefile helps you simplify compilation command.
+
+```bash
+make $command
+```
+
+where `command` is one of `seq, seqg, mpi, mpig, pthread, pthreadg, cuda, cudag`.
