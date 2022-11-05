@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include <time.h>
 
 class Logger {
@@ -14,13 +13,3 @@ class Logger {
         void update_metadata();
         ~Logger();
 };
-
-
-// not yet implemented
-
-
-// int main() {
-//     Logger a;
-    
-//     return 0;
-// }
