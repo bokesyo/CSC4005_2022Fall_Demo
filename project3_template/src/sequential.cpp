@@ -2,23 +2,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <chrono>
-
-
 #ifdef GUI
 #include <GL/glut.h>
 #include <GL/gl.h>
 #include <GL/glu.h>
 #endif
 
-
-#define gravity_const 1.0f
-#define dt 0.0001f
-#define error 1e-9f
-#define radius2 4.0f
-#define bound_x 4000
-#define bound_y 4000
-#define max_mass 40000000
-#define block_size 1024
+#include "physics.h"
 
 
 int n_body;
@@ -54,7 +44,6 @@ void update_velocity(double *m, double *x, double *y, double *vx, double *vy, in
     //TODO: calculate force and acceleration, update velocity
 
 }
-
 
 
 void master() {
@@ -96,9 +85,7 @@ void master() {
 
         #endif
     }
-    
 }
-
 
 
 int main(int argc, char *argv[]){

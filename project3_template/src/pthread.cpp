@@ -10,18 +10,10 @@
 #include <GL/glu.h>
 #endif
 
+#include "physics.h"
+
+
 int n_thd; // number of threads
-
-#define gravity_const 1.0f
-#define dt 0.0001f
-#define error 1e-9f
-#define radius2 4.0f
-#define bound_x 4000
-#define bound_y 4000
-#define max_mass 40000000
-#define block_size 1024
-
-
 int n_body;
 int n_iteration;
 
@@ -31,7 +23,6 @@ double* x;
 double* y;
 double* vx;
 double* vy;
-
 
 
 void generate_data(double *m, double *x,double *y,double *vx,double *vy, int n) {
@@ -118,8 +109,6 @@ void master(){
 
 
 }
-
-
 
 
 int main(int argc, char *argv[]) {
