@@ -3,11 +3,16 @@ seq:
 mpi:	
 	mpic++ ./src/mpi.cpp -o mpi -std=c++11
 pthread:
-	g++ ./src/pthread.cpp -lpthread -o pthread -O2 -std=c++11
-se
-	g++ -I/usr/include -L/usr/local/lib -L/usr/lib -lglut -lGLU -lGL -lm sequential.cpp -o seqg -DGUI -O2 -std=c++11
-	mpic++ -I/usr/include -L/usr/local/lib -L/usr/lib -lglut -lGLU -lGL -lm mpi.cpp -o mpig -DGUI -std=c++11
-	g++ -I/usr/include -L/usr/local/lib -L/usr/lib -lglut -lGLU -lGL -lm -lpthread pthread.cpp -o pthreadg -DGUI -O2 -std=c++11
-
+	g++ ./src/pthread.cpp -o pthread -lpthread -O2 -std=c++11
+cuda:
+	nvcc ./src/cuda.cu -o cuda -O2 --std=c++11
+seqg:
+	g++ ./src/sequential.cpp -o seqg -I/usr/include -L/usr/local/lib -L/usr/lib -lglut -lGLU -lGL -lm -DGUI -O2 -std=c++11
+mpig:
+	mpic++ ./src/mpi.cpp -o mpig -I/usr/include -L/usr/local/lib -L/usr/lib -lglut -lGLU -lGL -lm -DGUI -std=c++11
+pthreadg:
+	g++ ./src/pthread.cpp -o pthreadg -I/usr/include -L/usr/local/lib -L/usr/lib -lglut -lGLU -lGL -lm -lpthread -DGUI -O2 -std=c++11
+cudag:
+	nvcc ./src/cuda.cu -o cudag -I/usr/include -L/usr/local/lib -L/usr/lib -lglut -lGLU -lGL -lm -O2 -DGUI --std=c++11
 clean:
-	rm -f seq mpi pthread seqg mpig pthreadg
+	rm -f seq mpi pthread seqg mpig pthreadg cuda cudag

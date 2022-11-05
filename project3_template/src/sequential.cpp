@@ -2,23 +2,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <chrono>
-
-
 #ifdef GUI
 #include <GL/glut.h>
 #include <GL/gl.h>
 #include <GL/glu.h>
 #endif
 
-
-#define gravity_const 1.0f
-#define dt 0.0001f
-#define error 1e-9f
-#define radius2 4.0f
-#define bound_x 4000
-#define bound_y 4000
-#define max_mass 40000000
-#define block_size 1024
+#include "physics.h"
 
 
 int n_body;
@@ -34,13 +24,13 @@ double* vy;
 
 void generate_data(double *m, double *x,double *y,double *vx,double *vy, int n) {
     // TODO: Generate proper initial position and mass for better visualization
-    // for (int i = 0; i < n; i++) {
-    //     m[i] = rand() % max_mass + 1.0f;
-    //     x[i] = rand() % bound_x;
-    //     y[i] = rand() % bound_y;
-    //     vx[i] = 0.0f;
-    //     vy[i] = 0.0f;
-    // }
+    for (int i = 0; i < n; i++) {
+        m[i] = rand() % max_mass + 1.0f;
+        x[i] = rand() % bound_x;
+        y[i] = rand() % bound_y;
+        vx[i] = 0.0f;
+        vy[i] = 0.0f;
+    }
 }
 
 
@@ -56,8 +46,7 @@ void update_velocity(double *m, double *x, double *y, double *vx, double *vy, in
 }
 
 
-
-void update_frame() {
+void master() {
     m = new double[n_body];
     x = new double[n_body];
     y = new double[n_body];
@@ -96,9 +85,7 @@ void update_frame() {
 
         #endif
     }
-    
 }
-
 
 
 int main(int argc, char *argv[]){
@@ -113,11 +100,11 @@ int main(int argc, char *argv[]){
     glutInitWindowSize(500, 500);
     glutCreateWindow("N Body Simulation Sequential Implementation");
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-    glutDisplayFunc(&update_frame);
+    glutDisplayFunc(&master);
     gluOrtho2D(0, bound_x, 0, bound_y);
     glutMainLoop();
     #else
-    update_frame();
+    master();
     #endif
 
     printf("Student ID: 119010001\n"); // replace it with your student id

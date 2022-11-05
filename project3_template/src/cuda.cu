@@ -1,6 +1,5 @@
 #include <cuda.h>
 #include <cuda_runtime.h>
-
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -12,14 +11,8 @@
 #include <GL/glu.h>
 #endif
 
+#include "physics.h"
 
-#define gravity_const 1.0f
-#define dt 0.0001f
-#define error 1e-9f
-#define radius2 4.0f
-#define bound_x 4000
-#define bound_y 4000
-#define max_mass 40000000
 #define block_size 1024
 
 
@@ -54,7 +47,7 @@ void generate_data(double *m, double *x,double *y,double *vx,double *vy, int n) 
 }
 
 
-void update_frame() {
+void master() {
     double* m = new double[n_body];
     double* x = new double[n_body];
     double* y = new double[n_body];
@@ -138,11 +131,11 @@ int main(int argc, char *argv[]){
     glutInitWindowSize(500, 500);
     glutCreateWindow("N Body Simulation CUDA Implementation");
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-    glutDisplayFunc(&update_frame);
+    glutDisplayFunc(&master);
     gluOrtho2D(0, bound_x, 0, bound_y);
     glutMainLoop();
     #else
-    update_frame();
+    master();
     #endif
 
     printf("Student ID: 119010001\n"); // replace it with your student id
