@@ -6,7 +6,7 @@ This code can run on CSC4005 VM (both arm64 and x86_64 version, both command lin
 This code can also run on HPC cluster (***only command line mode, no GUI***, see instructions below). 
 
 
-![](gui.png)
+![](./images/gui.png)
 
 
 # Description
