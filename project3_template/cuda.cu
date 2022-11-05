@@ -29,29 +29,28 @@ int n_iteration;
 
 __global__ void update_position(double *x, double *y, double *vx, double *vy, int n) {
     //TODO: update position 
-    int i = blockDim.x * blockIdx.x + threadIdx.x;
+    // int i = blockDim.x * blockIdx.x + threadIdx.x;
     // if (i < n) {
     // }
 }
 
 __global__ void update_velocity(double *m, double *x, double *y, double *vx, double *vy, int n) {
-    int i = blockDim.x * blockIdx.x + threadIdx.x;
     //TODO: calculate force and acceleration, update velocity
+    // int i = blockDim.x * blockIdx.x + threadIdx.x;
     // if (i < n) {  
     // }
-
 }
 
 
 void generate_data(double *m, double *x,double *y,double *vx,double *vy, int n) {
     // TODO: Generate proper initial position and mass for better visualization
-    // for (int i = 0; i < n; i++) {
-    //     m[i] = rand() % max_mass + 1.0f;
-    //     x[i] = rand() % bound_x;
-    //     y[i] = rand() % bound_y;
-    //     vx[i] = 0.0f;
-    //     vy[i] = 0.0f;
-    // }
+    for (int i = 0; i < n; i++) {
+        m[i] = rand() % max_mass + 1.0f;
+        x[i] = rand() % bound_x;
+        y[i] = rand() % bound_y;
+        vx[i] = 0.0f;
+        vy[i] = 0.0f;
+    }
 }
 
 
