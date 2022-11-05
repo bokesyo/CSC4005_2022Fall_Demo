@@ -5,3 +5,5 @@
 #define bound_x 4000
 #define bound_y 4000
 #define max_mass 40000000
+
+// you can change some physics configuration to better visualize your results.

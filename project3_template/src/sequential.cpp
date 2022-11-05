@@ -8,7 +8,7 @@
 #include <GL/glu.h>
 #endif
 
-#include "physics.h"
+#include "./headers/physics.h"
 
 
 int n_body;
