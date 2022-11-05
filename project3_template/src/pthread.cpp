@@ -123,6 +123,9 @@ void master(){
 
 
 int main(int argc, char *argv[]) {
+    n_body = atoi(argv[1]);
+    n_iteration = atoi(argv[2]);
+    n_thd = atoi(argv[3]);
 
     #ifdef GUI
 	glutInit(&argc, argv);
