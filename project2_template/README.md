@@ -18,16 +18,12 @@ The template includes the following component:
 
 To do parallelization, you have multiple choices. You are encouraged to use some brand new method to partition the data. 
 
-
-Header files: `asg2.h`. Common functions and variables are included in `asg2.h` with some explaination.
-
-
 Source code: `sequential.cpp`, `pthread.cpp`, `mpi.cpp`.
 
 
 # Getting started
 
-Don't worry about the mathematics part! Please read `asg2.h` and `sequential.cpp` to understand the whole picture before you write your own implementation. (Sequential version is completed, for your reference.)
+Don't worry about the mathematics part! Please read `sequential.cpp` to understand the whole picture before you write your own implementation. (Sequential version is completed, for your reference.)
 
 We have prepared a completed atom function for computing the color given a point! Your only job in this project is to smartly partition all data to all workers.
 
@@ -125,9 +121,9 @@ g++ pthread.cpp  -o pthreadg -I/usr/include -L/usr/local/lib -L/usr/lib -lglut -
 `#ifdef GUI` and `-DGUI` is to control if the compiler should output a GUI application. To enable it, use `gcc xxxx -DGUI` to let compiler know it should output a GUI application. To disable it, just omit `-DGUI` so the compiler will output a command line application.
 
 The implementation is like this:
-write some `#ifdef GUI [some cpp code] #endif` in headers and cpp source codes. If the variable GUI is defined (pass -DGUI to g++), the code inside #ifdef GUI #endif will be executed in compilation. It will directly produce a GUI executable (no need to configure after compilation). 
+write some `#ifdef GUI [some cpp code] #endif` in cpp source codes. If the variable GUI is defined (pass -DGUI to g++), the code inside #ifdef GUI #endif will be executed in compilation. It will directly produce a GUI executable (no need to configure after compilation). 
 
-In this template, we have some `#ifdef GUI` in `asg2.h`.
+In this template, we have some `#ifdef GUI`.
 
 ```c++
 #ifdef GUI
@@ -145,7 +141,6 @@ void plot() {
 #endif
 ```
 
-we also have some `#ifdef GUI` in source code.
 
 ```c++
 #ifdef GUI
