@@ -57,7 +57,7 @@ void update_velocity(double *m, double *x, double *y, double *vx, double *vy, in
 
 
 
-void update_frame() {
+void master() {
     m = new double[n_body];
     x = new double[n_body];
     y = new double[n_body];
@@ -113,11 +113,11 @@ int main(int argc, char *argv[]){
     glutInitWindowSize(500, 500);
     glutCreateWindow("N Body Simulation Sequential Implementation");
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-    glutDisplayFunc(&update_frame);
+    glutDisplayFunc(&master);
     gluOrtho2D(0, bound_x, 0, bound_y);
     glutMainLoop();
     #else
-    update_frame();
+    master();
     #endif
 
     printf("Student ID: 119010001\n"); // replace it with your student id
