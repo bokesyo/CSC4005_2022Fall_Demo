@@ -1,12 +1,16 @@
 #include <cuda.h>
 #include <cuda_runtime.h>
-#include <GL/glut.h>
-#include <GL/gl.h>
-#include <GL/glu.h>
+
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <chrono>
+
+#ifdef GUI
+#include <GL/glut.h>
+#include <GL/gl.h>
+#include <GL/glu.h>
+#endif
 
 
 #define gravity_const 1.0f
@@ -24,29 +28,30 @@ int n_iteration;
 
 
 __global__ void update_position(double *x, double *y, double *vx, double *vy, int n) {
+    //TODO: update position 
     int i = blockDim.x * blockIdx.x + threadIdx.x;
-    if (i < n) {
-        //TODO: update position 
-    }
+    // if (i < n) {
+    // }
 }
 
-__global__ void update_velocity(double *data, int n) {
+__global__ void update_velocity(double *m, double *x, double *y, double *vx, double *vy, int n) {
     int i = blockDim.x * blockIdx.x + threadIdx.x;
-    if (i < n) {
-        //TODO: calculate force and acceleration, update velocity
-    }
+    //TODO: calculate force and acceleration, update velocity
+    // if (i < n) {  
+    // }
 
 }
 
 
 void generate_data(double *m, double *x,double *y,double *vx,double *vy, int n) {
-    for (int i = 0; i < n; i++) {
-        m[i] = rand() % max_mass + 1.0f;
-        x[i] = rand() % bound_x;
-        y[i] = rand() % bound_y;
-        vx[i] = 0.0f;
-        vy[i] = 0.0f;
-    }
+    // TODO: Generate proper initial position and mass for better visualization
+    // for (int i = 0; i < n; i++) {
+    //     m[i] = rand() % max_mass + 1.0f;
+    //     x[i] = rand() % bound_x;
+    //     y[i] = rand() % bound_y;
+    //     vx[i] = 0.0f;
+    //     vy[i] = 0.0f;
+    // }
 }
 
 
@@ -92,19 +97,24 @@ void update_frame() {
         std::chrono::duration<double> time_span = t2 - t1;
         printf("Iteration %d, elapsed time: %.3f\n", i, time_span);
 
-        /* Graphic */
+        #ifdef GUI
         glClear(GL_COLOR_BUFFER_BIT);
         glColor3f(1.0f, 0.0f, 0.0f);
         glPointSize(2.0f);
         glBegin(GL_POINTS);
+        double xi;
+        double yi;
         for (int i = 0; i < n_body; i++){
-            double x = x[i];
-            double y = y[i];
-            glVertex2f(x, y);
+            xi = x[i];
+            yi = y[i];
+            glVertex2f(xi, yi);
         }
         glEnd();
         glFlush();
         glutSwapBuffers();
+        #else
+
+        #endif
 
     }
 
@@ -116,12 +126,13 @@ void update_frame() {
     
 }
 
+
 int main(int argc, char *argv[]){
-    /* Prepare basic information */
+    
     n_body = atoi(argv[1]);
     n_iteration = atoi(argv[2]);
 
-    /* GUI initialize */
+    #ifdef GUI
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_RGB | GLUT_SINGLE);
     glutInitWindowPosition(0, 0);
@@ -131,6 +142,14 @@ int main(int argc, char *argv[]){
     glutDisplayFunc(&update_frame);
     gluOrtho2D(0, bound_x, 0, bound_y);
     glutMainLoop();
+    #else
+    update_frame();
+    #endif
+
+    printf("Student ID: 119010001\n"); // replace it with your student id
+    printf("Name: Your Name\n"); // replace it with your name
+    printf("Assignment 2: N Body Simulation CUDA Implementation\n");
+
     return 0;
 
 }
