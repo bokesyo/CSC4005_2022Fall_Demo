@@ -115,6 +115,18 @@ void master() {
     cudaFree(device_y);
     cudaFree(device_vx);
     cudaFree(device_vy);
+
+    cudaFree(device_m);
+    cudaFree(device_x);
+    cudaFree(device_y);
+    cudaFree(device_vx);
+    cudaFree(device_vy);
+
+    delete m;
+    delete x;
+    delete y;
+    delete vx;
+    delete vy;
     
 }
 

@@ -58,12 +58,11 @@ typedef struct {
 
 void* worker(void* args) {
     //TODO: procedure in each threads
+
     // Args* my_arg = (Args*) args;
     // int a = my_arg->a;
     // int b = my_arg->b;
-    // TODO: pthread routine
-    // update_velocity(m, x, y, vx, vy, n_body);
-    // update_position(x, y, vx, vy, n_body);
+
     // TODO END
 }
 
@@ -94,8 +93,8 @@ void master(){
         double xi;
         double yi;
         for (int i = 0; i < n_body; i++){
-            xi = total_x[i];
-            yi = total_y[i];
+            xi = x[i];
+            yi = y[i];
             glVertex2f(xi, yi);
         }
         glEnd();
@@ -105,6 +104,12 @@ void master(){
 
         #endif
     }
+
+    delete m;
+    delete x;
+    delete y;
+    delete vx;
+    delete vy;
 
 
 }
@@ -123,7 +128,7 @@ int main(int argc, char *argv[]) {
 	glutCreateWindow("Pthread");
 	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 	glMatrixMode(GL_PROJECTION);
-	gluOrtho2D(0, X_RESN, 0, Y_RESN);
+	gluOrtho2D(0, bound_x, 0, bound_y);
     #endif
     master();
 
