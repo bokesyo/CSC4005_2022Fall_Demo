@@ -61,10 +61,6 @@ void update_velocity(double *m, double *x, double *y, double *vx, double *vy, in
 
 void slave(){
     // TODO: MPI routine
-    //MPI_Scatter
-    //update_velocity(local_m, local_x, local_y, local_vx, local_vy, n_body);
-    //update_position(local_x, local_y, local_vx, local_vy, n_body);
-    //MPI_Gather
     // TODO End
 }
 
@@ -83,10 +79,6 @@ void master() {
         std::chrono::high_resolution_clock::time_point t1 = std::chrono::high_resolution_clock::now();
 
         // TODO: MPI routine
-        // MPI_Scatter
-        update_velocity(local_m, local_x, local_y, local_vx, local_vy, n_body);
-        update_position(local_x, local_y, local_vx, local_vy, n_body);
-        // MPI_Gather
         // TODO End
 
         std::chrono::high_resolution_clock::time_point t2 = std::chrono::high_resolution_clock::now();
@@ -114,6 +106,12 @@ void master() {
         #endif
     }
 
+    delete total_m;
+    delete total_x;
+    delete total_y;
+    delete total_vx;
+    delete total_vy;
+
 }
 
 
@@ -136,7 +134,7 @@ int main(int argc, char *argv[]) {
 		glutCreateWindow("N Body Simulation MPI Implementation");
 		glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 		glMatrixMode(GL_PROJECTION);
-		gluOrtho2D(0, X_RESN, 0, Y_RESN);
+		gluOrtho2D(0, bound_x, 0, bound_y);
 		#endif
         master();
 	} else {
