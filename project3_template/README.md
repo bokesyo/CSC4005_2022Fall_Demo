@@ -1,6 +1,8 @@
 # CSC4005 Project 3 Template
 
-## Physics
+<br/>
+
+# Physics
 
 We have some physics variable declared in `headers/physics.h`:
 
@@ -8,12 +10,10 @@ We have some physics variable declared in `headers/physics.h`:
 int bound_x = 4000;
 int bound_y = 4000;
 int max_mass = 40000000;
-
 double error = 1e-9f;
 double dt = 0.0001f;
 double gravity_const = 1.0f;
 double radius2 = 4.0f;
-
 ```
 
 `gravity_const` is the gravity constant when you compute $F=G m_{i} m_{j} / d^2$.
@@ -32,25 +32,54 @@ double radius2 = 4.0f;
 
 You may need to modify them to better visualize your result.
 
+<br/>
+<br/>
+<br/>
 
-## Logger & Reproduce
+# Logger & Reproduce
 
-We provide a utility called `Logger` at `headers/checkpoint.h`, it can save x,y coordinates of multiple frames. Result will be stored in `./checkpoints`.
+## Logger
 
-Once you get a checkpoint directory like `./checkpoints/sequential_1000_20221107025155`, you can use 
+We provide a utility called `Logger` at `headers/checkpoint.h`, it can save x,y coordinates of multiple frames. Result will be stored in `./checkpoints`. 
+
+Here we give a sample use:
+
+```c++
+Logger l = Logger("cuda", 10000, 4000, 4000);
+for (int i = 0; i < n_iterations; i++){
+    // compute x, y
+    l.save_frame(x, y);
+}
+```
+
+
+## Reproduce
+
+Use
 
 ```bash
 g++ ./src/reproduce.cpp -o reproduce -I/usr/include -L/usr/local/lib -L/usr/lib -lglut -lGLU -lGL -lm -DGUI -O2 -std=c++11
 ```
 
-to compile `reproduce` application, then you can use
+to compile `reproduce` GUI application on your VM.
+
+Once you get a checkpoint directory like `./checkpoints/sequential_1000_20221107025155` (from cluster or somewhere else), you can use
 
 ```bash
 ./reproduce ./checkpoints/sequential_1000_20221107025155
 ```
 
-to reproduce result with GUI desktop (VM). So you can visualize the output of your cuda program.
+to reproduce result with GUI on your VM. 
 
+**So, you can visualize the output of your CUDA program!**
+
+<br/>
+<br/>
+<br/>
+<br/>
+
+
+# Compile & Run
 
 ## Compile
 
@@ -180,9 +209,11 @@ OpenMP (GUI mode):
 openmpg $n_body $n_iterations $n_omp_threads
 ```
 
+<br/>
+<br/>
+<br/>
 
-
-## Makefile
+# Makefile
 
 Makefile helps you simplify compilation command.
 
@@ -190,14 +221,230 @@ Makefile helps you simplify compilation command.
 make $command
 ```
 
-where `command` is one of `seq, seqg, mpi, mpig, pthread, pthreadg, cuda, cudag`.
+where `command` is one of `seq, seqg, mpi, mpig, pthread, pthreadg, cuda, cudag, openmp, openmpg`.
 
 
 When you need to recompile, please first run `make clean`!
 
 
 
-## Author:
+<br/>
+<br/>
+<br/>
+
+# Advertisement: Valgrind
+
+Valgrind is a memory mismanagement detector. It shows you memory leaks, deallocation errors, etc. Actually, Valgrind is a wrapper around a collection of tools that do many other things (e.g., cache profiling); however, here we focus on the default tool, memcheck. Memcheck can detect:
+
+- Use of uninitialised memory
+
+- Reading/writing memory after it has been free'd
+
+- Reading/writing off the end of malloc'd blocks
+
+- Reading/writing inappropriate areas on the stack
+
+- Memory leaks -- where pointers to malloc'd blocks are lost forever
+
+- Mismatched use of malloc/new/new [] vs free/delete/delete []
+
+- Overlapping src and dst pointers in memcpy() and related functions
+
+- Some misuses of the POSIX pthreads API
+
+To use this on our example program, test.c, try
+
+```bash
+gcc -o test -g test.c
+```
+
+This creates an executable named test. To check for memory leaks during the execution of test, try
+
+```bash
+valgrind --tool=memcheck --leak-check=yes --show-reachable=yes --num-callers=20 --track-fds=yes ./test
+```
+
+
+This outputs a report to the terminal like
+
+```
+=9704== Memcheck, a memory error detector for x86-linux.
+==9704== Copyright (C) 2002-2004, and GNU GPL'd, by Julian Seward et al.
+==9704== Using valgrind-2.2.0, a program supervision framework for x86-linux.
+==9704== Copyright (C) 2000-2004, and GNU GPL'd, by Julian Seward et al.
+==9704== For more details, rerun with: -v
+==9704== 
+==9704== 
+==9704== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 11 from 1)
+==9704== malloc/free: in use at exit: 35 bytes in 2 blocks.
+==9704== malloc/free: 3 allocs, 1 frees, 47 bytes allocated.
+==9704== For counts of detected errors, rerun with: -v
+==9704== searching for pointers to 2 not-freed blocks.
+==9704== checked 1420940 bytes.
+==9704== 
+==9704== 16 bytes in 1 blocks are definitely lost in loss record 1 of 2
+==9704==    at 0x1B903D38: malloc (vg_replace_malloc.c:131)
+==9704==    by 0x80483BF: main (test.c:15)
+==9704== 
+==9704== 
+==9704== 19 bytes in 1 blocks are definitely lost in loss record 2 of 2
+==9704==    at 0x1B903D38: malloc (vg_replace_malloc.c:131)
+==9704==    by 0x8048391: main (test.c:8)
+==9704== 
+==9704== LEAK SUMMARY:
+==9704==    definitely lost: 35 bytes in 2 blocks.
+==9704==    possibly lost:   0 bytes in 0 blocks.
+==9704==    still reachable: 0 bytes in 0 blocks.
+==9704==         suppressed: 0 bytes in 0 blocks.
+
+```
+
+Reference: 
+
+[1] http://cs.ecs.baylor.edu/~donahoo/tools/valgrind/
+
+[2] http://senlinzhan.github.io/2017/12/31/valgrind/
+
+
+
+<br/>
+<br/>
+<br/>
+
+
+
+# Sbatch script
+
+For example, we want to use 20 cores for experiment.
+
+## MPI
+
+For MPI program, you can use
+
+```sh
+#!/bin/bash
+#SBATCH --job-name=your_job_name # Job name
+#SBATCH --nodes=1                    # Run all processes on a single node	
+#SBATCH --ntasks=20                   # number of processes = 20
+#SBATCH --cpus-per-task=1      # Number of CPU cores allocated to each process (please use 1 here, in comparison with pthread)
+#SBATCH --partition=Project            # Partition name: Project or Debug (Debug is default)
+
+cd /nfsmnt/119010355/CSC4005_2022Fall_Demo/project3_template/
+mpirun -np 4 ./mpi 1000 1000 100
+mpirun -np 20 ./mpi 1000 1000 100
+mpirun -np 40 ./mpi 1000 1000 100
+
+
+```
+
+## Pthread
+
+For pthread program, you can use
+
+```sh
+#!/bin/bash
+#SBATCH --job-name=your_job_name # Job name
+#SBATCH --nodes=1                    # Run all processes on a single node	
+#SBATCH --ntasks=1                   # number of processes = 1 
+#SBATCH --cpus-per-task=20      # Number of CPU cores allocated to each process
+#SBATCH --partition=Project            # Partition name: Project or Debug (Debug is default)
+
+cd /nfsmnt/119010355/CSC4005_2022Fall_Demo/project3_template/
+./pthread 1000 1000 100 4
+./pthread 1000 1000 100 20
+./pthread 1000 1000 100 40
+./pthread 1000 1000 100 80
+./pthread 1000 1000 100 120
+./pthread 1000 1000 100 200
+...
+
+```
+
+here you can create as many threads as you want while the number of cpu cores are fixed.
+
+For a pthread program, we notice that sbatch script contains
+
+```sh
+#SBATCH --ntasks=1                   # number of processes = 1 
+#SBATCH --cpus-per-task=20      # Number of CPU cores allocated to each process
+```
+
+the meaning of these two lines are: only one process is started, it can create many threads, where threads are distributed to all available 20 cpu cores by OS. 
+
+
+## CUDA
+
+
+For CUDA program, you can use
+
+```bash
+#!/bin/bash
+
+#SBATCH --job-name CSC3150CUDADemo  ## Job name
+#SBATCH --gres=gpu:1                ## Number of GPUs required for job execution.
+#SBATCH --output result.out         ## filename of the output
+#SBATCH --partition=Project           ## the partitions to run in (Debug or Project)
+#SBATCH --ntasks=1                  ## number of tasks (analyses) to run
+#SBATCH --gpus-per-task=1           ## number of gpus per task
+#SBATCH --time=0-00:02:00           ## time for analysis (day-hour:min:sec)
+
+## Compile the cuda script using the nvcc compiler
+## You can compile your codes out of the script and simply srun the executable file.
+
+## Run the script
+srun ./cuda 10000 1000
+```
+
+
+To submit your job, use
+
+```sh
+sbatch xxx.sh
+```
+
+<br/>
+<br/>
+
+# Salloc
+
+If you want to run your program using interactive mode, use
+
+## MPI
+
+For MPI porgram, we have learned before:
+
+```sh
+salloc -n20 -c1 # -c1 can be omitted.
+mpirun -np 20 ./mpi 1000 1000 100
+```
+
+## Pthread
+For pthread program,
+
+```sh
+salloc -n1 -c20 -p Project # we have only 1 process, 20 is the number of cores allocated per process. 
+srun ./pthread 1000 1000 100 20 # 20 is the number of threads.
+```
+
+## CUDA
+
+For CUDA program,
+
+```bash
+salloc -n1 -c1 --gres=gpu:1 # require 1 gpu
+srun ./cuda 10000 1000
+```
+
+
+
+
+
+<br/>
+<br/>
+<br/>
+
+# Authors
 
 Bokai Xu
 
+Thank @Peilin Li and @Yangyang Peng for giving valuable suggestions to this series of templates.
