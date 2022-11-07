@@ -1,9 +1,8 @@
-#define gravity_const 1.0f
-#define dt 0.0001f
-#define error 1e-9f
-#define radius2 4.0f
-#define bound_x 4000
-#define bound_y 4000
-#define max_mass 40000000
+int bound_x = 4000;
+int bound_y = 4000;
+int max_mass = 40000000;
 
-// you can change some physics configuration to better visualize your results.
+double error = 1e-9f;
+double dt = 0.0001f;
+double gravity_const = 1.0f;
+double radius2 = 4.0f;

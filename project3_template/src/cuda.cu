@@ -12,8 +12,10 @@
 #endif
 
 #include "./headers/physics.h"
+#include "./headers/checkpoint.h"
 
-#define block_size 1024
+
+int block_size = 1024;
 
 
 int n_body;
@@ -56,6 +58,8 @@ void master() {
 
     generate_data(m, x, y, vx, vy, n_body);
 
+    Logger l = Logger("cuda", n_body, bound_x, bound_y);
+
     double *device_m;
     double *device_x;
     double *device_y;
@@ -84,6 +88,8 @@ void master() {
 
         cudaMemcpy(x, device_x, n_body, cudaMemcpyDeviceToHost);
         cudaMemcpy(y, device_y, n_body, cudaMemcpyDeviceToHost);
+
+        l.save_frame(x, y);
 
         std::chrono::high_resolution_clock::time_point t2 = std::chrono::high_resolution_clock::now();
         std::chrono::duration<double> time_span = t2 - t1;

@@ -9,7 +9,7 @@
 #endif
 
 #include "./headers/physics.h"
-
+#include "./headers/checkpoint.h"
 
 int n_body;
 int n_iteration;
@@ -48,11 +48,15 @@ void master() {
 
     generate_data(m, x, y, vx, vy, n_body);
 
+    Logger l = Logger("sequential", n_body, bound_x, bound_y);
+
     for (int i = 0; i < n_iteration; i++){
         std::chrono::high_resolution_clock::time_point t1 = std::chrono::high_resolution_clock::now();
 
         update_velocity(m, x, y, vx, vy, n_body);
         update_position(x, y, vx, vy, n_body);
+
+        l.save_frame(x, y);
 
         std::chrono::high_resolution_clock::time_point t2 = std::chrono::high_resolution_clock::now();
         std::chrono::duration<double> time_span = t2 - t1;
