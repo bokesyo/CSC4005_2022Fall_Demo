@@ -18,6 +18,8 @@ openmp:
 	g++ ./src/openmp.cpp -o openmp -fopenmp -O2 -std=c++11
 openmpg:
 	g++ ./src/openmp.cpp -o openmpg -fopenmp -I/usr/include -L/usr/local/lib -L/usr/lib -lglut -lGLU -lGL -lm -O2 -DGUI -std=c++11
+reproduce:
+	g++ ./src/reproduce.cpp -o reproduce -I/usr/include -L/usr/local/lib -L/usr/lib -lglut -lGLU -lGL -lm -DGUI -O2 -std=c++11
 all:
 	make seq
 	make mpi
@@ -29,5 +31,6 @@ all:
 	make cudag
 	make openmp
 	make openmpg
+	make reproduce
 clean:
-	rm -f seq mpi pthread seqg mpig pthreadg cuda cudag openmp openmpg
+	rm -f seq mpi pthread seqg mpig pthreadg cuda cudag openmp openmpg reproduce
