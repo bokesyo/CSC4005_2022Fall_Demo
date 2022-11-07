@@ -191,3 +191,13 @@ make $command
 ```
 
 where `command` is one of `seq, seqg, mpi, mpig, pthread, pthreadg, cuda, cudag`.
+
+
+When you need to recompile, please first run `make clean`!
+
+
+
+Author:
+
+Bokai Xu
+
