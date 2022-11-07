@@ -1,3 +1,18 @@
+/*
+    Here is a tool to help you store running results to file system for further analysis and reproducing.
+    API:
+        Create a logger: 
+            Logger l = Logger(const char* version, int n_body_, int x_bound_, int y_bound_);
+        Save a new frame:
+            l.save_frame(double* x, double* y);
+    Example:
+        Logger l = Logger("cuda", 10000, 4000, 4000);
+        for (int i = 0; i < n_iterations; i++){
+            // compute x,y
+            l.save_frame(x, y);
+        }
+*/
+
 #include <time.h>
 #include <sys/stat.h>
 #include <unistd.h>
@@ -6,9 +21,6 @@
 #include <iomanip>
 #include <string>
 
-int is_exist(const char* path){
-    return !access(path, F_OK);
-}
 
 class Logger {
     public:
@@ -20,12 +32,20 @@ class Logger {
         std::string start_time;
         std::string root_path = "./checkpoints/";
         std::string path;
-
         Logger(const char* version, int n_body_, int x_bound_, int y_bound_);
-
         void save_frame(double* x, double* y);
         void update_metadata();
+        int is_exist(const char* path);
 };
+
+
+/* Implementation */
+
+
+int Logger::is_exist(const char* path){
+    return !access(path, F_OK);
+}
+
 
 Logger::Logger(const char* version_, int n_body_, int x_bound_, int y_bound_){
     
@@ -35,7 +55,7 @@ Logger::Logger(const char* version_, int n_body_, int x_bound_, int y_bound_){
     y_bound = y_bound_;
     current_iteration = 0;
 
-    time_t t = time(0); 
+    time_t t = time(0);
     char tmp[32];
     strftime(tmp, sizeof(tmp), "%Y%m%d%H%M%S",localtime(&t)); 
     start_time = tmp;
@@ -59,7 +79,6 @@ Logger::Logger(const char* version_, int n_body_, int x_bound_, int y_bound_){
 };
 
 
-
 void Logger::save_frame(double* x, double* y){
     std::setprecision(15);
     std::string f_path = path + "data.txt";
@@ -68,6 +87,7 @@ void Logger::save_frame(double* x, double* y){
     for (int i = 0; i < n_body; i++){
         f << std::to_string(x[i]) << std::endl << std::to_string(y[i]) << std::endl;
     }
+    f.close();
     update_metadata();
     return;
 };
@@ -80,5 +100,7 @@ void Logger::update_metadata(){
     f << version << std::endl << n_body << std::endl 
     << x_bound << std::endl << y_bound << std::endl 
     << current_iteration;
+    f.close();
     return;
 };
+
