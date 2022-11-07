@@ -11,13 +11,14 @@
 #endif
 
 #include "./headers/physics.h"
+#include "./headers/checkpoint.h"
 
 
 int n_body;
 int n_iteration;
 
 
-int rank;
+int my_rank;
 int world_size;
 
 
@@ -66,11 +67,15 @@ void master() {
 
     generate_data(total_m, total_x, total_y, total_vx, total_vy, n_body);
 
+    Logger l = Logger("sequential", n_body, bound_x, bound_y);
+
     for (int i = 0; i < n_iteration; i++){
         std::chrono::high_resolution_clock::time_point t1 = std::chrono::high_resolution_clock::now();
 
         // TODO: MPI routine
+        
         // TODO End
+        l.save_frame(total_x, total_y);
 
         std::chrono::high_resolution_clock::time_point t2 = std::chrono::high_resolution_clock::now();
         std::chrono::duration<double> time_span = t2 - t1;
@@ -113,10 +118,10 @@ int main(int argc, char *argv[]) {
     n_iteration = atoi(argv[2]);
 
 	MPI_Init(&argc, &argv);
-    MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+    MPI_Comm_rank(MPI_COMM_WORLD, &my_rank);
     MPI_Comm_size(MPI_COMM_WORLD, &world_size);
 
-	if (rank == 0) {
+	if (my_rank == 0) {
 		#ifdef GUI
 		glutInit(&argc, argv);
 		glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
@@ -132,7 +137,7 @@ int main(int argc, char *argv[]) {
         slave();
     }
 
-	if (rank == 0){
+	if (my_rank == 0){
 		printf("Student ID: 119010001\n"); // replace it with your student id
 		printf("Name: Your Name\n"); // replace it with your name
 		printf("Assignment 2: N Body Simulation MPI Implementation\n");

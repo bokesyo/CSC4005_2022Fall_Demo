@@ -5,13 +5,15 @@
 We have some physics variable declared in `headers/physics.h`:
 
 ```c++
-#define gravity_const 1.0f
-#define dt 0.0001f
-#define error 1e-9f
-#define radius2 4.0f
-#define bound_x 4000
-#define bound_y 4000
-#define max_mass 40000000
+int bound_x = 4000;
+int bound_y = 4000;
+int max_mass = 40000000;
+
+double error = 1e-9f;
+double dt = 0.0001f;
+double gravity_const = 1.0f;
+double radius2 = 4.0f;
+
 ```
 
 `gravity_const` is the gravity constant when you compute $F=G m_{i} m_{j} / d^2$.
@@ -29,6 +31,11 @@ We have some physics variable declared in `headers/physics.h`:
 `max_mass` is the maximum mass of a particle. You can use it to generate particles.
 
 You may need to modify them to better visualize your result.
+
+
+## Logger
+
+We provide a utility called `Logger` at `headers/checkpoint.h`, it can save x,y coordinates of multiple frames. Result will be stored in `./checkpoints`.
 
 
 ## Compile
