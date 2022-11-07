@@ -21,20 +21,6 @@ int rank;
 int world_size;
 
 
-double* total_m;
-double* total_x;
-double* total_y;
-double* total_vx;
-double* total_vy;
-
-
-double* local_m;
-double* local_x;
-double* local_y;
-double* local_vx;
-double* local_vy;
-
-
 void generate_data(double *m, double *x,double *y,double *vx,double *vy, int n) {
     // TODO: Generate proper initial position and mass for better visualization
     for (int i = 0; i < n; i++) {
@@ -61,17 +47,22 @@ void update_velocity(double *m, double *x, double *y, double *vx, double *vy, in
 
 void slave(){
     // TODO: MPI routine
+    double* local_m;
+    double* local_x;
+    double* local_y;
+    double* local_vx;
+    double* local_vy;
     // TODO End
 }
 
 
 
 void master() {
-    total_m = new double[n_body];
-    total_x = new double[n_body];
-    total_y = new double[n_body];
-    total_vx = new double[n_body];
-    total_vy = new double[n_body];
+    double* total_m = new double[n_body];
+    double* total_x = new double[n_body];
+    double* total_y = new double[n_body];
+    double* total_vx = new double[n_body];
+    double* total_vy = new double[n_body];
 
     generate_data(total_m, total_x, total_y, total_vx, total_vy, n_body);
 

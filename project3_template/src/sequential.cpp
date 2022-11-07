@@ -15,13 +15,6 @@ int n_body;
 int n_iteration;
 
 
-double* m;
-double* x;
-double* y;
-double* vx;
-double* vy;
-
-
 void generate_data(double *m, double *x,double *y,double *vx,double *vy, int n) {
     // TODO: Generate proper initial position and mass for better visualization
     for (int i = 0; i < n; i++) {
@@ -47,11 +40,11 @@ void update_velocity(double *m, double *x, double *y, double *vx, double *vy, in
 
 
 void master() {
-    m = new double[n_body];
-    x = new double[n_body];
-    y = new double[n_body];
-    vx = new double[n_body];
-    vy = new double[n_body];
+    double* m = new double[n_body];
+    double* x = new double[n_body];
+    double* y = new double[n_body];
+    double* vx = new double[n_body];
+    double* vy = new double[n_body];
 
     generate_data(m, x, y, vx, vy, n_body);
 
