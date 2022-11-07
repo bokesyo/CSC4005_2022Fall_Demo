@@ -1,5 +1,36 @@
 # CSC4005 Project 3 Template
 
+## Physics
+
+We have some physics variable declared in `headers/physics.h`:
+
+```c++
+#define gravity_const 1.0f
+#define dt 0.0001f
+#define error 1e-9f
+#define radius2 4.0f
+#define bound_x 4000
+#define bound_y 4000
+#define max_mass 40000000
+```
+
+`gravity_const` is the gravity constant when you compute $F=G m_{i} m_{j} / d^2$.
+
+`dt` is the time span between two iterations, it can be used when you compute $\Delta v=F\Delta t$ and $\Delta x=v\Delta t$.
+
+`error` is a small number used to avoid `DivisionByZero` error. It can be used like $F=G m_{i} m_{j} / (d^2 + error)$.
+
+`radius2` is the squared radius of particles. It can be used when you determine whether two particles have collision.
+
+`bound_x` is the upper bound of X axis. $x$ is between $[0,bound\_x]$.
+
+`bound_y` is the upper bound of Y axis. $y$ is between $[0,bound\_y]$.
+
+`max_mass` is the maximum mass of a particle. You can use it to generate particles.
+
+You may need to modify them to better visualize your result.
+
+
 ## Compile
 
 Sequential (command line application):
@@ -38,13 +69,13 @@ Pthread (GUI application):
 g++ ./src/pthread.cpp -o pthreadg -I/usr/include -L/usr/local/lib -L/usr/lib -lglut -lGLU -lGL -lm -lpthread -DGUI -O2 -std=c++11
 ```
 
-CUDA (command line application): notice that `nvcc` is not available on VM.
+CUDA (command line application): notice that `nvcc` is not available on VM, please use cluster.
 
 ```bash
 nvcc ./src/cuda.cu -o cuda -O2 --std=c++11
 ```
 
-CUDA (GUI application):
+CUDA (GUI application): notice that `nvcc` is not available on VM, please use cluster.
 
 ```bash
 nvcc ./src/cuda.cu -o cudag -I/usr/include -L/usr/local/lib -L/usr/lib -lglut -lGLU -lGL -lm -O2 -DGUI --std=c++11
