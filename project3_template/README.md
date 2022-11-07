@@ -33,9 +33,23 @@ double radius2 = 4.0f;
 You may need to modify them to better visualize your result.
 
 
-## Logger
+## Logger & Reproduce
 
 We provide a utility called `Logger` at `headers/checkpoint.h`, it can save x,y coordinates of multiple frames. Result will be stored in `./checkpoints`.
+
+Once you get a checkpoint directory like `./checkpoints/sequential_1000_20221107025155`, you can use 
+
+```bash
+g++ ./src/reproduce.cpp -o reproduce -I/usr/include -L/usr/local/lib -L/usr/lib -lglut -lGLU -lGL -lm -DGUI -O2 -std=c++11
+```
+
+to compile `reproduce` application, then you can use
+
+```bash
+./reproduce ./checkpoints/sequential_1000_20221107025155
+```
+
+to reproduce result with GUI desktop (VM). So you can visualize the output of your cuda program.
 
 
 ## Compile
