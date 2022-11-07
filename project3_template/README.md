@@ -82,6 +82,19 @@ nvcc ./src/cuda.cu -o cudag -I/usr/include -L/usr/local/lib -L/usr/lib -lglut -l
 ```
 
 
+OpenMP (command line application):
+
+```bash
+g++ ./src/openmp.cpp -o openmp -fopenmp -O2 -std=c++11
+```
+
+OpenMP (GUI application):
+
+```bash
+g++ ./src/openmp.cpp -o openmpg -fopenmp -I/usr/include -L/usr/local/lib -L/usr/lib -lglut -lGLU -lGL -lm -O2 -DGUI -std=c++11
+```
+
+
 ## Run
 
 Sequential (command line mode):
@@ -132,6 +145,20 @@ CUDA (GUI mode): if you have both nvcc and GUI desktop, you can try this.
 ```bash
 ./cuda $n_body $n_iterations
 ```
+
+
+OpenMP (command line mode):
+
+```bash
+openmp $n_body $n_iterations $n_omp_threads
+```
+
+OpenMP (GUI mode):
+
+```bash
+openmpg $n_body $n_iterations $n_omp_threads
+```
+
 
 
 ## Makefile
