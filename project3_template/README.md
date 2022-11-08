@@ -353,9 +353,9 @@ For MPI program, you can use
 #SBATCH --partition=Project            # Partition name: Project or Debug (Debug is default)
 
 cd /nfsmnt/119010355/CSC4005_2022Fall_Demo/project3_template/
-mpirun -np 4 ./mpi 1000 1000 100
-mpirun -np 20 ./mpi 1000 1000 100
-mpirun -np 40 ./mpi 1000 1000 100
+mpirun -np 4 ./mpi 1000 100
+mpirun -np 20 ./mpi 1000 100
+mpirun -np 40 ./mpi 1000 100
 
 
 ```
@@ -373,12 +373,12 @@ For pthread program, you can use
 #SBATCH --partition=Project            # Partition name: Project or Debug (Debug is default)
 
 cd /nfsmnt/119010355/CSC4005_2022Fall_Demo/project3_template/
-./pthread 1000 1000 100 4
-./pthread 1000 1000 100 20
-./pthread 1000 1000 100 40
-./pthread 1000 1000 100 80
-./pthread 1000 1000 100 120
-./pthread 1000 1000 100 200
+./pthread 1000 100 4
+./pthread 1000 100 20
+./pthread 1000 100 40
+./pthread 1000 100 80
+./pthread 1000 100 120
+./pthread 1000 100 200
 ...
 
 ```
@@ -413,9 +413,31 @@ For CUDA program, you can use
 
 ## Compile the cuda script using the nvcc compiler
 ## You can compile your codes out of the script and simply srun the executable file.
-
+cd /nfsmnt/119010355/CSC4005_2022Fall_Demo/project3_template/
 ## Run the script
-srun ./cuda 10000 1000
+srun ./cuda 10000 100
+```
+
+
+## OpenMP
+
+For OpenMP program, you can use
+
+```bash
+#!/bin/bash
+
+#SBATCH --job-name job_name  ## Job name
+#SBATCH --output result.out         ## filename of the output
+#SBATCH --partition=Project           ## the partitions to run in (Debug or Project)
+#SBATCH --ntasks=1                  ## number of tasks (analyses) to run
+#SBATCH --gpus-per-task=1           ## number of gpus per task
+#SBATCH --time=0-00:02:00           ## time for analysis (day-hour:min:sec)
+
+## Compile the cuda script using the nvcc compiler
+## You can compile your codes out of the script and simply srun the executable file.
+cd /nfsmnt/119010355/CSC4005_2022Fall_Demo/project3_template/
+## Run the script
+./openmp 10000 100 20
 ```
 
 
@@ -454,11 +476,19 @@ srun ./pthread 1000 1000 100 20 # 20 is the number of threads.
 For CUDA program,
 
 ```bash
-salloc -n1 -c1 --gres=gpu:1 # require 1 gpu
+salloc -n1 -c1 --gres=gpu:1 -p Project # require 1 gpu
 srun ./cuda 10000 1000
 ```
 
 
+## OpenMP
+
+For openMP program,
+
+```bash
+salloc -n1 -c20 -p Project # require 1 gpu
+srun ./openmp 10000 1000 20
+```
 
 
 
