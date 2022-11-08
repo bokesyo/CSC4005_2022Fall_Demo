@@ -42,7 +42,7 @@ int main(int argc, char *argv[]){
     glutInitDisplayMode(GLUT_RGB | GLUT_SINGLE);
     glutInitWindowPosition(0, 0);
     glutInitWindowSize(500, 500);
-    glutCreateWindow("N Body Simulation Reproduce");
+    glutCreateWindow("N Body Simulation");
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
     gluOrtho2D(0, bound_x, 0, bound_y);
 
