@@ -4,9 +4,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <chrono>
-
-#include <time.h>
-
 #ifdef GUI
 #include <GL/glut.h>
 #include <GL/gl.h>
