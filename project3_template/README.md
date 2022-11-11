@@ -46,7 +46,7 @@ Also, for CUDA implementation, there is no CUDA on our VM, so you can use cluste
 
 ## Logger
 
-We provide a utility called `Logger` at `headers/checkpoint.h`, it can save `x,y` coordinates of multiple frames. Result will be stored in `./checkpoints/xxxxxxx/`. 
+We provide a utility called `Logger` at `headers/logger.h`, it can save `x,y` coordinates of multiple frames. Result will be stored in `./checkpoints/xxxxxxx/`. 
 
 Here we give a sample use:
 
