@@ -5,6 +5,8 @@
 #include <stdlib.h>
 #include <chrono>
 
+#include <time.h>
+
 #ifdef GUI
 #include <GL/glut.h>
 #include <GL/gl.h>
@@ -12,7 +14,7 @@
 #endif
 
 #include "./headers/physics.h"
-#include "./headers/checkpoint.h"
+#include "./headers/logger.h"
 
 
 int block_size = 1024;
@@ -39,14 +41,16 @@ __global__ void update_velocity(double *m, double *x, double *y, double *vx, dou
 
 void generate_data(double *m, double *x,double *y,double *vx,double *vy, int n) {
     // TODO: Generate proper initial position and mass for better visualization
+    srand((unsigned)time(NULL));
     for (int i = 0; i < n; i++) {
         m[i] = rand() % max_mass + 1.0f;
-        x[i] = rand() % bound_x;
-        y[i] = rand() % bound_y;
+        x[i] = 2000.0f + rand() % (bound_x / 4);
+        y[i] = 2000.0f + rand() % (bound_y / 4);
         vx[i] = 0.0f;
         vy[i] = 0.0f;
     }
 }
+
 
 
 void master() {
@@ -93,6 +97,7 @@ void master() {
 
         std::chrono::high_resolution_clock::time_point t2 = std::chrono::high_resolution_clock::now();
         std::chrono::duration<double> time_span = t2 - t1;
+        
         printf("Iteration %d, elapsed time: %.3f\n", i, time_span);
 
         #ifdef GUI

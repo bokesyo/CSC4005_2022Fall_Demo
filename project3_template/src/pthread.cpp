@@ -11,7 +11,7 @@
 #endif
 
 #include "./headers/physics.h"
-#include "./headers/checkpoint.h"
+#include "./headers/logger.h"
 
 int n_thd; // number of threads
 
@@ -21,14 +21,16 @@ int n_iteration;
 
 void generate_data(double *m, double *x,double *y,double *vx,double *vy, int n) {
     // TODO: Generate proper initial position and mass for better visualization
+    srand((unsigned)time(NULL));
     for (int i = 0; i < n; i++) {
         m[i] = rand() % max_mass + 1.0f;
-        x[i] = rand() % bound_x;
-        y[i] = rand() % bound_y;
+        x[i] = 2000.0f + rand() % (bound_x / 4);
+        y[i] = 2000.0f + rand() % (bound_y / 4);
         vx[i] = 0.0f;
         vy[i] = 0.0f;
     }
 }
+
 
 
 void update_position(double *x, double *y, double *vx, double *vy, int n) {
