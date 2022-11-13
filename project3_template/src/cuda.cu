@@ -14,7 +14,7 @@
 #include "./headers/logger.h"
 
 
-int block_size = 1024;
+int block_size = 512;
 
 
 int n_body;
@@ -67,17 +67,17 @@ void master() {
     double *device_vx;
     double *device_vy;
 
-    cudaMalloc(&device_m, n_body);
-    cudaMalloc(&device_x, n_body);
-    cudaMalloc(&device_y, n_body);
-    cudaMalloc(&device_vx, n_body);
-    cudaMalloc(&device_vy, n_body);
+    cudaMalloc(&device_m, n_body * sizeof(double));
+    cudaMalloc(&device_x, n_body * sizeof(double));
+    cudaMalloc(&device_y, n_body * sizeof(double));
+    cudaMalloc(&device_vx, n_body * sizeof(double));
+    cudaMalloc(&device_vy, n_body * sizeof(double));
 
-    cudaMemcpy(device_m, m, n_body, cudaMemcpyHostToDevice);
-    cudaMemcpy(device_x, x, n_body, cudaMemcpyHostToDevice);
-    cudaMemcpy(device_y, y, n_body, cudaMemcpyHostToDevice);
-    cudaMemcpy(device_vx, vx, n_body, cudaMemcpyHostToDevice);
-    cudaMemcpy(device_vy, vy, n_body, cudaMemcpyHostToDevice);
+    cudaMemcpy(device_m, m, n_body * sizeof(double), cudaMemcpyHostToDevice);
+    cudaMemcpy(device_x, x, n_body * sizeof(double), cudaMemcpyHostToDevice);
+    cudaMemcpy(device_y, y, n_body * sizeof(double), cudaMemcpyHostToDevice);
+    cudaMemcpy(device_vx, vx, n_body * sizeof(double), cudaMemcpyHostToDevice);
+    cudaMemcpy(device_vy, vy, n_body * sizeof(double), cudaMemcpyHostToDevice);
 
     int n_block = n_body / block_size + 1;
 
@@ -87,8 +87,8 @@ void master() {
         update_velocity<<<n_block, block_size>>>(device_m, device_x, device_y, device_vx, device_vy, n_body);
         update_position<<<n_block, block_size>>>(device_x, device_y, device_vx, device_vy, n_body);
 
-        cudaMemcpy(x, device_x, n_body, cudaMemcpyDeviceToHost);
-        cudaMemcpy(y, device_y, n_body, cudaMemcpyDeviceToHost);
+        cudaMemcpy(x, device_x, n_body * sizeof(double), cudaMemcpyDeviceToHost);
+        cudaMemcpy(y, device_y, n_body * sizeof(double), cudaMemcpyDeviceToHost);
 
         l.save_frame(x, y);
 
