@@ -500,7 +500,7 @@ srun ./openmp 10000 1000 20
 
 # Changelog Nov 14, 2022
 
-## 1. Fixed a wrong CUDA api
+## 1. Fixed wrong CUDA api invoke
 
 The original wrong invoke is
 
@@ -518,7 +518,7 @@ If you have included wrong invoke in your job, you will come across a lot of pro
 
 
 
-## 2. Update physics constant definition
+## 2. Updated physics constant definition
 
 Previously, the physics constant is defined using variable definition. This approach make some trouble when you try to use them in CUDA program. So, we have changed the definition of physics constants back to macro definition, like this:
 
@@ -535,13 +535,13 @@ Previously, the physics constant is defined using variable definition. This appr
 You can directly use them in your cuda program (they are treated as constants on both your host and device).
 
 
-## 3. Change `block_size` for CUDA program to `512`
+## 3. Changed `block_size` for CUDA program to `512`
 
 Some students reported that their kernel function will not run with `block_size` = `1024`. So, we have tested that a smaller `block_size` is available. 
 
 
 
-## 4. Change some physics constants
+## 4. Changed some physics constants to obtain better visualization
 
 ```c++
 #define bound_x 4000
@@ -561,7 +561,7 @@ We have changed `gravity_const` larger (original value is `1.0f`) to make sure t
 
 We have also changed `radius2` smaller (original value is `4.0f`) to avoid frequent collision.
 
-## 5. Change the data generator
+## 5. Changed the data generator
 
 We have updated `generate_data` function.
 
@@ -580,7 +580,7 @@ void generate_data(double *m, double *x,double *y,double *vx,double *vy, int n) 
 }
 ```
 
-This function can make the initial positions bodies more concentrated, so you can reproduce the results given by Prof.Chung.
+This function can make the initial positions bodies more concentrated, so, you can easily reproduce the results given by Prof.Chung.
 
 
 <br/>
