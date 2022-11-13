@@ -7,20 +7,21 @@
 We have some physics variable declared in `headers/physics.h`:
 
 ```c++
-int bound_x = 4000;
-int bound_y = 4000;
-int max_mass = 400;
-double error = 1e-9f;
-double dt = 0.0001f;
-double gravity_const = 100000.0f;
-double radius2 = 2.0f;
+#define bound_x 4000
+#define bound_y 4000
+#define max_mass 400
+#define err 1e-5f
+#define dt 0.0001f
+#define gravity_const 1000000.0f
+#define radius2 0.01f
+
 ```
 
 `gravity_const` is the gravity constant when you compute $F=G m_{i} m_{j} / d^2$.
 
 `dt` is the time span between two iterations, it can be used when you compute $\Delta v=F\Delta t$ and $\Delta x=v\Delta t$.
 
-`error` is a small number used to avoid `DivisionByZero` error. It can be used like $F=G m_{i} m_{j} / (d^2 + error)$.
+`err` is a small number used to avoid `DivisionByZero` error and can accelerate computation. It can be used like $F=G m_{i} m_{j} / (d^2 + error)$.
 
 `radius2` is the squared radius of particles. It can be used when you determine whether two particles have collision.
 
@@ -495,6 +496,97 @@ srun ./openmp 10000 1000 20
 <br/>
 <br/>
 <br/>
+
+
+# Changelog Nov 14, 2022
+
+## 1. Fixed wrong CUDA api invoke
+
+The original wrong invoke is
+
+```c++
+cudaMemcpy(device_m, m, n_body, cudaMemcpyHostToDevice);
+```
+
+The fixed invoke is
+
+```c++
+cudaMemcpy(device_m, m, n_body * sizeof(double), cudaMemcpyHostToDevice);
+```
+
+If you have included wrong invoke in your job, you will come across a lot of problems. Sorry for this.
+
+
+
+## 2. Updated physics constant definition
+
+Previously, the physics constant is defined using variable definition. This approach make some trouble when you try to use them in CUDA program. So, we have changed the definition of physics constants back to macro definition, like this:
+
+```c++
+#define bound_x 4000
+#define bound_y 4000
+#define max_mass 400
+#define err 1e-5f
+#define dt 0.0001f
+#define gravity_const 1000000.0f
+#define radius2 0.01f
+```
+
+You can directly use them in your cuda program (they are treated as constants on both your host and device).
+
+
+## 3. Changed `block_size` for CUDA program to `512`
+
+Some students reported that their kernel function will not run with `block_size` = `1024`. So, we have tested that a smaller `block_size` is available. 
+
+
+
+## 4. Changed some physics constants to obtain better visualization
+
+```c++
+#define bound_x 4000
+#define bound_y 4000
+#define max_mass 400
+#define err 1e-5f
+#define dt 0.0001f
+#define gravity_const 1000000.0f
+#define radius2 0.01f
+```
+
+We have changed `max_mass` to `400` instead of `40000000`. Because in the latter case extreme velocity will occur very frequently.
+
+We have also changed `err` to `1e-5f` instead of `1e-9f` to avoid large force.
+
+We have changed `gravity_const` larger (original value is `1.0f`) to make sure the motion of bodies visible.
+
+We have also changed `radius2` smaller (original value is `4.0f`) to avoid frequent collision.
+
+## 5. Changed the data generator
+
+We have updated `generate_data` function.
+
+
+```c++
+void generate_data(double *m, double *x,double *y,double *vx,double *vy, int n) {
+    // TODO: Generate proper initial position and mass for better visualization
+    srand((unsigned)time(NULL));
+    for (int i = 0; i < n; i++) {
+        m[i] = rand() % max_mass + 1.0f;
+        x[i] = 2000.0f + rand() % (bound_x / 4);
+        y[i] = 2000.0f + rand() % (bound_y / 4);
+        vx[i] = 0.0f;
+        vy[i] = 0.0f;
+    }
+}
+```
+
+This function can make the initial positions bodies more concentrated, so, you can easily reproduce the results given by Prof.Chung.
+
+
+<br/>
+<br/>
+<br/>
+
 
 # Authors
 
