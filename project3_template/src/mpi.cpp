@@ -76,12 +76,13 @@ void master() {
         // TODO: MPI routine
         
         // TODO End
-        l.save_frame(total_x, total_y);
 
         std::chrono::high_resolution_clock::time_point t2 = std::chrono::high_resolution_clock::now();
         std::chrono::duration<double> time_span = t2 - t1;
 
         printf("Iteration %d, elapsed time: %.3f\n", i, time_span);
+
+        l.save_frame(total_x, total_y);
 
         #ifdef GUI
         glClear(GL_COLOR_BUFFER_BIT);
