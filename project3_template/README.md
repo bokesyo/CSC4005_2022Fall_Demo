@@ -500,4 +500,4 @@ srun ./openmp 10000 1000 20
 
 Bokai Xu
 
-Thank @Peilin Li and @Yangyang Peng for giving valuable suggestions to this series of templates.
+Thank @Peilin Li, @Yangyang Peng, and @SydianAndrewChen for giving valuable suggestions to this series of templates.
