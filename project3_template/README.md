@@ -9,11 +9,11 @@ We have some physics variable declared in `headers/physics.h`:
 ```c++
 int bound_x = 4000;
 int bound_y = 4000;
-int max_mass = 40000000;
+int max_mass = 400;
 double error = 1e-9f;
 double dt = 0.0001f;
-double gravity_const = 1.0f;
-double radius2 = 4.0f;
+double gravity_const = 100000.0f;
+double radius2 = 2.0f;
 ```
 
 `gravity_const` is the gravity constant when you compute $F=G m_{i} m_{j} / d^2$.
@@ -500,4 +500,4 @@ srun ./openmp 10000 1000 20
 
 Bokai Xu
 
-Thank @Peilin Li and @Yangyang Peng for giving valuable suggestions to this series of templates.
+Thank @Peilin Li, @Yangyang Peng, and @SydianAndrewChen for giving valuable suggestions to this series of templates.
