@@ -583,6 +583,29 @@ void generate_data(double *m, double *x,double *y,double *vx,double *vy, int n) 
 This function can make the initial positions bodies more concentrated, so, you can easily reproduce the results given by Prof.Chung.
 
 
+
+## 6. Wrong order of time and logger
+
+Previously, `l.save_frame(x, y);` was executed earlier than `std::chrono::high_resolution_clock::time_point t2 =std::chrono::high_resolution_clock::now();`, so the time was not accurate.
+
+Now we have changed the order into following order:
+
+```c++
+std::chrono::high_resolution_clock::time_point t1 = std::chrono::high_resolution_clock::now();
+
+/* computation part */
+
+std::chrono::high_resolution_clock::time_point t2 = std::chrono::high_resolution_clock::now();// new order
+std::chrono::duration<double> time_span = t2 - t1;
+
+printf("Iteration %d, elapsed time: %.3f\n", i, time_span);
+
+l.save_frame(x, y);  // new order
+
+```
+
+If yours are not in such order, you may get wrong running time! Please check all versions.
+
 <br/>
 <br/>
 <br/>

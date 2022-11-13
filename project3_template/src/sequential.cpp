@@ -57,12 +57,12 @@ void master() {
         update_velocity(m, x, y, vx, vy, n_body);
         update_position(x, y, vx, vy, n_body);
 
-        l.save_frame(x, y);
-
         std::chrono::high_resolution_clock::time_point t2 = std::chrono::high_resolution_clock::now();
         std::chrono::duration<double> time_span = t2 - t1;
 
         printf("Iteration %d, elapsed time: %.3f\n", i, time_span);
+
+        l.save_frame(x, y);
 
         #ifdef GUI
         glClear(GL_COLOR_BUFFER_BIT);
