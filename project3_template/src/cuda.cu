@@ -124,11 +124,11 @@ void master() {
     cudaFree(device_vx);
     cudaFree(device_vy);
 
-    delete m;
-    delete x;
-    delete y;
-    delete vx;
-    delete vy;
+    delete[] m;
+    delete[] x;
+    delete[] y;
+    delete[] vx;
+    delete[] vy;
     
 }
 

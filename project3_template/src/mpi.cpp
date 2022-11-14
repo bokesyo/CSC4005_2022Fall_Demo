@@ -104,11 +104,11 @@ void master() {
         #endif
     }
 
-    delete total_m;
-    delete total_x;
-    delete total_y;
-    delete total_vx;
-    delete total_vy;
+    delete[] total_m;
+    delete[] total_x;
+    delete[] total_y;
+    delete[] total_vx;
+    delete[] total_vy;
 
 }
 
