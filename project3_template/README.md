@@ -606,6 +606,30 @@ l.save_frame(x, y);  // new order
 
 If yours are not in such order, you may get wrong running time! Please check all versions.
 
+
+
+## Fixed unpaired use of new/delete
+
+If you are still using 
+
+```c++
+delete m;
+delete x;
+delete y;
+delete vx;
+delete vy;
+```
+
+It is recommended to switch to 
+
+```c++
+delete[] m;
+delete[] x;
+delete[] y;
+delete[] vx;
+delete[] vy;
+```
+
 <br/>
 <br/>
 <br/>
