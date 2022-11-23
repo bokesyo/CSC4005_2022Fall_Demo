@@ -124,63 +124,63 @@ g++ ./src/openmp.cpp -o openmpg -fopenmp -I/usr/include -L/usr/local/lib -L/usr/
 Sequential (command line mode):
 
 ```bash
-./seq $size
+./seq $problem_size
 ```
 
 Sequential (GUI mode): please run this on VM (with GUI desktop).
 
 ```bash
-./seqg $size
+./seqg $problem_size
 ```
 
 MPI (command line mode):
 
 ```bash
-mpirun -np $n_processes ./mpi $size
+mpirun -np $n_processes ./mpi $problem_size
 ```
 
 MPI (GUI mode): please run this on VM (with GUI desktop).
 
 ```bash
-mpirun -np $n_processes ./mpig $size
+mpirun -np $n_processes ./mpig $problem_size
 ```
 
 
 Pthread (command line mode):
 
 ```bash
-./pthread $size $n_threads
+./pthread $problem_size $n_threads
 ```
 
 Pthread (GUI mode): please run this on VM (with GUI desktop).
 
 ```bash
-./pthreadg $size $n_threads
+./pthreadg $problem_size $n_threads
 ```
 
 CUDA (command line mode): for VM users, please run this on cluster.
 
 ```bash
-./cuda $size $n_iterations
+./cuda $problem_size $n_iterations
 ```
 
 CUDA (GUI mode): if you have both nvcc and GUI desktop, you can try this.
 
 ```bash
-./cuda $size $n_iterations
+./cuda $problem_size $n_iterations
 ```
 
 
 OpenMP (command line mode):
 
 ```bash
-openmp $size $n_omp_threads
+openmp $problem_size $n_omp_threads
 ```
 
 OpenMP (GUI mode):
 
 ```bash
-openmpg $size $n_omp_threads
+openmpg $problem_size $n_omp_threads
 ```
 
 <br/>
@@ -374,6 +374,10 @@ srun ./openmp 10000 1000 20
 
 Not tracked.
 
+
+<br/>
+<br/>
+<br/>
 
 
 # Authors
