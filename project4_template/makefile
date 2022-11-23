@@ -31,6 +31,5 @@ all:
 	make cudag
 	make openmp
 	make openmpg
-	make video
 clean:
-	rm -f seq mpi pthread seqg mpig pthreadg cuda cudag openmp openmpg video
+	rm -f seq mpi pthread seqg mpig pthreadg cuda cudag openmp openmpg
