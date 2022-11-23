@@ -370,7 +370,7 @@ srun ./openmp 10000 1000 20
 
 
 
-## Changelog
+# Changelog
 
 Not tracked.
 

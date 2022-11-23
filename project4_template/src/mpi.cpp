@@ -1,1 +1,1 @@
-// please refer to template 3
+// Coming soon, if you want to start early, please first refer to template 3
