@@ -11,15 +11,11 @@
 #include <GL/glu.h>
 #endif
 
-#define threshold 0.0000001f
-#define fire_temp 3000.0f
-#define wall_temp -10.0f
-#define fire_size 100.0f
-#define window_size 800
-#define resolution 200
+
+#include "./headers/physics.h"
 
 
-int size;
+int size; // problem size
 
 
 void initialize(float *data) {
@@ -55,8 +51,6 @@ void generate_fire_area(bool *fire_area){
             if (r2 < fire2_r2) fire_area[i * size + j] = 1;
         }
     }
-
-
 }
 
 
@@ -114,6 +108,7 @@ void plot(float* data){
     glBegin(GL_POINTS);
 
     float factor = (float) size / resolution;
+
     for (int x = 0; x < resolution; x++){
         for (int y = 0; y < resolution; y++){
             int x_raw = (int) (x * factor);
@@ -165,6 +160,7 @@ void master(){
         total_time += this_time;
 
         plot(data);
+
         count++;
   }
 
