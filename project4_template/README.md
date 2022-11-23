@@ -2,7 +2,21 @@
 
 <br/>
 
+# Example Run
+
+Command:
+
+```bash
+./seqg 1000
+```
+
+Output:
+
 ![](./images/demo.png)
+
+<br/>
+<br/>
+<br/>
 
 # Physics
 
