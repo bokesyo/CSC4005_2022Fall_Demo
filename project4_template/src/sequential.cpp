@@ -19,6 +19,7 @@ int size; // problem size
 
 
 void initialize(float *data) {
+    // intialize the temperature distribution
     int len = size * size;
     for (int i = 0; i < len; i++) {
         data[i] = wall_temp;
@@ -27,6 +28,7 @@ void initialize(float *data) {
 
 
 void generate_fire_area(bool *fire_area){
+    // generate the fire area
     int len = size * size;
     for (int i = 0; i < len; i++) {
         fire_area[i] = 0;
@@ -70,15 +72,6 @@ void update(float *data, float *new_data) {
 }
 
 
-void deep_copy(float *data, float *new_data) {
-    // copy results in `new_data` to `data`
-    int len = size * size;
-    for (int i = 0 ; i < len; i++) {
-        data[i] = new_data[i];
-    }
-}
-
-
 void maintain_fire(float *data, bool* fire_area) {
     // maintain the temperature of fire
     int len = size * size;
@@ -98,17 +91,9 @@ bool check_continue(float *data, float *new_data){
     return true;
 }
 
-
-void plot(float* data){
-    // visualize temprature distribution
-    #ifdef GUI
-    glClear(GL_COLOR_BUFFER_BIT);
-    float particle_size = (float) window_size / resolution;
-    glPointSize(particle_size);
-    glBegin(GL_POINTS);
-
+void data2pixels(float *data, float *pixels){
+    // convert rawdata (large, size^2) to pixels (small, resolution^2) for faster rendering speed
     float factor = (float) size / resolution;
-
     for (int x = 0; x < resolution; x++){
         for (int y = 0; y < resolution; y++){
             int x_raw = (int) (x * factor);
@@ -116,11 +101,26 @@ void plot(float* data){
             int idx_rawdata = y_raw * size + x_raw;
             float temp = data[idx_rawdata];
             float color = (float) ((int) temp / 5 * 5) / fire_temp;
+            pixels[x * resolution + y] = color;
+        }
+    }
+}
+
+
+void plot(float* pixels){
+    // visualize temprature distribution
+    #ifdef GUI
+    glClear(GL_COLOR_BUFFER_BIT);
+    float particle_size = (float) window_size / resolution;
+    glPointSize(particle_size);
+    glBegin(GL_POINTS);
+    for (int x = 0; x < resolution; x++){
+        for (int y = 0; y < resolution; y++){
+            float color = pixels[x * resolution + y];
             glColor3f(color, 1.0f - color, 1.0f - color);
             glVertex2f(x, y);
         }
     }
-
     glEnd();
     glFlush();
     glutSwapBuffers();
@@ -130,16 +130,18 @@ void plot(float* data){
 
 void master(){
 
-    float *data;
-    float *new_data;
+    float *data_odd;
+    float *data_even;
+    float *pixels;
     bool *fire_area;
     
-    data = new float[size * size];
-    new_data = new float[size * size];
+    data_odd = new float[size * size];
+    data_even = new float[size * size];
+    pixels = new float[resolution * resolution];
     fire_area = new bool[size * size];
 
     generate_fire_area(fire_area);
-    initialize(data);
+    initialize(data_odd);
 
     bool cont = true;
     int count = 1;
@@ -148,27 +150,34 @@ void master(){
     while (cont) {
         std::chrono::high_resolution_clock::time_point t1 = std::chrono::high_resolution_clock::now();
 
-        update(data, new_data);
-        maintain_fire(new_data, fire_area);
-        maintain_wall(new_data);
-        cont = check_continue(data, new_data);
-        deep_copy(data, new_data);
-
+        if (count % 2 == 1) {
+            update(data_odd, data_even);
+            maintain_fire(data_even, fire_area);
+            maintain_wall(data_even);
+            cont = check_continue(data_odd, data_even);
+            data2pixels(data_even, pixels);
+        } else {
+            update(data_even, data_odd);
+            maintain_fire(data_odd, fire_area);
+            maintain_wall(data_odd);
+            cont = check_continue(data_odd, data_even);
+            data2pixels(data_odd, pixels);
+        }
+        
         std::chrono::high_resolution_clock::time_point t2 = std::chrono::high_resolution_clock::now();
         double this_time = std::chrono::duration<double>(t2 - t1).count();
         printf("Iteration %d, elapsed time: %.6f\n", count, this_time);
         total_time += this_time;
-
-        plot(data);
-
+        plot(pixels);
         count++;
-  }
+    }
 
-  printf("Converge after %d iterations, elapsed time: %.6f, average computation time: %.6f\n", count-1, total_time, (double) total_time / (count-1));
+    printf("Converge after %d iterations, elapsed time: %.6f, average computation time: %.6f\n", count-1, total_time, (double) total_time / (count-1));
 
-  delete[] data;
-  delete[] new_data;
-  delete[] fire_area;
+    delete[] data_odd;
+    delete[] data_even;
+    delete[] pixels;
+    delete[] fire_area;
   
 }
 
@@ -186,5 +195,10 @@ int main(int argc, char* argv[]) {
     #endif
 
     master();
+
+    printf("Student ID: 119010001\n"); // replace it with your student id
+    printf("Name: Your Name\n"); // replace it with your name
+    printf("Assignment 4: Heat Distribution Sequential Implementation\n");
+
     return 0;
 }
