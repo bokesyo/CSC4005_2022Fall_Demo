@@ -115,6 +115,7 @@ void master() {
     while (true){
         std::chrono::high_resolution_clock::time_point t1 = std::chrono::high_resolution_clock::now();
 
+        // TODO: modify the following lines to fit your need.
         if (count % 2 == 1) {
             update<<<n_block_size, block_size>>>(data_odd, data_even);
             maintain_fire<<<n_block_size, block_size>>>(data_even, fire_area);
