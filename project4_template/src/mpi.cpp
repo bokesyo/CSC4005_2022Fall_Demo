@@ -122,8 +122,12 @@ void slave(){
     // TODO: MPI routine (one possible solution, you can use another partition method)
     int my_begin_row_id = size * my_rank / (world_size);
     int my_end_row_id = size * (my_rank + 1) / world_size;
-    float* local_data = new float[size * size];
-    delete[] local_data;
+    float* local_data;
+    float* pixcels;
+
+    while (true) {
+
+    }
     // TODO End
 }
 
@@ -131,23 +135,36 @@ void slave(){
 
 void master() {
     // TODO: MPI routine (one possible solution, you can use another partition method)
-    float* data = new float[size * size];
+    float* data_odd = new float[size * size];
+    float* data_even = new float[size * size];
     float* pixels = new float[resolution * resolution];
     bool* fire_area = new bool[size * size];
 
-    bool cont = true;
-    int count = 1;
-
-    initialize(data);
+    initialize(data_odd);
     generate_fire_area(fire_area);
 
+    bool cont = true;
+    int count = 1;
+    double total_time = 0;
+
     while (true) {
-        data2pixels(data, pixels);
-        plot(pixels);
+        std::chrono::high_resolution_clock::time_point t1 = std::chrono::high_resolution_clock::now();
+        // MPI Routine
+        std::chrono::high_resolution_clock::time_point t2 = std::chrono::high_resolution_clock::now();
+        double this_time = std::chrono::duration<double>(t2 - t1).count();
+        total_time += this_time;
+        printf("Iteration %d, elapsed time: %.6f\n", count, this_time);
+        count++;
+
+        #ifdef GUI
+        // plot(pixels);
+        #endif
     }
 
-    delete[] data;
+    delete[] data_odd;
+    delete[] data_even;
     delete[] fire_area;
+    delete[] pixels;
 }
 
 
