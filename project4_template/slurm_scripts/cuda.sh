@@ -10,7 +10,7 @@
 
 ## Compile the cuda script using the nvcc compiler
 ## You can compile your codes out of the script and simply srun the executable file.
-cd /nfsmnt/119010355/CSC4005_2022Fall_Demo/project3_template/
+cd /nfsmnt/119010355/CSC4005_2022Fall_Demo/project4_template/
 ## Run the script
 ./cuda 10000 100
 ./cuda 10000 100

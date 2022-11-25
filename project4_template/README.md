@@ -7,6 +7,7 @@
 Command:
 
 ```bash
+make seqg
 ./seqg 1000
 ```
 
@@ -372,7 +373,11 @@ srun ./openmp 10000 1000 20
 
 # Changelog
 
-Not tracked.
+1. Added CUDA version (Nov 24, 2022).
+
+2. Added MPI version (Nov 25, 2022).
+
+3. Changed default resolution from 200 to 800 (Nov 25, 2022).
 
 
 <br/>

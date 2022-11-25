@@ -121,23 +121,28 @@ void master() {
             maintain_fire<<<n_block_size, block_size>>>(data_even, fire_area);
             maintain_wall<<<1, 1>>>(data_even);
             cont = check_continue(data_odd, data_even);
-            data2pixels<<<n_block_resolution, block_size>>>(data_even, pixels);
         } else {
             update<<<n_block_size, block_size>>>(data_even, data_odd);
             maintain_fire<<<n_block_size, block_size>>>(data_odd, fire_area);
             maintain_wall<<<1, 1>>>(data_odd);
             cont = check_continue(data_odd, data_even);
-            data2pixels<<<n_block_resolution, block_size>>>(data_odd, pixels);
         }
-
-        cudaMemcpy(host_pixels, pixels, resolution * resolution * sizeof(float), cudaMemcpyDeviceToHost);
 
         std::chrono::high_resolution_clock::time_point t2 = std::chrono::high_resolution_clock::now();
         double this_time = std::chrono::duration<double>(t2 - t1).count();
-        printf("Iteration %d, elapsed time: %.6f\n", count, this_time);
         total_time += this_time;
-        plot(host_pixels);
+        printf("Iteration %d, elapsed time: %.6f\n", count, this_time);
         count++;
+        
+        #ifdef GUI
+        if (count % 2 == 1) {
+            data2pixels<<<n_block_resolution, block_size>>>(data_even, pixels);
+        } else {
+            data2pixels<<<n_block_resolution, block_size>>>(data_odd, pixels);
+        }
+        cudaMemcpy(host_pixels, pixels, resolution * resolution * sizeof(float), cudaMemcpyDeviceToHost);
+        plot(host_pixels);
+        #endif
 
     }
 

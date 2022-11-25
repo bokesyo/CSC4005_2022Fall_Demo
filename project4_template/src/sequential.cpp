@@ -155,21 +155,28 @@ void master(){
             maintain_fire(data_even, fire_area);
             maintain_wall(data_even);
             cont = check_continue(data_odd, data_even);
-            data2pixels(data_even, pixels);
         } else {
             update(data_even, data_odd);
             maintain_fire(data_odd, fire_area);
             maintain_wall(data_odd);
             cont = check_continue(data_odd, data_even);
-            data2pixels(data_odd, pixels);
         }
         
         std::chrono::high_resolution_clock::time_point t2 = std::chrono::high_resolution_clock::now();
         double this_time = std::chrono::duration<double>(t2 - t1).count();
-        printf("Iteration %d, elapsed time: %.6f\n", count, this_time);
         total_time += this_time;
-        plot(pixels);
+        printf("Iteration %d, elapsed time: %.6f\n", count, this_time);
         count++;
+
+        #ifdef GUI
+        if (count % 2 == 1) {
+            data2pixels(data_even, pixels);
+        } else {
+            data2pixels(data_odd, pixels);
+        }
+        plot(pixels);
+        #endif
+        
     }
 
     printf("Converge after %d iterations, elapsed time: %.6f, average computation time: %.6f\n", count-1, total_time, (double) total_time / (count-1));

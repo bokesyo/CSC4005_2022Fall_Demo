@@ -1,4 +1,4 @@
-# Project 1 Template
+# CSC4005 Project 1 Template
 
 Usage
 
