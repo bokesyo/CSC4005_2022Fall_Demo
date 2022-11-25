@@ -81,7 +81,7 @@ bool check_continue(float *data, float *new_data){
 
 
 #ifdef GUI
-void data2pixels(float *data, GLubyte* pixels){
+void data2pixels(float *data, GLubyte* pixels, int begin, int end){
     // convert rawdata (large, size^2) to pixels (small, resolution^2) for faster rendering speed
     float factor_data_pixel = (float) size / resolution;
     float factor_temp_color = (float) 255 / fire_temp;
@@ -101,7 +101,6 @@ void data2pixels(float *data, GLubyte* pixels){
     }
 }
 
-
 void plot(GLubyte* pixels){
     // visualize temprature distribution
     #ifdef GUI
@@ -118,13 +117,33 @@ void slave(){
     // TODO: MPI routine (one possible solution, you can use another partition method)
     int my_begin_row_id = size * my_rank / (world_size);
     int my_end_row_id = size * (my_rank + 1) / world_size;
-    float* local_data;
-    float* pixcels;
 
-    while (true) {
+    // TODO: Initialize a storage for temperature distribution of this area
+    float* local_data;
+    // TODO: Receive initial temperature distribution of this area from master
+
+    // TODO: Initialize a storage for local pixels (pls refer to sequential version for initialization of GLubyte)
+    #ifdef GUI
+    GLubyte* local_pixcels;
+    #endif
+
+    bool cont = true;
+    while (cont) {
+        // TODO: computation part
+        
+        // TODO: after computation, send border row to neighbours
+
+        // TODO: conver raw temperature to pixels (much smaller than raw data)
+
+        // TODO: send pixels to master (you can use MPI_Byte to transfer anything to master, then you won't need to declare MPI Type :-) )
 
     }
-    // TODO End
+
+    #ifdef GUI
+    data2pixels(local_data, local_pixcels);
+    #endif
+
+    // TODO: Remember to delete[] local_data and local_pixcels.
 }
 
 
@@ -135,18 +154,19 @@ void master() {
     float* data_even = new float[size * size];
     bool* fire_area = new bool[size * size];
 
-    #ifdef GUI
-    GLubyte* pixels = new GLubyte[resolution * resolution * 3];
-    #endif
-
     initialize(data_odd);
     generate_fire_area(fire_area);
+
+    #ifdef GUI
+    GLubyte* pixels;
+    pixels = new GLubyte[resolution * resolution * 3];
+    #endif
 
     bool cont = true;
     int count = 1;
     double total_time = 0;
 
-    while (true) {
+    while (cont) {
         std::chrono::high_resolution_clock::time_point t1 = std::chrono::high_resolution_clock::now();
 
         // MPI Routine

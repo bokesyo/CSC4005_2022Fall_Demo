@@ -61,16 +61,9 @@ bool check_continue(float *data, float *new_data) {
 }
 
 
-__global__ void data2pixels(float *data, float *pixels){
-    // TODO: convert rawdata (large, size^2) to pixels (small, resolution^2) for faster rendering speed (in parallelized way)
-    
-}
-
-
 #ifdef GUI
 __global__ void data2pixels(float *data, GLubyte* pixels){
-    // convert rawdata (large, size^2) to pixels (small, resolution^2) for faster rendering speed (in parallelized way)
-   
+    // TODO: convert rawdata (large, size^2) to pixels (small, resolution^2) for faster rendering speed (in parallelized way)
 }
 
 
@@ -89,15 +82,17 @@ void master() {
     float *data_odd;
     float *data_even;
     bool *fire_area;
-    float *pixels;
-    float *host_pixels;
-
-    host_pixels = new float[resolution * resolution];
 
     cudaMalloc(&data_odd, size * size * sizeof(float));
     cudaMalloc(&data_even, size * size * sizeof(float));
     cudaMalloc(&fire_area, size * size * sizeof(bool));
-    cudaMalloc(&pixels, resolution * resolution * sizeof(float));
+
+    #ifdef GUI
+    GLubyte *pixels;
+    GLubyte *host_pixels;
+    host_pixels = new GLubyte[resolution * resolution * 3];
+    cudaMalloc(&pixels, resolution * resolution * 3 * sizeof(GLubyte));
+    #endif
 
     int n_block_size = size * size / block_size + 1;
     int n_block_resolution = resolution * resolution / block_size + 1;
@@ -137,7 +132,7 @@ void master() {
         } else {
             data2pixels<<<n_block_resolution, block_size>>>(data_odd, pixels);
         }
-        cudaMemcpy(host_pixels, pixels, resolution * resolution * sizeof(float), cudaMemcpyDeviceToHost);
+        cudaMemcpy(host_pixels, pixels, resolution * resolution * 3 * sizeof(GLubyte), cudaMemcpyDeviceToHost);
         plot(host_pixels);
         #endif
 
@@ -148,10 +143,12 @@ void master() {
 
     cudaFree(data_odd);
     cudaFree(data_even);
-    cudaFree(pixels);
     cudaFree(fire_area);
 
+    #ifdef GUI
+    cudaFree(pixels);
     delete[] host_pixels;
+    #endif
     
 }
 
@@ -164,7 +161,7 @@ int main(int argc, char *argv[]){
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_RGB | GLUT_SINGLE);
     glutInitWindowPosition(0, 0);
-    glutInitWindowSize(window_size, window_size);
+    glutInitWindowSize(resolution, resolution);
     glutCreateWindow("Heat Distribution Simulation Sequential Implementation");
     gluOrtho2D(0, resolution, 0, resolution);
     #endif

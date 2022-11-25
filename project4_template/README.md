@@ -374,6 +374,9 @@ srun ./openmp 10000 1000 20
 
 3. Changed default resolution from 200 to 800 (Nov 25, 2022).
 
+4. Changed graphic API from GLVertex to glDrawPixels, improving rendering speed.
+
+5. Changed computation of elapsed time.
 
 <br/>
 <br/>
