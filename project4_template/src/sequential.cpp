@@ -94,12 +94,6 @@ void maintain_wall(float *data) {
 }
 
 
-bool check_continue(float *data, float *new_data){
-    // TODO: determine if we should stop (because the temperature distribution will finally converge)
-    return true;
-}
-
-
 #ifdef GUI
 void data2pixels(float *data, GLubyte* pixels){
     // convert rawdata (large, size^2) to pixels (small, resolution^2) for faster rendering speed
@@ -151,23 +145,20 @@ void master(){
     generate_fire_area(fire_area);
     initialize(data_odd);
 
-    bool cont = true;
     int count = 1;
     double total_time = 0;
 
-    while (cont) {
+    while (true) {
         std::chrono::high_resolution_clock::time_point t1 = std::chrono::high_resolution_clock::now();
 
         if (count % 2 == 1) {
             update(data_odd, data_even);
             maintain_fire(data_even, fire_area);
             maintain_wall(data_even);
-            cont = check_continue(data_odd, data_even);
         } else {
             update(data_even, data_odd);
             maintain_fire(data_odd, fire_area);
             maintain_wall(data_odd);
-            cont = check_continue(data_odd, data_even);
         }
         
         std::chrono::high_resolution_clock::time_point t2 = std::chrono::high_resolution_clock::now();

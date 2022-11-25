@@ -55,12 +55,6 @@ __global__ void maintain_fire(float *data, bool *fire_area) {
 }
 
 
-bool check_continue(float *data, float *new_data) {
-    // TODO: determine if terminated (in parallelized way) you may need to define extra __device__ and __global__ functions
-    return true;
-}
-
-
 #ifdef GUI
 __global__ void data2pixels(float *data, GLubyte* pixels){
     // TODO: convert rawdata (large, size^2) to pixels (small, resolution^2) for faster rendering speed (in parallelized way)
@@ -101,7 +95,6 @@ void master() {
     generate_fire_area<<<n_block_size, block_size>>>(fire_area);
     
     int count = 1;
-    bool cont = true; // if should continue
     double total_time = 0;
 
     while (true){
@@ -112,12 +105,10 @@ void master() {
             update<<<n_block_size, block_size>>>(data_odd, data_even);
             maintain_fire<<<n_block_size, block_size>>>(data_even, fire_area);
             maintain_wall<<<1, 1>>>(data_even);
-            cont = check_continue(data_odd, data_even);
         } else {
             update<<<n_block_size, block_size>>>(data_even, data_odd);
             maintain_fire<<<n_block_size, block_size>>>(data_odd, fire_area);
             maintain_wall<<<1, 1>>>(data_odd);
-            cont = check_continue(data_odd, data_even);
         }
 
         std::chrono::high_resolution_clock::time_point t2 = std::chrono::high_resolution_clock::now();
