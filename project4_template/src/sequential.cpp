@@ -84,13 +84,6 @@ void maintain_fire(float *data, bool* fire_area) {
 
 void maintain_wall(float *data) {
     // TODO: maintain the temperature of the wall
-    int data_length = size * size;
-    for (int i = 0; i < size; i++){
-        data[i] = wall_temp;
-        data[data_length - i] = wall_temp;
-        data[i * size] = wall_temp;
-        data[i * size + 1] = wall_temp;
-    }
 }
 
 
