@@ -58,8 +58,9 @@ void generate_fire_area(bool *fire_area){
 
 void update(float *data, float *new_data) {
     // update the temperature of each point, and store the result in `new_data` to avoid data racing
-    for (int i = 1; i < (size - 1); i++){
-        for (int j = 1; j < (size - 1); j++){
+    for (int i = 0; i < size; i++){
+        for (int j = 0; j < size; j++){
+            if ((i == 0) || (i == size)) continue;
             int idx = i * size + j;
             float up = data[idx - size];
             float down = data[idx + size];
@@ -83,6 +84,13 @@ void maintain_fire(float *data, bool* fire_area) {
 
 void maintain_wall(float *data) {
     // TODO: maintain the temperature of the wall
+    int data_length = size * size;
+    for (int i = 0; i < size; i++){
+        data[i] = wall_temp;
+        data[data_length - i] = wall_temp;
+        data[i * size] = wall_temp;
+        data[i * size + 1] = wall_temp;
+    }
 }
 
 
@@ -91,53 +99,53 @@ bool check_continue(float *data, float *new_data){
     return true;
 }
 
-void data2pixels(float *data, float *pixels){
+
+#ifdef GUI
+void data2pixels(float *data, GLubyte* pixels){
     // convert rawdata (large, size^2) to pixels (small, resolution^2) for faster rendering speed
-    float factor = (float) size / resolution;
+    float factor_data_pixel = (float) size / resolution;
+    float factor_temp_color = (float) 255 / fire_temp;
     for (int x = 0; x < resolution; x++){
         for (int y = 0; y < resolution; y++){
-            int x_raw = (int) (x * factor);
-            int y_raw = (int) (y * factor);
-            int idx_rawdata = y_raw * size + x_raw;
-            float temp = data[idx_rawdata];
-            float color = (float) ((int) temp / 5 * 5) / fire_temp;
-            pixels[x * resolution + y] = color;
+            int idx = x * resolution + y;
+            int idx_pixel = idx * 3;
+            int x_raw = x * factor_data_pixel;
+            int y_raw = y * factor_data_pixel;
+            int idx_raw = y_raw * size + x_raw;
+            float temp = data[idx_raw];
+            int color =  ((int) temp / 5 * 5) * factor_temp_color;
+            pixels[idx_pixel] = color;
+            pixels[idx_pixel + 1] = 255 - color;
+            pixels[idx_pixel + 2] = 255 - color;
         }
     }
 }
 
 
-void plot(float* pixels){
+void plot(GLubyte* pixels){
     // visualize temprature distribution
     #ifdef GUI
     glClear(GL_COLOR_BUFFER_BIT);
-    float particle_size = (float) window_size / resolution;
-    glPointSize(particle_size);
-    glBegin(GL_POINTS);
-    for (int x = 0; x < resolution; x++){
-        for (int y = 0; y < resolution; y++){
-            float color = pixels[x * resolution + y];
-            glColor3f(color, 1.0f - color, 1.0f - color);
-            glVertex2f(x, y);
-        }
-    }
-    glEnd();
-    glFlush();
+    glDrawPixels(resolution, resolution, GL_RGB, GL_UNSIGNED_BYTE, pixels);
     glutSwapBuffers();
     #endif
 }
+#endif
 
 
 void master(){
 
     float *data_odd;
     float *data_even;
-    float *pixels;
     bool *fire_area;
+
+    #ifdef GUI
+    GLubyte* pixels = new GLubyte[resolution * resolution * 3];
+    #endif
     
     data_odd = new float[size * size];
     data_even = new float[size * size];
-    pixels = new float[resolution * resolution];
+
     fire_area = new bool[size * size];
 
     generate_fire_area(fire_area);
@@ -183,8 +191,11 @@ void master(){
 
     delete[] data_odd;
     delete[] data_even;
-    delete[] pixels;
     delete[] fire_area;
+
+    #ifdef GUI
+    delete[] pixels;
+    #endif
   
 }
 
@@ -196,7 +207,7 @@ int main(int argc, char* argv[]) {
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_RGB | GLUT_SINGLE);
     glutInitWindowPosition(0, 0);
-    glutInitWindowSize(window_size, window_size);
+    glutInitWindowSize(resolution, resolution);
     glutCreateWindow("Heat Distribution Simulation Sequential Implementation");
     gluOrtho2D(0, resolution, 0, resolution);
     #endif
