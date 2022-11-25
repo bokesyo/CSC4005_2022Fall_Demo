@@ -133,9 +133,18 @@ void slave(){
         
         // TODO: after computation, send border row to neighbours
 
+        // TODO: call check_continue
+
+        // TODO: send check_continue result to master process
+
+        // TODO: receive cont from master process
+
+        #ifdef GUI
         // TODO: conver raw temperature to pixels (much smaller than raw data)
 
         // TODO: send pixels to master (you can use MPI_Byte to transfer anything to master, then you won't need to declare MPI Type :-) )
+
+        #endif
 
     }
 
@@ -166,12 +175,18 @@ void master() {
     int count = 1;
     double total_time = 0;
 
+    // TODO: Send initial distribution to each slave process
+
     while (cont) {
         std::chrono::high_resolution_clock::time_point t1 = std::chrono::high_resolution_clock::now();
 
-        // MPI Routine
+        // TODO: Computation of my part
 
-        // MPI Routine End
+        // TODO: Send border row to neighbours
+
+        // TODO: Gather cont of each slave process
+
+        // TODO: Send final cont to each slave process
 
         std::chrono::high_resolution_clock::time_point t2 = std::chrono::high_resolution_clock::now();
         double this_time = std::chrono::duration<double>(t2 - t1).count();
@@ -181,8 +196,10 @@ void master() {
 
         #ifdef GUI
         if (count % 2 == 1) {
+            // TODO: Gather pixels of slave processes
             data2pixels(data_even, pixels);
         } else {
+            // TODO: Gather pixels of slave processes
             data2pixels(data_odd, pixels);
         }
         plot(pixels);
@@ -226,7 +243,7 @@ int main(int argc, char *argv[]) {
 	if (my_rank == 0){
 		printf("Student ID: 119010001\n"); // replace it with your student id
 		printf("Name: Your Name\n"); // replace it with your name
-		printf("Assignment 3: Heat Distribution Simulation MPI Implementation\n");
+		printf("Assignment 4: Heat Distribution Simulation MPI Implementation\n");
 	}
 
 	MPI_Finalize();
