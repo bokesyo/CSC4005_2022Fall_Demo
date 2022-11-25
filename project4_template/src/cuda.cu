@@ -67,25 +67,22 @@ __global__ void data2pixels(float *data, float *pixels){
 }
 
 
-void plot(float* pixels){
+#ifdef GUI
+__global__ void data2pixels(float *data, GLubyte* pixels){
+    // convert rawdata (large, size^2) to pixels (small, resolution^2) for faster rendering speed (in parallelized way)
+   
+}
+
+
+void plot(GLubyte* pixels){
     // visualize temprature distribution
     #ifdef GUI
     glClear(GL_COLOR_BUFFER_BIT);
-    float particle_size = (float) window_size / resolution;
-    glPointSize(particle_size);
-    glBegin(GL_POINTS);
-    for (int x = 0; x < resolution; x++){
-        for (int y = 0; y < resolution; y++){
-            float color = pixels[x * resolution + y];
-            glColor3f(color, 1.0f - color, 1.0f - color);
-            glVertex2f(x, y);
-        }
-    }
-    glEnd();
-    glFlush();
+    glDrawPixels(resolution, resolution, GL_RGB, GL_UNSIGNED_BYTE, pixels);
     glutSwapBuffers();
     #endif
 }
+#endif
 
 
 void master() {

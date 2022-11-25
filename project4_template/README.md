@@ -24,11 +24,10 @@ Output:
 We have some physics variable declared in `headers/physics.h`:
 
 ```c++
-#define threshold 0.0000001f
+#define threshold 0.00001f
 #define fire_temp 90.0f
 #define wall_temp 0.0f
-#define fire_size 100.0f
-#define window_size 800
+#define fire_size 100
 #define resolution 800
 ```
 
@@ -40,11 +39,7 @@ We have some physics variable declared in `headers/physics.h`:
 
 `fire_size` is the size of fire.
 
-`window_size` is the size of GUI window.
-
 `resolution` is the number of pixels of x and y axis. Lower resolution leads to faster rendering speed. If you prefer smooth contours, you can use `resolution = 800`. If you prefer faster rendering speed, you can use `resolution = 200`. When you submit your demo video, you can use `resolution = 800` for better visualization.
-
-Notice that there is no causal relationship between `window_size` and `resolution`.
 
 You may need to modify them to better visualize your result.
 
