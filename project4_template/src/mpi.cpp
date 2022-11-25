@@ -79,6 +79,7 @@ bool check_continue(float *data, float *new_data){
     return true;
 }
 
+
 void data2pixels(float *data, float *pixels){
     // convert rawdata (large, size^2) to pixels (small, resolution^2) for faster rendering speed
     float factor = (float) size / resolution;
@@ -118,36 +119,35 @@ void plot(float* pixels){
 
 
 void slave(){
-    // TODO: MPI routine
-
+    // TODO: MPI routine (one possible solution, you can use another partition method)
+    int my_begin_row_id = size * my_rank / (world_size);
+    int my_end_row_id = size * (my_rank + 1) / world_size;
+    float* local_data = new float[size * size];
+    delete[] local_data;
     // TODO End
 }
 
 
 
 void master() {
+    // TODO: MPI routine (one possible solution, you can use another partition method)
     float* data = new float[size * size];
+    float* pixels = new float[resolution * resolution];
     bool* fire_area = new bool[size * size];
+
+    bool cont = true;
+    int count = 1;
 
     initialize(data);
     generate_fire_area(fire_area);
 
-    while (true){
-        std::chrono::high_resolution_clock::time_point t1 = std::chrono::high_resolution_clock::now();
-
-        // TODO: MPI routine
-        
-        // TODO End
-
-        std::chrono::high_resolution_clock::time_point t2 = std::chrono::high_resolution_clock::now();
-        std::chrono::duration<double> time_span = t2 - t1;
-
-        #ifdef GUI
-        #endif
+    while (true) {
+        data2pixels(data, pixels);
+        plot(pixels);
     }
 
     delete[] data;
-
+    delete[] fire_area;
 }
 
 
@@ -160,10 +160,16 @@ int main(int argc, char *argv[]) {
     MPI_Comm_rank(MPI_COMM_WORLD, &my_rank);
     MPI_Comm_size(MPI_COMM_WORLD, &world_size);
 
-	if (my_rank == 0) {
-		#ifdef GUI
 
-		#endif
+	if (my_rank == 0) {
+        #ifdef GUI
+        glutInit(&argc, argv);
+        glutInitDisplayMode(GLUT_RGB | GLUT_SINGLE);
+        glutInitWindowPosition(0, 0);
+        glutInitWindowSize(window_size, window_size);
+        glutCreateWindow("Heat Distribution Simulation Sequential Implementation");
+        gluOrtho2D(0, resolution, 0, resolution);
+        #endif
         master();
 	} else {
         slave();
@@ -172,7 +178,7 @@ int main(int argc, char *argv[]) {
 	if (my_rank == 0){
 		printf("Student ID: 119010001\n"); // replace it with your student id
 		printf("Name: Your Name\n"); // replace it with your name
-		printf("Assignment 2: N Body Simulation MPI Implementation\n");
+		printf("Assignment 3: Heat Distribution Simulation MPI Implementation\n");
 	}
 
 	MPI_Finalize();
