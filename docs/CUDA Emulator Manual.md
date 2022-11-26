@@ -5,10 +5,11 @@ Dear all,
 We have prepared a CUDA Emulator Virtual Machine for you. You can **emulate CUDA or CUDA-GUI program** on your personal computer (**without Nvidia GPU!**).
 
 
+This simulator must run on a new VM. Please see below.
 
-Acknowledgement:
 
-[gpgpu-sim]: https://github.com/gpgpu-sim/gpgpu-sim_distribution
+
+Reference: https://github.com/gpgpu-sim/gpgpu-sim_distribution
 
  
 
@@ -17,6 +18,9 @@ Acknowledgement:
 ## Setting Up Virtual Machine
 
 1. Download CUDA Emulator VM.
+
+
+
 2. Import to VMware.
 
 If it says `importing failed`, please click `Retry`.
