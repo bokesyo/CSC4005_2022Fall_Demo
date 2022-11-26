@@ -1,0 +1,62 @@
+
+
+
+
+
+
+
+.version 3.0
+.target sm_20
+.address_size 64
+
+.file	1 "/tmp/tmpxft_000059eb_00000000-15_vectorAdd.compute_20.cpp3.i"
+.file	2 "vectorAdd.cu"
+
+.entry _Z6VecAddPKfS0_Pfi(
+.param .u64 _Z6VecAddPKfS0_Pfi_param_0,
+.param .u64 _Z6VecAddPKfS0_Pfi_param_1,
+.param .u64 _Z6VecAddPKfS0_Pfi_param_2,
+.param .u32 _Z6VecAddPKfS0_Pfi_param_3
+)
+{
+.reg .f32 %f<4>;
+.reg .pred %p<2>;
+.reg .s32 %r<9>;
+.reg .s64 %rl<11>;
+
+
+ld.param.u64 %rl4, [_Z6VecAddPKfS0_Pfi_param_0];
+ld.param.u64 %rl5, [_Z6VecAddPKfS0_Pfi_param_1];
+ld.param.u64 %rl6, [_Z6VecAddPKfS0_Pfi_param_2];
+ld.param.u32 %r2, [_Z6VecAddPKfS0_Pfi_param_3];
+cvta.to.global.u64 %rl1, %rl6;
+cvta.to.global.u64 %rl2, %rl5;
+cvta.to.global.u64 %rl3, %rl4;
+.loc 2 80 1
+mov.u32 %r3, %ctaid.x;
+mov.u32 %r4, %ntid.x;
+mov.u32 %r5, %tid.x;
+mad.lo.s32 %r1, %r3, %r4, %r5;
+.loc 2 81 1
+setp.lt.s32 %p1, %r1, %r2;
+@%p1 bra BB0_2;
+
+.loc 2 83 2
+ret;
+
+BB0_2:
+.loc 2 82 1
+mul.wide.s32 %rl7, %r1, 4;
+add.s64 %rl8, %rl3, %rl7;
+add.s64 %rl9, %rl2, %rl7;
+ld.global.f32 %f1, [%rl9];
+ld.global.f32 %f2, [%rl8];
+add.f32 %f3, %f2, %f1;
+add.s64 %rl10, %rl1, %rl7;
+st.global.f32 [%rl10], %f3;
+.loc 2 83 2
+ret;
+}
+
+
+

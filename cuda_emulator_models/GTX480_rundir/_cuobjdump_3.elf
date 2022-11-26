@@ -1,0 +1,64 @@
+
+
+.section .strtab	STRTAB
+
+.section .shstrtab	STRTAB
+
+.section .symtab	SYMTAB
+ index           value           size      info    other  shndx    name  
+   0               0               0        0        0      0     (null)
+   1               0               0        3        0      1     .shstrtab
+   2               0               0        3        0      2     .strtab
+   3               0               0        3        0      3     .symtab
+   4               0               0        3        0      0     
+   5               0               0        3        0      0     
+   6               0              88        3        0      4     .text._Z6VecAddPKfS0_Pfi
+   7               0               0        3        0      5     .nv.info._Z6VecAddPKfS0_Pfi
+   8               0               0        3        0      6     .nv.shared._Z6VecAddPKfS0_Pfi
+   9               0               0       12       10      4     _Z6VecAddPKfS0_Pfi
+
+
+.nv.shared._Z6VecAddPKfS0_Pfi	NOBITS
+   No data to be dumped. 
+
+
+.text._Z6VecAddPKfS0_Pfi	PROGBITS
+bar = 0	reg = 4	lmem=0	smem=44
+0x10004205  0x0023c780  0xa0000005  0x04000780  
+0x60014c01  0x00204780  0x3000d5fd  0x6c20c7c8  
+0x30000003  0x00000280  0x30020009  0xc4100780  
+0x2102e800  0x2102ec0c  0xd00e0005  0x80c00780  
+0xd00e0601  0x80c00780  0xb0000204  0x2102f000  
+0xd00e0005  0xa0c00781  
+
+
+.nv.info._Z6VecAddPKfS0_Pfi	PROGBITS
+	<0x1>
+	Attribute:	EIATTR_SMEM_PARAM_SIZE
+	Format:	EIFMT_HVAL
+	Value:	0x1c
+	<0x2>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0x0	Ordinal : 0x3	Offset  : 0x18	Size    : 0x4
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+	<0x3>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0x0	Ordinal : 0x2	Offset  : 0x10	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+	<0x4>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0x0	Ordinal : 0x1	Offset  : 0x8	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+	<0x5>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0x0	Ordinal : 0x0	Offset  : 0x0	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+	<0x6>
+	Attribute:	EIATTR_SYNC_STACK
+	Format:	EIFMT_SVAL
+	Value:	0x10008 0x1 
+

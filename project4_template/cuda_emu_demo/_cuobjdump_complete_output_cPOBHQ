@@ -1,0 +1,340 @@
+
+Fatbin elf code:
+================
+arch = sm_10
+code version = [1,2]
+producer = cuda
+host = linux
+compile_size = 64bit
+identifier = ./src/cuda.cu
+
+.section .strtab	STRTAB
+
+.section .shstrtab	STRTAB
+
+.section .symtab	SYMTAB
+ index           value           size      info    other  shndx    name  
+   0               0               0        0        0      0     (null)
+   1               0               0        3        0      1     .shstrtab
+   2               0               0        3        0      2     .strtab
+   3               0               0        3        0      3     .symtab
+   4               0               0        3        0      0     
+   5               0               0        3        0      0     
+   6               0               8        3        0     19     .text._Z6updatePfS_
+   7               0               0        3        0     20     .nv.info._Z6updatePfS_
+   8               0               8        3        0     16     .text._Z10initializePf
+   9               0               0        3        0     17     .nv.info._Z10initializePf
+  10               0               8        3        0     13     .text._Z13maintain_firePfPb
+  11               0               0        3        0     14     .nv.info._Z13maintain_firePfPb
+  12               0               8        3        0     10     .text._Z13maintain_wallPf
+  13               0               0        3        0     11     .nv.info._Z13maintain_wallPf
+  14               0               8        3        0      7     .text._Z18generate_fire_areaPb
+  15               0               0        3        0      8     .nv.info._Z18generate_fire_areaPb
+  16               0               8        3        0      4     .text._Z11data2pixelsPfPh
+  17               0               0        3        0      5     .nv.info._Z11data2pixelsPfPh
+  18               0               0        3        0      6     .nv.shared._Z11data2pixelsPfPh
+  19               0               0        3        0     12     .nv.shared._Z13maintain_wallPf
+  20               0               0        3        0     21     .nv.shared._Z6updatePfS_
+  21               0               0        3        0     15     .nv.shared._Z13maintain_firePfPb
+  22               0               0        3        0     18     .nv.shared._Z10initializePf
+  23               0               0        3        0      9     .nv.shared._Z18generate_fire_areaPb
+  24               0               0       12       10     19     _Z6updatePfS_
+  25               0               0       12       10     16     _Z10initializePf
+  26               0               0       12       10     13     _Z13maintain_firePfPb
+  27               0               0       12       10     10     _Z13maintain_wallPf
+  28               0               0       12       10      7     _Z18generate_fire_areaPb
+  29               0               0       12       10      4     _Z11data2pixelsPfPh
+
+
+.nv.shared._Z11data2pixelsPfPh	NOBITS
+   No data to be dumped. 
+
+
+.nv.shared._Z18generate_fire_areaPb	NOBITS
+   No data to be dumped. 
+
+
+.nv.shared._Z13maintain_wallPf	NOBITS
+   No data to be dumped. 
+
+
+.nv.shared._Z13maintain_firePfPb	NOBITS
+   No data to be dumped. 
+
+
+.nv.shared._Z10initializePf	NOBITS
+   No data to be dumped. 
+
+
+.nv.shared._Z6updatePfS_	NOBITS
+   No data to be dumped. 
+
+
+.text._Z11data2pixelsPfPh	PROGBITS
+bar = 0	reg = 0	lmem=0	smem=32
+0xf0000001  0xe0000001  
+
+
+.nv.info._Z11data2pixelsPfPh	PROGBITS
+	<0x1>
+	Attribute:	EIATTR_SMEM_PARAM_SIZE
+	Format:	EIFMT_HVAL
+	Value:	0x10
+	<0x2>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0x0	Ordinal : 0x1	Offset  : 0x8	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+	<0x3>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0x0	Ordinal : 0x0	Offset  : 0x0	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+
+
+.text._Z18generate_fire_areaPb	PROGBITS
+bar = 0	reg = 0	lmem=0	smem=24
+0xf0000001  0xe0000001  
+
+
+.nv.info._Z18generate_fire_areaPb	PROGBITS
+	<0x1>
+	Attribute:	EIATTR_SMEM_PARAM_SIZE
+	Format:	EIFMT_HVAL
+	Value:	0x8
+	<0x2>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0x0	Ordinal : 0x0	Offset  : 0x0	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+
+
+.text._Z13maintain_wallPf	PROGBITS
+bar = 0	reg = 0	lmem=0	smem=24
+0xf0000001  0xe0000001  
+
+
+.nv.info._Z13maintain_wallPf	PROGBITS
+	<0x1>
+	Attribute:	EIATTR_SMEM_PARAM_SIZE
+	Format:	EIFMT_HVAL
+	Value:	0x8
+	<0x2>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0x0	Ordinal : 0x0	Offset  : 0x0	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+
+
+.text._Z13maintain_firePfPb	PROGBITS
+bar = 0	reg = 0	lmem=0	smem=32
+0xf0000001  0xe0000001  
+
+
+.nv.info._Z13maintain_firePfPb	PROGBITS
+	<0x1>
+	Attribute:	EIATTR_SMEM_PARAM_SIZE
+	Format:	EIFMT_HVAL
+	Value:	0x10
+	<0x2>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0x0	Ordinal : 0x1	Offset  : 0x8	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+	<0x3>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0x0	Ordinal : 0x0	Offset  : 0x0	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+
+
+.text._Z10initializePf	PROGBITS
+bar = 0	reg = 0	lmem=0	smem=24
+0xf0000001  0xe0000001  
+
+
+.nv.info._Z10initializePf	PROGBITS
+	<0x1>
+	Attribute:	EIATTR_SMEM_PARAM_SIZE
+	Format:	EIFMT_HVAL
+	Value:	0x8
+	<0x2>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0x0	Ordinal : 0x0	Offset  : 0x0	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+
+
+.text._Z6updatePfS_	PROGBITS
+bar = 0	reg = 0	lmem=0	smem=32
+0xf0000001  0xe0000001  
+
+
+.nv.info._Z6updatePfS_	PROGBITS
+	<0x1>
+	Attribute:	EIATTR_SMEM_PARAM_SIZE
+	Format:	EIFMT_HVAL
+	Value:	0x10
+	<0x2>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0x0	Ordinal : 0x1	Offset  : 0x8	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+	<0x3>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0x0	Ordinal : 0x0	Offset  : 0x0	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+
+	code for sm_10
+		Function : _Z11data2pixelsPfPh
+	/*0000*/     /*0xf0000001e0000001*/ 	NOP;
+		....................................
+
+
+		Function : _Z18generate_fire_areaPb
+	/*0000*/     /*0xf0000001e0000001*/ 	NOP;
+		.........................................
+
+
+		Function : _Z13maintain_wallPf
+	/*0000*/     /*0xf0000001e0000001*/ 	NOP;
+		....................................
+
+
+		Function : _Z13maintain_firePfPb
+	/*0000*/     /*0xf0000001e0000001*/ 	NOP;
+		......................................
+
+
+		Function : _Z10initializePf
+	/*0000*/     /*0xf0000001e0000001*/ 	NOP;
+		.................................
+
+
+		Function : _Z6updatePfS_
+	/*0000*/     /*0xf0000001e0000001*/ 	NOP;
+		..............................
+
+
+
+Fatbin ptx code:
+================
+arch = sm_10
+code version = [1,4]
+producer = cuda
+host = linux
+compile_size = 64bit
+identifier = ./src/cuda.cu
+	.version 1.4
+.target sm_10, map_f64_to_f32
+
+	
+
+
+	
+	
+
+
+	
+	
+	
+	
+	
+	
+	
+
+.file	1	"<command-line>"
+.file	2	"/tmp/tmpxft_00004934_00000000-6_cuda.cudafe2.gpu"
+.file	3	"/tmp/tmpxft_00004934_00000000-1_cuda.cudafe1.gpu"
+.file	4	"/usr/lib/gcc/x86_64-linux-gnu/4.6/include/stddef.h"
+.file	5	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/crt/device_runtime.h"
+.file	6	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/host_defines.h"
+.file	7	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/builtin_types.h"
+.file	8	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/device_types.h"
+.file	9	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/driver_types.h"
+.file	10	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/surface_types.h"
+.file	11	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/texture_types.h"
+.file	12	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/vector_types.h"
+.file	13	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/device_launch_parameters.h"
+.file	14	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/crt/storage_class.h"
+.file	15	"/usr/include/GL/gl.h"
+.file	16	"cuda.cu"
+.file	17	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/common_functions.h"
+.file	18	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/math_functions.h"
+.file	19	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/math_constants.h"
+.file	20	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/device_functions.h"
+.file	21	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/sm_11_atomic_functions.h"
+.file	22	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/sm_12_atomic_functions.h"
+.file	23	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/sm_13_double_functions.h"
+.file	24	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/sm_20_atomic_functions.h"
+.file	25	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/sm_20_intrinsics.h"
+.file	26	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/sm_30_intrinsics.h"
+.file	27	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/surface_functions.h"
+.file	28	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/texture_fetch_functions.h"
+.file	29	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/math_functions_dbl_ptx1.h"
+
+
+.entry _Z10initializePf (
+.param .u64 __cudaparm__Z10initializePf_data)
+{
+.loc	16	22	0
+$LDWbegin__Z10initializePf:
+.loc	16	27	0
+exit;
+$LDWend__Z10initializePf:
+} 
+
+.entry _Z18generate_fire_areaPb (
+.param .u64 __cudaparm__Z18generate_fire_areaPb_fire_area)
+{
+.loc	16	30	0
+$LDWbegin__Z18generate_fire_areaPb:
+.loc	16	35	0
+exit;
+$LDWend__Z18generate_fire_areaPb:
+} 
+
+.entry _Z6updatePfS_ (
+.param .u64 __cudaparm__Z6updatePfS__data,
+.param .u64 __cudaparm__Z6updatePfS__new_data)
+{
+.loc	16	38	0
+$LDWbegin__Z6updatePfS_:
+.loc	16	43	0
+exit;
+$LDWend__Z6updatePfS_:
+} 
+
+.entry _Z13maintain_wallPf (
+.param .u64 __cudaparm__Z13maintain_wallPf_data)
+{
+.loc	16	46	0
+$LDWbegin__Z13maintain_wallPf:
+.loc	16	48	0
+exit;
+$LDWend__Z13maintain_wallPf:
+} 
+
+.entry _Z13maintain_firePfPb (
+.param .u64 __cudaparm__Z13maintain_firePfPb_data,
+.param .u64 __cudaparm__Z13maintain_firePfPb_fire_area)
+{
+.loc	16	51	0
+$LDWbegin__Z13maintain_firePfPb:
+.loc	16	56	0
+exit;
+$LDWend__Z13maintain_firePfPb:
+} 
+
+.entry _Z11data2pixelsPfPh (
+.param .u64 __cudaparm__Z11data2pixelsPfPh_data,
+.param .u64 __cudaparm__Z11data2pixelsPfPh_pixels)
+{
+.loc	16	60	0
+$LDWbegin__Z11data2pixelsPfPh:
+.loc	16	62	0
+exit;
+$LDWend__Z11data2pixelsPfPh:
+} 
+

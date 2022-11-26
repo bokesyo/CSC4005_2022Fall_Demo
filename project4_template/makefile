@@ -12,7 +12,7 @@ mpig:
 	mpic++ ./src/mpi.cpp -o mpig -I/usr/include -L/usr/local/lib -L/usr/lib -lglut -lGLU -lGL -lm -DGUI -std=c++11
 pthreadg:
 	g++ ./src/pthread.cpp -o pthreadg -I/usr/include -L/usr/local/lib -L/usr/lib -lglut -lGLU -lGL -lm -lpthread -DGUI -O2 -std=c++11
-cudag:
+/home/gpgpu-sim/CSC4005_2022Fall_Demo/cuda_simulator/GTX480_rundircudag:
 	nvcc ./src/cuda.cu -o cudag -I/usr/include -L/usr/local/lib -L/usr/lib -lglut -lGLU -lGL -lm -O2 -DGUI --std=c++11
 openmp:
 	g++ ./src/openmp.cpp -o openmp -fopenmp -O2 -std=c++11

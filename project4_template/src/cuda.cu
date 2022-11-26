@@ -1,9 +1,10 @@
 #include <cuda.h>
 #include <cuda_runtime.h>
+
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <chrono>
+// #include <chrono>
 
 #ifdef GUI
 #include <GL/glut.h>
@@ -98,7 +99,7 @@ void master() {
     double total_time = 0;
 
     while (true){
-        std::chrono::high_resolution_clock::time_point t1 = std::chrono::high_resolution_clock::now();
+        // std::chrono::high_resolution_clock::time_point t1 = std::chrono::high_resolution_clock::now();
 
         // TODO: modify the following lines to fit your need.
         if (count % 2 == 1) {
@@ -111,10 +112,10 @@ void master() {
             maintain_wall<<<1, 1>>>(data_odd);
         }
 
-        std::chrono::high_resolution_clock::time_point t2 = std::chrono::high_resolution_clock::now();
-        double this_time = std::chrono::duration<double>(t2 - t1).count();
-        total_time += this_time;
-        printf("Iteration %d, elapsed time: %.6f\n", count, this_time);
+        // std::chrono::high_resolution_clock::time_point t2 = std::chrono::high_resolution_clock::now();
+        // double this_time = std::chrono::duration<double>(t2 - t1).count();
+        // total_time += this_time;
+        // printf("Iteration %d, elapsed time: %.6f\n", count, this_time);
         count++;
         
         #ifdef GUI

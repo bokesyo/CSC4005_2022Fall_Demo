@@ -1,0 +1,190 @@
+
+
+.section .strtab	STRTAB
+
+.section .shstrtab	STRTAB
+
+.section .symtab	SYMTAB
+ index           value           size      info    other  shndx    name  
+   0               0               0        0        0      0     (null)
+   1               0               0        3        0      1     .shstrtab
+   2               0               0        3        0      2     .strtab
+   3               0               0        3        0      3     .symtab
+   4               0               0        3        0      0     
+   5               0               0        3        0      0     
+   6               0             296        3        0      8     .text._Z15update_positionPfS_S_S_i
+   7               0               0        3        0     10     .nv.info._Z15update_positionPfS_S_S_i
+   8               0             704        3        0      4     .text._Z15update_velocityPfS_S_S_S_i
+   9               0               0        3        0      6     .nv.info._Z15update_velocityPfS_S_S_S_i
+  10               0               0        3        0     11     .nv.shared._Z15update_positionPfS_S_S_i
+  11               0               0        3        0      9     .nv.constant1._Z15update_positionPfS_S_S_i
+  12               0               0        3        0      7     .nv.shared._Z15update_velocityPfS_S_S_S_i
+  13               0               0        3        0      5     .nv.constant1._Z15update_velocityPfS_S_S_S_i
+  14               0               0       12       10      8     _Z15update_positionPfS_S_S_i
+  15               0               0       12       10      4     _Z15update_velocityPfS_S_S_S_i
+
+
+.nv.constant1._Z15update_velocityPfS_S_S_S_i	PROGBITS
+0x40800000  0x7e800000  0x3e800000  0x3903126f  
+
+
+.nv.shared._Z15update_velocityPfS_S_S_S_i	NOBITS
+   No data to be dumped. 
+
+
+.nv.constant1._Z15update_positionPfS_S_S_i	PROGBITS
+0x3a03126f  0x457a0000  
+
+
+.nv.shared._Z15update_positionPfS_S_S_i	NOBITS
+   No data to be dumped. 
+
+
+.text._Z15update_velocityPfS_S_S_S_i	PROGBITS
+bar = 0	reg = 19	lmem=0	smem=60
+0x10004205  0x0023c780  0xa0000005  0x04000780  
+0x60014c1d  0x00204780  0x3007ddfd  0x6c20c7c8  
+0x30000003  0x00000280  0x30020e09  0xc4100780  
+0x307cddfd  0x6c20c7c8  0x2000c801  0x04208780  
+0xd00e0001  0x80c00780  0x2000cc05  0x04208780  
+0xd00e0219  0x80c00780  0x2000d005  0x04208780  
+0xd00e0205  0x80c00780  0x2000d40d  0x04208780  
+0xd00e0611  0x80c00780  0x2000d809  0x04208780  
+0x10046003  0x00000280  0xd00e0425  0x80c00780  
+0xc0200029  0x04cbebc3  0x1000f821  0x0403c780  
+0x1000f82d  0x0403c780  0x1000f815  0x0403c780  
+0x1000f831  0x0403c780  0x2000d035  0x04220780  
+0xd00e1a39  0x80c00780  0x2000c835  0x04220780  
+0xd00e1a35  0x80c00780  0x2000cc3d  0x04220780  
+0xd00e1e3d  0x80c00780  0xb0411c38  0xb0461e3c  
+0xc00e1c41  0x00000780  0xe00f1e41  0x00040780  
+0xb02c2041  0x03727c5b  0x90002045  0x40000780  
+0x90002248  0xc00a1a44  0x90002448  0xc0112444  
+0xc0112444  0xc0112444  0xb08021fd  0x604047c8  
+0xe0111e31  0x00030780  0xe00e2215  0x00014780  
+0xa0040003  0x00000000  0x10040003  0x00000100  
+0x300717fd  0x6c0087c8  0x10040003  0x00000280  
+0xb00d0038  0xb000003c  0xb0811dfd  0x605107c8  
+0xc00d1e35  0x00000780  0xc0821a35  0x00400680  
+0xc0821c39  0x00400680  0x90001c3d  0x00000780  
+0x102f8039  0x03a03127  0xb0811dfd  0x604107c8  
+0xc00f1a35  0x00000780  0x102f8039  0x03a03127  
+0xc0821a35  0x00400680  0x10000639  0x2440c680  
+0x90001c40  0x2108f438  0xd00e1c3d  0x80c00780  
+0x2000d839  0x04220780  0xd00e1c39  0x80c00780  
+0xc0101a34  0xb0441e3c  0xb0001c39  0x08024780  
+0xe00f1a31  0x00030780  0xe00e1a15  0x00014780  
+0xf0000001  0xe0000002  0x2001962d  0x00000003  
+0x300bddfd  0x6c2147c8  0x20049021  0x00000003  
+0x10017003  0x00000280  0x10048003  0x00000780  
+0x1000f815  0x0403c780  0x1000f831  0x0403c780  
+0xb08101fd  0x605107c8  0xc02f1819  0x03a03127  
+0x10000005  0x0403c780  0xc0820c19  0x00400680  
+0xc0820205  0x00400680  0x90000205  0x00000780  
+0xe0010c05  0x00010780  0xd00e0605  0xa0c00780  
+0xd00e0405  0x80c00780  0xc02f0a0d  0x03a03127  
+0xb08101fd  0x605107c8  0xc082060d  0x00400680  
+0xc0820001  0x00400680  0x90000001  0x00000780  
+0xe0000601  0x00004780  0xd00e0401  0xa0c00781  
+
+
+
+.nv.info._Z15update_velocityPfS_S_S_S_i	PROGBITS
+	<0x1>
+	Attribute:	EIATTR_SMEM_PARAM_SIZE
+	Format:	EIFMT_HVAL
+	Value:	0x2c
+	<0x2>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0x0	Ordinal : 0x5	Offset  : 0x28	Size    : 0x4
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+	<0x3>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0x0	Ordinal : 0x4	Offset  : 0x20	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+	<0x4>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0x0	Ordinal : 0x3	Offset  : 0x18	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+	<0x5>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0x0	Ordinal : 0x2	Offset  : 0x10	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+	<0x6>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0x0	Ordinal : 0x1	Offset  : 0x8	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+	<0x7>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0x0	Ordinal : 0x0	Offset  : 0x0	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+	<0x8>
+	Attribute:	EIATTR_SYNC_STACK
+	Format:	EIFMT_SVAL
+	Value:	0x50028 0x4 
+
+
+.text._Z15update_positionPfS_S_S_i	PROGBITS
+bar = 0	reg = 8	lmem=0	smem=52
+0x10004205  0x0023c780  0xa0000005  0x04000780  
+0x60014c01  0x00204780  0x3000d9fd  0x6c20c7c8  
+0x30000003  0x00000280  0x30020001  0xc4100780  
+0xa0021003  0x00000000  0x2100f010  0x2100e80c  
+0x2100f408  0x2100ec14  0xd00e0819  0x80c00780  
+0xd00e0601  0x80c00780  0xd00e041d  0x80c00780  
+0xd00e0a05  0x80c00780  0xe02f0c01  0x03a03127  
+0xb08101fd  0x604107c8  0xe02f0e05  0x03a03127  
+0x10014003  0x00000100  0xa0000c19  0xe4004780  
+0x10008001  0x0457a003  0x10021003  0x00000780  
+0xb07c01fd  0x600047c8  0x10019003  0x00000100  
+0xa0000c19  0xe4004780  0x1000f801  0x0403c780  
+0x10021003  0x00000780  0xb08103fd  0x604107c8  
+0x1001e003  0x00000100  0xa0000e1d  0xe4004780  
+0x10008005  0x0457a003  0x10021003  0x00000780  
+0xb07c03fd  0x600047c8  0xa0000e1d  0xe4004680  
+0x1000f805  0x0403c680  0xd00e0601  0xa0c00782  
+0xd00e0a05  0xa0c00780  0xd00e0819  0xa0c00780  
+0xd00e041d  0xa0c00781  
+
+
+.nv.info._Z15update_positionPfS_S_S_i	PROGBITS
+	<0x1>
+	Attribute:	EIATTR_SMEM_PARAM_SIZE
+	Format:	EIFMT_HVAL
+	Value:	0x24
+	<0x2>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0x0	Ordinal : 0x4	Offset  : 0x20	Size    : 0x4
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+	<0x3>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0x0	Ordinal : 0x3	Offset  : 0x18	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+	<0x4>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0x0	Ordinal : 0x2	Offset  : 0x10	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+	<0x5>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0x0	Ordinal : 0x1	Offset  : 0x8	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+	<0x6>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0x0	Ordinal : 0x0	Offset  : 0x0	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+	<0x7>
+	Attribute:	EIATTR_SYNC_STACK
+	Format:	EIFMT_SVAL
+	Value:	0x60030 0x5 
+

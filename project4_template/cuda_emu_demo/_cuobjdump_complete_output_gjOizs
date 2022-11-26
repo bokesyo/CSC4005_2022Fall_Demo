@@ -1,0 +1,641 @@
+
+Fatbin elf code:
+================
+arch = sm_10
+code version = [1,2]
+producer = cuda
+host = linux
+compile_size = 64bit
+identifier = cuda.cu
+
+.section .strtab	STRTAB
+
+.section .shstrtab	STRTAB
+
+.section .symtab	SYMTAB
+ index           value           size      info    other  shndx    name  
+   0               0               0        0        0      0     (null)
+   1               0               0        3        0      1     .shstrtab
+   2               0               0        3        0      2     .strtab
+   3               0               0        3        0      3     .symtab
+   4               0               0        3        0      0     
+   5               0               0        3        0      0     
+   6               0             296        3        0      8     .text._Z15update_positionPfS_S_S_i
+   7               0               0        3        0     10     .nv.info._Z15update_positionPfS_S_S_i
+   8               0             704        3        0      4     .text._Z15update_velocityPfS_S_S_S_i
+   9               0               0        3        0      6     .nv.info._Z15update_velocityPfS_S_S_S_i
+  10               0               0        3        0     11     .nv.shared._Z15update_positionPfS_S_S_i
+  11               0               0        3        0      9     .nv.constant1._Z15update_positionPfS_S_S_i
+  12               0               0        3        0      7     .nv.shared._Z15update_velocityPfS_S_S_S_i
+  13               0               0        3        0      5     .nv.constant1._Z15update_velocityPfS_S_S_S_i
+  14               0               0       12       10      8     _Z15update_positionPfS_S_S_i
+  15               0               0       12       10      4     _Z15update_velocityPfS_S_S_S_i
+
+
+.nv.constant1._Z15update_velocityPfS_S_S_S_i	PROGBITS
+0x40800000  0x7e800000  0x3e800000  0x3903126f  
+
+
+.nv.shared._Z15update_velocityPfS_S_S_S_i	NOBITS
+   No data to be dumped. 
+
+
+.nv.constant1._Z15update_positionPfS_S_S_i	PROGBITS
+0x3a03126f  0x457a0000  
+
+
+.nv.shared._Z15update_positionPfS_S_S_i	NOBITS
+   No data to be dumped. 
+
+
+.text._Z15update_velocityPfS_S_S_S_i	PROGBITS
+bar = 0	reg = 19	lmem=0	smem=60
+0x10004205  0x0023c780  0xa0000005  0x04000780  
+0x60014c1d  0x00204780  0x3007ddfd  0x6c20c7c8  
+0x30000003  0x00000280  0x30020e09  0xc4100780  
+0x307cddfd  0x6c20c7c8  0x2000c801  0x04208780  
+0xd00e0001  0x80c00780  0x2000cc05  0x04208780  
+0xd00e0219  0x80c00780  0x2000d005  0x04208780  
+0xd00e0205  0x80c00780  0x2000d40d  0x04208780  
+0xd00e0611  0x80c00780  0x2000d809  0x04208780  
+0x10046003  0x00000280  0xd00e0425  0x80c00780  
+0xc0200029  0x04cbebc3  0x1000f821  0x0403c780  
+0x1000f82d  0x0403c780  0x1000f815  0x0403c780  
+0x1000f831  0x0403c780  0x2000d035  0x04220780  
+0xd00e1a39  0x80c00780  0x2000c835  0x04220780  
+0xd00e1a35  0x80c00780  0x2000cc3d  0x04220780  
+0xd00e1e3d  0x80c00780  0xb0411c38  0xb0461e3c  
+0xc00e1c41  0x00000780  0xe00f1e41  0x00040780  
+0xb02c2041  0x03727c5b  0x90002045  0x40000780  
+0x90002248  0xc00a1a44  0x90002448  0xc0112444  
+0xc0112444  0xc0112444  0xb08021fd  0x604047c8  
+0xe0111e31  0x00030780  0xe00e2215  0x00014780  
+0xa0040003  0x00000000  0x10040003  0x00000100  
+0x300717fd  0x6c0087c8  0x10040003  0x00000280  
+0xb00d0038  0xb000003c  0xb0811dfd  0x605107c8  
+0xc00d1e35  0x00000780  0xc0821a35  0x00400680  
+0xc0821c39  0x00400680  0x90001c3d  0x00000780  
+0x102f8039  0x03a03127  0xb0811dfd  0x604107c8  
+0xc00f1a35  0x00000780  0x102f8039  0x03a03127  
+0xc0821a35  0x00400680  0x10000639  0x2440c680  
+0x90001c40  0x2108f438  0xd00e1c3d  0x80c00780  
+0x2000d839  0x04220780  0xd00e1c39  0x80c00780  
+0xc0101a34  0xb0441e3c  0xb0001c39  0x08024780  
+0xe00f1a31  0x00030780  0xe00e1a15  0x00014780  
+0xf0000001  0xe0000002  0x2001962d  0x00000003  
+0x300bddfd  0x6c2147c8  0x20049021  0x00000003  
+0x10017003  0x00000280  0x10048003  0x00000780  
+0x1000f815  0x0403c780  0x1000f831  0x0403c780  
+0xb08101fd  0x605107c8  0xc02f1819  0x03a03127  
+0x10000005  0x0403c780  0xc0820c19  0x00400680  
+0xc0820205  0x00400680  0x90000205  0x00000780  
+0xe0010c05  0x00010780  0xd00e0605  0xa0c00780  
+0xd00e0405  0x80c00780  0xc02f0a0d  0x03a03127  
+0xb08101fd  0x605107c8  0xc082060d  0x00400680  
+0xc0820001  0x00400680  0x90000001  0x00000780  
+0xe0000601  0x00004780  0xd00e0401  0xa0c00781  
+
+
+
+.nv.info._Z15update_velocityPfS_S_S_S_i	PROGBITS
+	<0x1>
+	Attribute:	EIATTR_SMEM_PARAM_SIZE
+	Format:	EIFMT_HVAL
+	Value:	0x2c
+	<0x2>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0x0	Ordinal : 0x5	Offset  : 0x28	Size    : 0x4
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+	<0x3>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0x0	Ordinal : 0x4	Offset  : 0x20	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+	<0x4>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0x0	Ordinal : 0x3	Offset  : 0x18	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+	<0x5>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0x0	Ordinal : 0x2	Offset  : 0x10	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+	<0x6>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0x0	Ordinal : 0x1	Offset  : 0x8	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+	<0x7>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0x0	Ordinal : 0x0	Offset  : 0x0	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+	<0x8>
+	Attribute:	EIATTR_SYNC_STACK
+	Format:	EIFMT_SVAL
+	Value:	0x50028 0x4 
+
+
+.text._Z15update_positionPfS_S_S_i	PROGBITS
+bar = 0	reg = 8	lmem=0	smem=52
+0x10004205  0x0023c780  0xa0000005  0x04000780  
+0x60014c01  0x00204780  0x3000d9fd  0x6c20c7c8  
+0x30000003  0x00000280  0x30020001  0xc4100780  
+0xa0021003  0x00000000  0x2100f010  0x2100e80c  
+0x2100f408  0x2100ec14  0xd00e0819  0x80c00780  
+0xd00e0601  0x80c00780  0xd00e041d  0x80c00780  
+0xd00e0a05  0x80c00780  0xe02f0c01  0x03a03127  
+0xb08101fd  0x604107c8  0xe02f0e05  0x03a03127  
+0x10014003  0x00000100  0xa0000c19  0xe4004780  
+0x10008001  0x0457a003  0x10021003  0x00000780  
+0xb07c01fd  0x600047c8  0x10019003  0x00000100  
+0xa0000c19  0xe4004780  0x1000f801  0x0403c780  
+0x10021003  0x00000780  0xb08103fd  0x604107c8  
+0x1001e003  0x00000100  0xa0000e1d  0xe4004780  
+0x10008005  0x0457a003  0x10021003  0x00000780  
+0xb07c03fd  0x600047c8  0xa0000e1d  0xe4004680  
+0x1000f805  0x0403c680  0xd00e0601  0xa0c00782  
+0xd00e0a05  0xa0c00780  0xd00e0819  0xa0c00780  
+0xd00e041d  0xa0c00781  
+
+
+.nv.info._Z15update_positionPfS_S_S_i	PROGBITS
+	<0x1>
+	Attribute:	EIATTR_SMEM_PARAM_SIZE
+	Format:	EIFMT_HVAL
+	Value:	0x24
+	<0x2>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0x0	Ordinal : 0x4	Offset  : 0x20	Size    : 0x4
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+	<0x3>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0x0	Ordinal : 0x3	Offset  : 0x18	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+	<0x4>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0x0	Ordinal : 0x2	Offset  : 0x10	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+	<0x5>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0x0	Ordinal : 0x1	Offset  : 0x8	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+	<0x6>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0x0	Ordinal : 0x0	Offset  : 0x0	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+	<0x7>
+	Attribute:	EIATTR_SYNC_STACK
+	Format:	EIFMT_SVAL
+	Value:	0x60030 0x5 
+
+	code for sm_10
+		Function : _Z15update_velocityPfS_S_S_S_i
+	/*0000*/     /*0x100042050023c780*/ 	MOV.U16 R0H, g [0x1].U16;
+	/*0008*/     /*0xa000000504000780*/ 	I2I.U32.U16 R1, R0L;
+	/*0010*/     /*0x60014c1d00204780*/ 	IMAD.U16 R7, g [0x6].U16, R0H, R1;
+	/*0018*/     /*0x3007ddfd6c20c7c8*/ 	ISET.S32.C0 o [0x7f], g [0xe], R7, LE;
+	/*0020*/     /*0x3000000300000280*/ 	RET C0.NE;
+	/*0028*/     /*0x30020e09c4100780*/ 	SHL R2, R7, 0x2;
+	/*0030*/     /*0x307cddfd6c20c7c8*/ 	ISET.S32.C0 o [0x7f], g [0xe], R124, LE;
+	/*0038*/     /*0x2000c80104208780*/ 	IADD R0, g [0x4], R2;
+	/*0040*/     /*0xd00e000180c00780*/ 	GLD.U32 R0, global14 [R0];
+	/*0048*/     /*0x2000cc0504208780*/ 	IADD R1, g [0x6], R2;
+	/*0050*/     /*0xd00e021980c00780*/ 	GLD.U32 R6, global14 [R1];
+	/*0058*/     /*0x2000d00504208780*/ 	IADD R1, g [0x8], R2;
+	/*0060*/     /*0xd00e020580c00780*/ 	GLD.U32 R1, global14 [R1];
+	/*0068*/     /*0x2000d40d04208780*/ 	IADD R3, g [0xa], R2;
+	/*0070*/     /*0xd00e061180c00780*/ 	GLD.U32 R4, global14 [R3];
+	/*0078*/     /*0x2000d80904208780*/ 	IADD R2, g [0xc], R2;
+	/*0080*/     /*0x1004600300000280*/ 	BRA C0.NE, 0x230;
+	/*0088*/     /*0xd00e042580c00780*/ 	GLD.U32 R9, global14 [R2];
+	/*0090*/     /*0xc020002904cbebc3*/ 	FMUL32I R10, R0, 0x4cbebc20;
+	/*0098*/     /*0x1000f8210403c780*/ 	MOV R8, R124;
+	/*00a0*/     /*0x1000f82d0403c780*/ 	MOV R11, R124;
+	/*00a8*/     /*0x1000f8150403c780*/ 	MOV R5, R124;
+	/*00b0*/     /*0x1000f8310403c780*/ 	MOV R12, R124;
+	/*00b8*/     /*0x2000d03504220780*/ 	IADD R13, g [0x8], R8;
+	/*00c0*/     /*0xd00e1a3980c00780*/ 	GLD.U32 R14, global14 [R13];
+	/*00c8*/     /*0x2000c83504220780*/ 	IADD R13, g [0x4], R8;
+	/*00d0*/     /*0xd00e1a3580c00780*/ 	GLD.U32 R13, global14 [R13];
+	/*00d8*/     /*0x2000cc3d04220780*/ 	IADD R15, g [0x6], R8;
+	/*00e0*/     /*0xd00e1e3d80c00780*/ 	GLD.U32 R15, global14 [R15];
+	/*00e8*/     /*0xb0411c38        */ 	FADD32 R14, R14, -R1;
+	/*00ec*/     /*0xb0461e3c        */ 	FADD32 R15, R15, -R6;
+	/*00f0*/     /*0xc00e1c4100000780*/ 	FMUL R16, R14, R14;
+	/*00f8*/     /*0xe00f1e4100040780*/ 	FMAD R16, R15, R15, R16;
+	/*0100*/     /*0xb02c204103727c5b*/ 	FADD32I R16, R16, 0x3727c5ac;
+	/*0108*/     /*0x9000204540000780*/ 	RSQ R17, R16;
+	/*0110*/     /*0x90002248        */ 	RCP32 R18, R17;
+	/*0114*/     /*0xc00a1a44        */ 	FMUL32 R17, R13, R10;
+	/*0118*/     /*0x90002448        */ 	RCP32 R18, R18;
+	/*011c*/     /*0xc0112444        */ 	FMUL32 R17, R18, R17;
+	/*0120*/     /*0xc0112444        */ 	FMUL32 R17, R18, R17;
+	/*0124*/     /*0xc0112444        */ 	FMUL32 R17, R18, R17;
+	/*0128*/     /*0xb08021fd604047c8*/ 	FSET.C0 o [0x7f], R16, c [0x1] [0x0], LT;
+	/*0130*/     /*0xe0111e3100030780*/ 	FMAD R12, R15, R17, R12;
+	/*0138*/     /*0xe00e221500014780*/ 	FMAD R5, R17, R14, R5;
+	/*0140*/     /*0xa004000300000000*/ 	SSY 0x200;
+	/*0148*/     /*0x1004000300000100*/ 	BRA C0.EQ, 0x200;
+	/*0150*/     /*0x300717fd6c0087c8*/ 	ISET.S32.C0 o [0x7f], R11, R7, EQ;
+	/*0158*/     /*0x1004000300000280*/ 	BRA C0.NE, 0x200;
+	/*0160*/     /*0xb00d0038        */ 	FADD32 R14, R0, R13;
+	/*0164*/     /*0xb000003c        */ 	FADD32 R15, R0, R0;
+	/*0168*/     /*0xb0811dfd605107c8*/ 	FSET.C0 o [0x7f], |R14|, c [0x1] [0x1], GT;
+	/*0170*/     /*0xc00d1e3500000780*/ 	FMUL R13, R15, R13;
+	/*0178*/     /*0xc0821a3500400680*/ 	FMUL R13 (C0.NEU), R13, c [0x1] [0x2];
+	/*0180*/     /*0xc0821c3900400680*/ 	FMUL R14 (C0.NEU), R14, c [0x1] [0x2];
+	/*0188*/     /*0x90001c3d00000780*/ 	RCP R15, R14;
+	/*0190*/     /*0x102f803903a03127*/ 	MVI R14, 0x3a03126f;
+	/*0198*/     /*0xb0811dfd604107c8*/ 	FSET.C0 o [0x7f], R14, c [0x1] [0x1], GT;
+	/*01a0*/     /*0xc00f1a3500000780*/ 	FMUL R13, R13, R15;
+	/*01a8*/     /*0x102f803903a03127*/ 	MVI R14, 0x3a03126f;
+	/*01b0*/     /*0xc0821a3500400680*/ 	FMUL R13 (C0.NEU), R13, c [0x1] [0x2];
+	/*01b8*/     /*0x100006392440c680*/ 	MVC R14 (C0.NEU), c [0x1] [0x3];
+	/*01c0*/     /*0x90001c40        */ 	RCP32 R16, R14;
+	/*01c4*/     /*0x2108f438        */ 	IADD32 R14, g [0xa], R8;
+	/*01c8*/     /*0xd00e1c3d80c00780*/ 	GLD.U32 R15, global14 [R14];
+	/*01d0*/     /*0x2000d83904220780*/ 	IADD R14, g [0xc], R8;
+	/*01d8*/     /*0xd00e1c3980c00780*/ 	GLD.U32 R14, global14 [R14];
+	/*01e0*/     /*0xc0101a34        */ 	FMUL32 R13, R13, R16;
+	/*01e4*/     /*0xb0441e3c        */ 	FADD32 R15, R15, -R4;
+	/*01e8*/     /*0xb0001c3908024780*/ 	FADD R14, R14, -R9;
+	/*01f0*/     /*0xe00f1a3100030780*/ 	FMAD R12, R13, R15, R12;
+	/*01f8*/     /*0xe00e1a1500014780*/ 	FMAD R5, R13, R14, R5;
+	/*0200*/     /*0xf0000001e0000002*/ 	NOP.S;
+	/*0208*/     /*0x2001962d00000003*/ 	IADD32I R11, R11, 0x1;
+	/*0210*/     /*0x300bddfd6c2147c8*/ 	ISET.S32.C0 o [0x7f], g [0xe], R11, NE;
+	/*0218*/     /*0x2004902100000003*/ 	IADD32I R8, R8, 0x4;
+	/*0220*/     /*0x1001700300000280*/ 	BRA C0.NE, 0xb8;
+	/*0228*/     /*0x1004800300000780*/ 	BRA 0x240;
+	/*0230*/     /*0x1000f8150403c780*/ 	MOV R5, R124;
+	/*0238*/     /*0x1000f8310403c780*/ 	MOV R12, R124;
+	/*0240*/     /*0xb08101fd605107c8*/ 	FSET.C0 o [0x7f], |R0|, c [0x1] [0x1], GT;
+	/*0248*/     /*0xc02f181903a03127*/ 	FMUL32I R6, R12, 0x3a03126f;
+	/*0250*/     /*0x100000050403c780*/ 	MOV R1, R0;
+	/*0258*/     /*0xc0820c1900400680*/ 	FMUL R6 (C0.NEU), R6, c [0x1] [0x2];
+	/*0260*/     /*0xc082020500400680*/ 	FMUL R1 (C0.NEU), R1, c [0x1] [0x2];
+	/*0268*/     /*0x9000020500000780*/ 	RCP R1, R1;
+	/*0270*/     /*0xe0010c0500010780*/ 	FMAD R1, R6, R1, R4;
+	/*0278*/     /*0xd00e0605a0c00780*/ 	GST.U32 global14 [R3], R1;
+	/*0280*/     /*0xd00e040580c00780*/ 	GLD.U32 R1, global14 [R2];
+	/*0288*/     /*0xc02f0a0d03a03127*/ 	FMUL32I R3, R5, 0x3a03126f;
+	/*0290*/     /*0xb08101fd605107c8*/ 	FSET.C0 o [0x7f], |R0|, c [0x1] [0x1], GT;
+	/*0298*/     /*0xc082060d00400680*/ 	FMUL R3 (C0.NEU), R3, c [0x1] [0x2];
+	/*02a0*/     /*0xc082000100400680*/ 	FMUL R0 (C0.NEU), R0, c [0x1] [0x2];
+	/*02a8*/     /*0x9000000100000780*/ 	RCP R0, R0;
+	/*02b0*/     /*0xe000060100004780*/ 	FMAD R0, R3, R0, R1;
+	/*02b8*/     /*0xd00e0401a0c00781*/ 	GST.U32 global14 [R2], R0;
+		...............................................
+
+
+		Function : _Z15update_positionPfS_S_S_i
+	/*0000*/     /*0x100042050023c780*/ 	MOV.U16 R0H, g [0x1].U16;
+	/*0008*/     /*0xa000000504000780*/ 	I2I.U32.U16 R1, R0L;
+	/*0010*/     /*0x60014c0100204780*/ 	IMAD.U16 R0, g [0x6].U16, R0H, R1;
+	/*0018*/     /*0x3000d9fd6c20c7c8*/ 	ISET.S32.C0 o [0x7f], g [0xc], R0, LE;
+	/*0020*/     /*0x3000000300000280*/ 	RET C0.NE;
+	/*0028*/     /*0x30020001c4100780*/ 	SHL R0, R0, 0x2;
+	/*0030*/     /*0xa002100300000000*/ 	SSY 0x108;
+	/*0038*/     /*0x2100f010        */ 	IADD32 R4, g [0x8], R0;
+	/*003c*/     /*0x2100e80c        */ 	IADD32 R3, g [0x4], R0;
+	/*0040*/     /*0x2100f408        */ 	IADD32 R2, g [0xa], R0;
+	/*0044*/     /*0x2100ec14        */ 	IADD32 R5, g [0x6], R0;
+	/*0048*/     /*0xd00e081980c00780*/ 	GLD.U32 R6, global14 [R4];
+	/*0050*/     /*0xd00e060180c00780*/ 	GLD.U32 R0, global14 [R3];
+	/*0058*/     /*0xd00e041d80c00780*/ 	GLD.U32 R7, global14 [R2];
+	/*0060*/     /*0xd00e0a0580c00780*/ 	GLD.U32 R1, global14 [R5];
+	/*0068*/     /*0xe02f0c0103a03127*/ 	FMAD32I R0, R6, 0x3a03126f, R0;
+	/*0070*/     /*0xb08101fd604107c8*/ 	FSET.C0 o [0x7f], R0, c [0x1] [0x1], GT;
+	/*0078*/     /*0xe02f0e0503a03127*/ 	FMAD32I R1, R7, 0x3a03126f, R1;
+	/*0080*/     /*0x1001400300000100*/ 	BRA C0.EQ, 0xa0;
+	/*0088*/     /*0xa0000c19e4004780*/ 	F2F.F32.F32 R6, -R6;
+	/*0090*/     /*0x100080010457a003*/ 	MVI R0, 0x457a0000;
+	/*0098*/     /*0x1002100300000780*/ 	BRA 0x108;
+	/*00a0*/     /*0xb07c01fd600047c8*/ 	FSET.C0 o [0x7f], R0, R124, LT;
+	/*00a8*/     /*0x1001900300000100*/ 	BRA C0.EQ, 0xc8;
+	/*00b0*/     /*0xa0000c19e4004780*/ 	F2F.F32.F32 R6, -R6;
+	/*00b8*/     /*0x1000f8010403c780*/ 	MOV R0, R124;
+	/*00c0*/     /*0x1002100300000780*/ 	BRA 0x108;
+	/*00c8*/     /*0xb08103fd604107c8*/ 	FSET.C0 o [0x7f], R1, c [0x1] [0x1], GT;
+	/*00d0*/     /*0x1001e00300000100*/ 	BRA C0.EQ, 0xf0;
+	/*00d8*/     /*0xa0000e1de4004780*/ 	F2F.F32.F32 R7, -R7;
+	/*00e0*/     /*0x100080050457a003*/ 	MVI R1, 0x457a0000;
+	/*00e8*/     /*0x1002100300000780*/ 	BRA 0x108;
+	/*00f0*/     /*0xb07c03fd600047c8*/ 	FSET.C0 o [0x7f], R1, R124, LT;
+	/*00f8*/     /*0xa0000e1de4004680*/ 	F2F.F32.F32 R7 (C0.NEU), -R7;
+	/*0100*/     /*0x1000f8050403c680*/ 	MOV R1 (C0.NEU), R124;
+	/*0108*/     /*0xd00e0601a0c00782*/ 	GST.S.U32 global14 [R3], R0;
+	/*0110*/     /*0xd00e0a05a0c00780*/ 	GST.U32 global14 [R5], R1;
+	/*0118*/     /*0xd00e0819a0c00780*/ 	GST.U32 global14 [R4], R6;
+	/*0120*/     /*0xd00e041da0c00781*/ 	GST.U32 global14 [R2], R7;
+		.............................................
+
+
+
+Fatbin ptx code:
+================
+arch = sm_10
+code version = [1,4]
+producer = cuda
+host = linux
+compile_size = 64bit
+identifier = cuda.cu
+	.version 1.4
+.target sm_10, map_f64_to_f32
+
+	
+
+
+	
+	
+
+
+	
+	
+	
+	
+	
+	
+	
+
+.file	1	"<command-line>"
+.file	2	"/tmp/tmpxft_0000148d_00000000-6_cuda.cudafe2.gpu"
+.file	3	"/usr/lib/gcc/x86_64-linux-gnu/4.6/include/stddef.h"
+.file	4	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/crt/device_runtime.h"
+.file	5	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/host_defines.h"
+.file	6	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/builtin_types.h"
+.file	7	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/device_types.h"
+.file	8	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/driver_types.h"
+.file	9	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/surface_types.h"
+.file	10	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/texture_types.h"
+.file	11	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/vector_types.h"
+.file	12	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/device_launch_parameters.h"
+.file	13	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/crt/storage_class.h"
+.file	14	"cuda.cu"
+.file	15	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/common_functions.h"
+.file	16	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/math_functions.h"
+.file	17	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/math_constants.h"
+.file	18	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/device_functions.h"
+.file	19	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/sm_11_atomic_functions.h"
+.file	20	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/sm_12_atomic_functions.h"
+.file	21	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/sm_13_double_functions.h"
+.file	22	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/sm_20_atomic_functions.h"
+.file	23	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/sm_20_intrinsics.h"
+.file	24	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/sm_30_intrinsics.h"
+.file	25	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/surface_functions.h"
+.file	26	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/texture_fetch_functions.h"
+.file	27	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/math_functions_dbl_ptx1.h"
+
+
+.entry _Z15update_positionPfS_S_S_i (
+.param .u64 __cudaparm__Z15update_positionPfS_S_S_i_x,
+.param .u64 __cudaparm__Z15update_positionPfS_S_S_i_y,
+.param .u64 __cudaparm__Z15update_positionPfS_S_S_i_vx,
+.param .u64 __cudaparm__Z15update_positionPfS_S_S_i_vy,
+.param .s32 __cudaparm__Z15update_positionPfS_S_S_i_n)
+{
+.reg .u16 %rh<4>;
+.reg .u32 %r<6>;
+.reg .u64 %rd<12>;
+.reg .f32 %f<14>;
+.reg .pred %p<7>;
+.loc	14	29	0
+$LDWbegin__Z15update_positionPfS_S_S_i:
+mov.u16 %rh1, %ctaid.x;
+mov.u16 %rh2, %ntid.x;
+mul.wide.u16 %r1, %rh1, %rh2;
+cvt.u32.u16 %r2, %tid.x;
+add.u32 %r3, %r2, %r1;
+ld.param.s32 %r4, [__cudaparm__Z15update_positionPfS_S_S_i_n];
+setp.le.s32 %p1, %r4, %r3;
+@%p1 bra $Lt_0_4098;
+.loc	14	36	0
+cvt.s64.s32 %rd1, %r3;
+mul.wide.s32 %rd2, %r3, 4;
+ld.param.u64 %rd3, [__cudaparm__Z15update_positionPfS_S_S_i_vx];
+add.u64 %rd4, %rd3, %rd2;
+ld.global.f32 %f1, [%rd4+0];
+.loc	14	37	0
+ld.param.u64 %rd5, [__cudaparm__Z15update_positionPfS_S_S_i_vy];
+add.u64 %rd6, %rd5, %rd2;
+ld.global.f32 %f2, [%rd6+0];
+.loc	14	39	0
+ld.param.u64 %rd7, [__cudaparm__Z15update_positionPfS_S_S_i_x];
+add.u64 %rd8, %rd7, %rd2;
+ld.global.f32 %f3, [%rd8+0];
+mov.f32 %f4, 0f3a03126f; 
+	mad.f32 %f5, %f4, %f1, %f3;
+.loc	14	40	0
+ld.param.u64 %rd9, [__cudaparm__Z15update_positionPfS_S_S_i_y];
+add.u64 %rd10, %rd9, %rd2;
+ld.global.f32 %f6, [%rd10+0];
+mov.f32 %f7, 0f3a03126f; 
+	mad.f32 %f8, %f7, %f2, %f6;
+mov.f32 %f9, 0f457a0000; 
+	setp.gt.f32 %p2, %f5, %f9;
+@!%p2 bra $Lt_0_4866;
+.loc	14	45	0
+neg.f32 %f1, %f1;
+mov.f32 %f5, 0f457a0000; 
+	bra.uni $Lt_0_4610;
+$Lt_0_4866:
+mov.f32 %f10, 0f00000000; 
+	setp.lt.f32 %p3, %f5, %f10;
+@!%p3 bra $Lt_0_5378;
+.loc	14	48	0
+neg.f32 %f1, %f1;
+mov.f32 %f5, 0f00000000; 
+	bra.uni $Lt_0_5122;
+$Lt_0_5378:
+mov.f32 %f11, 0f457a0000; 
+	setp.gt.f32 %p4, %f8, %f11;
+@!%p4 bra $Lt_0_5890;
+.loc	14	51	0
+neg.f32 %f2, %f2;
+mov.f32 %f8, 0f457a0000; 
+	bra.uni $Lt_0_5634;
+$Lt_0_5890:
+mov.f32 %f12, 0f00000000; 
+	setp.lt.f32 %p5, %f8, %f12;
+@!%p5 bra $Lt_0_6146;
+.loc	14	54	0
+neg.f32 %f2, %f2;
+mov.f32 %f8, 0f00000000; 
+$Lt_0_6146:
+$Lt_0_5634:
+$Lt_0_5122:
+$Lt_0_4610:
+.loc	14	59	0
+st.global.f32 [%rd8+0], %f5;
+.loc	14	60	0
+st.global.f32 [%rd10+0], %f8;
+.loc	14	61	0
+st.global.f32 [%rd4+0], %f1;
+.loc	14	62	0
+st.global.f32 [%rd6+0], %f2;
+$Lt_0_4098:
+.loc	14	64	0
+exit;
+$LDWend__Z15update_positionPfS_S_S_i:
+} 
+
+.entry _Z15update_velocityPfS_S_S_S_i (
+.param .u64 __cudaparm__Z15update_velocityPfS_S_S_S_i_m,
+.param .u64 __cudaparm__Z15update_velocityPfS_S_S_S_i_x,
+.param .u64 __cudaparm__Z15update_velocityPfS_S_S_S_i_y,
+.param .u64 __cudaparm__Z15update_velocityPfS_S_S_S_i_vx,
+.param .u64 __cudaparm__Z15update_velocityPfS_S_S_S_i_vy,
+.param .s32 __cudaparm__Z15update_velocityPfS_S_S_S_i_n)
+{
+.reg .u16 %rh<4>;
+.reg .u32 %r<10>;
+.reg .u64 %rd<20>;
+.reg .f32 %f<46>;
+.reg .pred %p<7>;
+.loc	14	66	0
+$LDWbegin__Z15update_velocityPfS_S_S_S_i:
+mov.u16 %rh1, %ctaid.x;
+mov.u16 %rh2, %ntid.x;
+mul.wide.u16 %r1, %rh1, %rh2;
+cvt.u32.u16 %r2, %tid.x;
+add.u32 %r3, %r2, %r1;
+ld.param.s32 %r4, [__cudaparm__Z15update_velocityPfS_S_S_S_i_n];
+setp.le.s32 %p1, %r4, %r3;
+@%p1 bra $Lt_1_3586;
+.loc	14	76	0
+cvt.s64.s32 %rd1, %r3;
+mul.wide.s32 %rd2, %r3, 4;
+ld.param.u64 %rd3, [__cudaparm__Z15update_velocityPfS_S_S_S_i_m];
+add.u64 %rd4, %rd2, %rd3;
+ld.global.f32 %f1, [%rd4+0];
+.loc	14	77	0
+ld.param.u64 %rd5, [__cudaparm__Z15update_velocityPfS_S_S_S_i_x];
+add.u64 %rd6, %rd2, %rd5;
+ld.global.f32 %f2, [%rd6+0];
+.loc	14	78	0
+ld.param.u64 %rd7, [__cudaparm__Z15update_velocityPfS_S_S_S_i_y];
+add.u64 %rd8, %rd2, %rd7;
+ld.global.f32 %f3, [%rd8+0];
+ld.param.u64 %rd9, [__cudaparm__Z15update_velocityPfS_S_S_S_i_vx];
+add.u64 %rd10, %rd2, %rd9;
+ld.param.u64 %rd11, [__cudaparm__Z15update_velocityPfS_S_S_S_i_vy];
+add.u64 %rd12, %rd2, %rd11;
+ld.global.f32 %f4, [%rd10+0];
+mov.u32 %r5, 0;
+.loc	14	66	0
+ld.param.s32 %r4, [__cudaparm__Z15update_velocityPfS_S_S_S_i_n];
+.loc	14	78	0
+setp.le.s32 %p2, %r4, %r5;
+@%p2 bra $Lt_1_6146;
+.loc	14	66	0
+ld.param.s32 %r4, [__cudaparm__Z15update_velocityPfS_S_S_S_i_n];
+.loc	14	78	0
+mov.s32 %r6, %r4;
+ld.global.f32 %f5, [%rd12+0];
+mov.f32 %f6, 0f4cbebc20; 
+	mul.f32 %f7, %f1, %f6;
+mov.s64 %rd13, 0;
+mov.s32 %r7, 0;
+mov.f32 %f8, 0f00000000; 
+	mov.f32 %f9, 0f00000000; 
+	mov.s32 %r8, %r6;
+$Lt_1_4610:
+
+	.loc	14	76	0
+ld.param.u64 %rd3, [__cudaparm__Z15update_velocityPfS_S_S_S_i_m];
+.loc	14	85	0
+add.u64 %rd14, %rd13, %rd3;
+ld.global.f32 %f10, [%rd14+0];
+.loc	14	77	0
+ld.param.u64 %rd5, [__cudaparm__Z15update_velocityPfS_S_S_S_i_x];
+.loc	14	86	0
+add.u64 %rd15, %rd13, %rd5;
+ld.global.f32 %f11, [%rd15+0];
+.loc	14	78	0
+ld.param.u64 %rd7, [__cudaparm__Z15update_velocityPfS_S_S_S_i_y];
+.loc	14	87	0
+add.u64 %rd16, %rd13, %rd7;
+ld.global.f32 %f12, [%rd16+0];
+.loc	14	97	0
+sub.f32 %f13, %f11, %f2;
+sub.f32 %f14, %f12, %f3;
+mul.f32 %f15, %f7, %f10;
+mul.f32 %f16, %f14, %f14;
+mad.f32 %f17, %f13, %f13, %f16;
+mov.f32 %f18, 0f3727c5ac; 
+	add.f32 %f19, %f17, %f18;
+sqrt.approx.f32 %f20, %f19;
+rcp.approx.f32 %f21, %f20;
+mul.f32 %f22, %f15, %f21;
+mul.f32 %f23, %f21, %f22;
+mul.f32 %f24, %f21, %f23;
+mad.f32 %f9, %f13, %f24, %f9;
+.loc	14	98	0
+mad.f32 %f8, %f14, %f24, %f8;
+mov.f32 %f25, 0f40800000; 
+	setp.lt.f32 %p3, %f19, %f25;
+@!%p3 bra $Lt_1_5378;
+setp.eq.s32 %p4, %r7, %r3;
+@%p4 bra $Lt_1_5378;
+.loc	14	105	0
+add.f32 %f26, %f1, %f1;
+add.f32 %f27, %f1, %f10;
+mul.f32 %f28, %f26, %f10;
+div.full.f32 %f29, %f28, %f27;
+mov.f32 %f30, 0f3a03126f; 
+	div.full.f32 %f31, %f29, %f30;
+.loc	14	78	0
+ld.param.u64 %rd9, [__cudaparm__Z15update_velocityPfS_S_S_S_i_vx];
+.loc	14	105	0
+add.u64 %rd17, %rd13, %rd9;
+ld.global.f32 %f32, [%rd17+0];
+sub.f32 %f33, %f32, %f4;
+mad.f32 %f9, %f31, %f33, %f9;
+.loc	14	78	0
+ld.param.u64 %rd11, [__cudaparm__Z15update_velocityPfS_S_S_S_i_vy];
+.loc	14	106	0
+add.u64 %rd18, %rd13, %rd11;
+ld.global.f32 %f34, [%rd18+0];
+sub.f32 %f35, %f34, %f5;
+mad.f32 %f8, %f31, %f35, %f8;
+$Lt_1_5378:
+$Lt_1_4866:
+add.s32 %r7, %r7, 1;
+add.u64 %rd13, %rd13, 4;
+.loc	14	66	0
+ld.param.s32 %r4, [__cudaparm__Z15update_velocityPfS_S_S_S_i_n];
+.loc	14	106	0
+setp.ne.s32 %p5, %r7, %r4;
+@%p5 bra $Lt_1_4610;
+bra.uni $Lt_1_4098;
+$Lt_1_6146:
+mov.f32 %f8, 0f00000000; 
+	mov.f32 %f9, 0f00000000; 
+$Lt_1_4098:
+.loc	14	112	0
+mov.f32 %f36, 0f3a03126f; 
+	mul.f32 %f37, %f9, %f36;
+div.full.f32 %f38, %f37, %f1;
+add.f32 %f39, %f4, %f38;
+st.global.f32 [%rd10+0], %f39;
+.loc	14	113	0
+ld.global.f32 %f40, [%rd12+0];
+mov.f32 %f41, 0f3a03126f; 
+	mul.f32 %f42, %f8, %f41;
+div.full.f32 %f43, %f42, %f1;
+add.f32 %f44, %f40, %f43;
+st.global.f32 [%rd12+0], %f44;
+$Lt_1_3586:
+.loc	14	116	0
+exit;
+$LDWend__Z15update_velocityPfS_S_S_S_i:
+} 
+

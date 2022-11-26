@@ -1,0 +1,87 @@
+
+
+.section .strtab	STRTAB
+
+.section .shstrtab	STRTAB
+
+.section .symtab	SYMTAB
+ index           value           size      info    other  shndx    name  
+   0               0               0        0        0      0     (null)
+   1               0               0        3        0      1     .shstrtab
+   2               0               0        3        0      2     .strtab
+   3               0               0        3        0      3     .symtab
+   4               0               0        3        0      0     
+   5               0               0        3        0      0     
+   6               0             152        3        0      4     .text._Z6VecAddPKfS0_Pfi
+   7               0               0        3        0      6     .nv.info._Z6VecAddPKfS0_Pfi
+   8               0               0        3        0      7     .nv.info
+   9               0               0        3        0      5     .nv.constant0._Z6VecAddPKfS0_Pfi
+  10               0             152       12       10      4     _Z6VecAddPKfS0_Pfi
+
+
+.nv.constant0._Z6VecAddPKfS0_Pfi	PROGBITS
+0x00000000  0x00000000  0x00000000  0x00000000  0x00000000  
+0x00000000  0x00000000  0x00000000  0x00000000  
+0x00000000  0x00000000  0x00000000  0x00000000  
+0x00000000  0x00000000  
+
+
+.text._Z6VecAddPKfS0_Pfi	PROGBITS
+bar = 0	reg = 10	lmem=0	smem=0
+0x00005de4  0x28004404  0x94001c04  0x2c000000  
+0x84009c04  0x2c000000  0x20001ca3  0x20044000  
+0xe001dc23  0x188e4000  0x8000a1e7  0x40000001  
+0x100141e2  0x18000000  0x100100e3  0x5000c000  
+0x800080a3  0x200b8000  0x9040c043  0x48004000  
+0xa00200a3  0x200b8000  0x0020c085  0x84000000  
+0xb0424043  0x48004000  0xc00180a3  0x200b8000  
+0x00808085  0x84000000  0xd041c043  0x48004000  
+0x08300000  0x50000000  0x00600085  0x94000000  
+0x00001de7  0x80000000  
+
+
+.nv.info._Z6VecAddPKfS0_Pfi	PROGBITS
+	<0x1>
+	Attribute:	EIATTR_PARAM_CBANK
+	Format:	EIFMT_SVAL
+	Value:	0x9 0x1c0020 
+	<0x2>
+	Attribute:	EIATTR_CBANK_PARAM_SIZE
+	Format:	EIFMT_HVAL
+	Value:	0x1c
+	<0x3>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0x0	Ordinal : 0x3	Offset  : 0x18	Size    : 0x4
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : CBANK	
+	<0x4>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0x0	Ordinal : 0x2	Offset  : 0x10	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : CBANK	
+	<0x5>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0x0	Ordinal : 0x1	Offset  : 0x8	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : CBANK	
+	<0x6>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0x0	Ordinal : 0x0	Offset  : 0x0	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : CBANK	
+	<0x7>
+	Attribute:	EIATTR_SYNC_STACK
+	Format:	EIFMT_SVAL
+	Value:	0x1000c 0x1 
+
+
+.nv.info	PROGBITS
+	<0x1>
+	Attribute:	EIATTR_MIN_STACK_SIZE
+	Format:	EIFMT_SVAL
+	Value:	function: _Z6VecAddPKfS0_Pfi(0xa)	min stack size: 0x0
+	<0x2>
+	Attribute:	EIATTR_FRAME_SIZE
+	Format:	EIFMT_SVAL
+	Value:	function: _Z6VecAddPKfS0_Pfi(0xa)	frame size: 0x0
+

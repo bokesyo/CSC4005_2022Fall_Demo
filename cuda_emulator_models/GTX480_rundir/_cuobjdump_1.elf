@@ -1,0 +1,150 @@
+
+
+.section .strtab	STRTAB
+
+.section .shstrtab	STRTAB
+
+.section .symtab	SYMTAB
+ index           value           size      info    other  shndx    name  
+   0               0               0        0        0      0     (null)
+   1               0               0        3        0      1     .shstrtab
+   2               0               0        3        0      2     .strtab
+   3               0               0        3        0      3     .symtab
+   4               0               0        3        0      0     
+   5               0               0        3        0      0     
+   6               0               8        3        0     16     .text._Z13maintain_wallPf
+   7               0               0        3        0     17     .nv.info._Z13maintain_wallPf
+   8               0               8        3        0     13     .text._Z18generate_fire_areaPb
+   9               0               0        3        0     14     .nv.info._Z18generate_fire_areaPb
+  10               0               8        3        0     10     .text._Z6updatePfS_
+  11               0               0        3        0     11     .nv.info._Z6updatePfS_
+  12               0               8        3        0      7     .text._Z10initializePf
+  13               0               0        3        0      8     .nv.info._Z10initializePf
+  14               0               8        3        0      4     .text._Z13maintain_firePfPb
+  15               0               0        3        0      5     .nv.info._Z13maintain_firePfPb
+  16               0               0        3        0     18     .nv.shared._Z13maintain_wallPf
+  17               0               0        3        0     12     .nv.shared._Z6updatePfS_
+  18               0               0        3        0      6     .nv.shared._Z13maintain_firePfPb
+  19               0               0        3        0     15     .nv.shared._Z18generate_fire_areaPb
+  20               0               0        3        0      9     .nv.shared._Z10initializePf
+  21               0               0       12       10     16     _Z13maintain_wallPf
+  22               0               0       12       10     13     _Z18generate_fire_areaPb
+  23               0               0       12       10     10     _Z6updatePfS_
+  24               0               0       12       10      7     _Z10initializePf
+  25               0               0       12       10      4     _Z13maintain_firePfPb
+
+
+.nv.shared._Z13maintain_firePfPb	NOBITS
+   No data to be dumped. 
+
+
+.nv.shared._Z10initializePf	NOBITS
+   No data to be dumped. 
+
+
+.nv.shared._Z6updatePfS_	NOBITS
+   No data to be dumped. 
+
+
+.nv.shared._Z18generate_fire_areaPb	NOBITS
+   No data to be dumped. 
+
+
+.nv.shared._Z13maintain_wallPf	NOBITS
+   No data to be dumped. 
+
+
+.text._Z13maintain_firePfPb	PROGBITS
+bar = 0	reg = 0	lmem=0	smem=32
+0xf0000001  0xe0000001  
+
+
+.nv.info._Z13maintain_firePfPb	PROGBITS
+	<0x1>
+	Attribute:	EIATTR_SMEM_PARAM_SIZE
+	Format:	EIFMT_HVAL
+	Value:	0x10
+	<0x2>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0x0	Ordinal : 0x1	Offset  : 0x8	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+	<0x3>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0x0	Ordinal : 0x0	Offset  : 0x0	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+
+
+.text._Z10initializePf	PROGBITS
+bar = 0	reg = 0	lmem=0	smem=24
+0xf0000001  0xe0000001  
+
+
+.nv.info._Z10initializePf	PROGBITS
+	<0x1>
+	Attribute:	EIATTR_SMEM_PARAM_SIZE
+	Format:	EIFMT_HVAL
+	Value:	0x8
+	<0x2>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0x0	Ordinal : 0x0	Offset  : 0x0	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+
+
+.text._Z6updatePfS_	PROGBITS
+bar = 0	reg = 0	lmem=0	smem=32
+0xf0000001  0xe0000001  
+
+
+.nv.info._Z6updatePfS_	PROGBITS
+	<0x1>
+	Attribute:	EIATTR_SMEM_PARAM_SIZE
+	Format:	EIFMT_HVAL
+	Value:	0x10
+	<0x2>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0x0	Ordinal : 0x1	Offset  : 0x8	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+	<0x3>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0x0	Ordinal : 0x0	Offset  : 0x0	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+
+
+.text._Z18generate_fire_areaPb	PROGBITS
+bar = 0	reg = 0	lmem=0	smem=24
+0xf0000001  0xe0000001  
+
+
+.nv.info._Z18generate_fire_areaPb	PROGBITS
+	<0x1>
+	Attribute:	EIATTR_SMEM_PARAM_SIZE
+	Format:	EIFMT_HVAL
+	Value:	0x8
+	<0x2>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0x0	Ordinal : 0x0	Offset  : 0x0	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+
+
+.text._Z13maintain_wallPf	PROGBITS
+bar = 0	reg = 0	lmem=0	smem=24
+0xf0000001  0xe0000001  
+
+
+.nv.info._Z13maintain_wallPf	PROGBITS
+	<0x1>
+	Attribute:	EIATTR_SMEM_PARAM_SIZE
+	Format:	EIFMT_HVAL
+	Value:	0x8
+	<0x2>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0x0	Ordinal : 0x0	Offset  : 0x0	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+

@@ -1,0 +1,233 @@
+
+Fatbin elf code:
+================
+arch = sm_10
+code version = [1,2]
+producer = cuda
+host = linux
+compile_size = 64bit
+identifier = cuda2.cu
+
+.section .strtab	STRTAB
+
+.section .shstrtab	STRTAB
+
+.section .symtab	SYMTAB
+ index           value           size      info    other  shndx    name  
+   0               0               0        0        0      0     (null)
+   1               0               0        3        0      1     .shstrtab
+   2               0               0        3        0      2     .strtab
+   3               0               0        3        0      3     .symtab
+   4               0               0        3        0      0     
+   5               0               0        3        0      0     
+   6               0             232        3        0      4     .text._Z6updatePfS_i
+   7               0               0        3        0      5     .nv.info._Z6updatePfS_i
+   8               0               0        3        0      6     .nv.shared._Z6updatePfS_i
+   9               0               0       12       10      4     _Z6updatePfS_i
+
+
+.nv.shared._Z6updatePfS_i	NOBITS
+   No data to be dumped. 
+
+
+.text._Z6updatePfS_i	PROGBITS
+bar = 0	reg = 6	lmem=0	smem=36
+0x1000d005  0x0423c780  0x40030409  0x00000780  
+0x60020609  0x00008780  0x3010040d  0xc4100780  
+0x10004205  0x0023c780  0xa0000009  0x04000780  
+0x60020405  0x0000c780  0x60014c01  0x00208780  
+0x3000d005  0x04204780  0x3000d1fd  0x6c2047c8  
+0x203f8205  0x0fffffff  0x300101fd  0x6c0042c8  
+0x30000003  0x00000100  0x2100f004  0x3100f00c  
+0x30020001  0xc4100780  0x30020209  0xc4100780  
+0x3002060d  0xc4100780  0x2100e804  0x2102e808  
+0x2000c815  0x0420c780  0x203c820d  0x0fffffff  
+0x20048211  0x00000003  0xd00e0409  0x80c00780  
+0xd00e0a05  0x80c00780  0xd00e060d  0x80c00780  
+0xd00e0811  0x80c00780  0xb0010404  0xb0010604  
+0xb0010804  0x2100ec00  0xc0000205  0x03e80003  
+0xd00e0005  0xa0c00781  
+
+
+.nv.info._Z6updatePfS_i	PROGBITS
+	<0x1>
+	Attribute:	EIATTR_SMEM_PARAM_SIZE
+	Format:	EIFMT_HVAL
+	Value:	0x14
+	<0x2>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0x0	Ordinal : 0x2	Offset  : 0x10	Size    : 0x4
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+	<0x3>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0x0	Ordinal : 0x1	Offset  : 0x8	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+	<0x4>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0x0	Ordinal : 0x0	Offset  : 0x0	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+	<0x5>
+	Attribute:	EIATTR_SYNC_STACK
+	Format:	EIFMT_SVAL
+	Value:	0x10008 0x1 
+
+	code for sm_10
+		Function : _Z6updatePfS_i
+	/*0000*/     /*0x1000d0050423c780*/ 	MOV R1, g [0x8];
+	/*0008*/     /*0x4003040900000780*/ 	IMUL.U16.U16 R2, R1L, R1H;
+	/*0010*/     /*0x6002060900008780*/ 	IMAD.U16 R2, R1H, R1L, R2;
+	/*0018*/     /*0x3010040dc4100780*/ 	SHL R3, R2, 0x10;
+	/*0020*/     /*0x100042050023c780*/ 	MOV.U16 R0H, g [0x1].U16;
+	/*0028*/     /*0xa000000904000780*/ 	I2I.U32.U16 R2, R0L;
+	/*0030*/     /*0x600204050000c780*/ 	IMAD.U16 R1, R1L, R1L, R3;
+	/*0038*/     /*0x60014c0100208780*/ 	IMAD.U16 R0, g [0x6].U16, R0H, R2;
+	/*0040*/     /*0x3000d00504204780*/ 	IADD R1, -g [0x8], R1;
+	/*0048*/     /*0x3000d1fd6c2047c8*/ 	ISET.S32.C0 o [0x7f], g [0x8], R0, LT;
+	/*0050*/     /*0x203f82050fffffff*/ 	IADD32I R1, R1, 0xffffffff;
+	/*0058*/     /*0x300101fd6c0042c8*/ 	ISET.S32.C0 o [0x7f] (C0.NE), R0, R1, LT;
+	/*0060*/     /*0x3000000300000100*/ 	RET C0.EQ;
+	/*0068*/     /*0x2100f004        */ 	IADD32 R1, g [0x8], R0;
+	/*006c*/     /*0x3100f00c        */ 	IADD32 R3, -g [0x8], R0;
+	/*0070*/     /*0x30020001c4100780*/ 	SHL R0, R0, 0x2;
+	/*0078*/     /*0x30020209c4100780*/ 	SHL R2, R1, 0x2;
+	/*0080*/     /*0x3002060dc4100780*/ 	SHL R3, R3, 0x2;
+	/*0088*/     /*0x2100e804        */ 	IADD32 R1, g [0x4], R0;
+	/*008c*/     /*0x2102e808        */ 	IADD32 R2, g [0x4], R2;
+	/*0090*/     /*0x2000c8150420c780*/ 	IADD R5, g [0x4], R3;
+	/*0098*/     /*0x203c820d0fffffff*/ 	IADD32I R3, R1, 0xfffffffc;
+	/*00a0*/     /*0x2004821100000003*/ 	IADD32I R4, R1, 0x4;
+	/*00a8*/     /*0xd00e040980c00780*/ 	GLD.U32 R2, global14 [R2];
+	/*00b0*/     /*0xd00e0a0580c00780*/ 	GLD.U32 R1, global14 [R5];
+	/*00b8*/     /*0xd00e060d80c00780*/ 	GLD.U32 R3, global14 [R3];
+	/*00c0*/     /*0xd00e081180c00780*/ 	GLD.U32 R4, global14 [R4];
+	/*00c8*/     /*0xb0010404        */ 	FADD32 R1, R2, R1;
+	/*00cc*/     /*0xb0010604        */ 	FADD32 R1, R3, R1;
+	/*00d0*/     /*0xb0010804        */ 	FADD32 R1, R4, R1;
+	/*00d4*/     /*0x2100ec00        */ 	IADD32 R0, g [0x6], R0;
+	/*00d8*/     /*0xc000020503e80003*/ 	FMUL32I R1, R1, 0x3e800000;
+	/*00e0*/     /*0xd00e0005a0c00781*/ 	GST.U32 global14 [R0], R1;
+		...............................
+
+
+
+Fatbin ptx code:
+================
+arch = sm_10
+code version = [1,4]
+producer = cuda
+host = linux
+compile_size = 64bit
+identifier = cuda2.cu
+	.version 1.4
+.target sm_10, map_f64_to_f32
+
+	
+
+
+	
+	
+
+
+	
+	
+	
+	
+	
+	
+	
+
+.file	1	"<command-line>"
+.file	2	"/tmp/tmpxft_00005aa2_00000000-6_cuda2.cudafe2.gpu"
+.file	3	"/usr/lib/gcc/x86_64-linux-gnu/4.6/include/stddef.h"
+.file	4	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/crt/device_runtime.h"
+.file	5	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/host_defines.h"
+.file	6	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/builtin_types.h"
+.file	7	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/device_types.h"
+.file	8	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/driver_types.h"
+.file	9	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/surface_types.h"
+.file	10	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/texture_types.h"
+.file	11	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/vector_types.h"
+.file	12	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/device_launch_parameters.h"
+.file	13	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/crt/storage_class.h"
+.file	14	"cuda2.cu"
+.file	15	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/common_functions.h"
+.file	16	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/math_functions.h"
+.file	17	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/math_constants.h"
+.file	18	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/device_functions.h"
+.file	19	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/sm_11_atomic_functions.h"
+.file	20	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/sm_12_atomic_functions.h"
+.file	21	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/sm_13_double_functions.h"
+.file	22	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/sm_20_atomic_functions.h"
+.file	23	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/sm_20_intrinsics.h"
+.file	24	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/sm_30_intrinsics.h"
+.file	25	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/surface_functions.h"
+.file	26	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/texture_fetch_functions.h"
+.file	27	"/home/gpgpu-sim/cuda/toolkit/4.2/cuda/bin/../include/math_functions_dbl_ptx1.h"
+
+
+.entry _Z6updatePfS_i (
+.param .u64 __cudaparm__Z6updatePfS_i_data,
+.param .u64 __cudaparm__Z6updatePfS_i_new_data,
+.param .s32 __cudaparm__Z6updatePfS_i_size)
+{
+.reg .u16 %rh<4>;
+.reg .u32 %r<17>;
+.reg .u64 %rd<14>;
+.reg .f32 %f<11>;
+.reg .pred %p<3>;
+.loc	14	48	0
+$LDWbegin__Z6updatePfS_i:
+mov.u16 %rh1, %ctaid.x;
+mov.u16 %rh2, %ntid.x;
+mul.wide.u16 %r1, %rh1, %rh2;
+cvt.u32.u16 %r2, %tid.x;
+add.u32 %r3, %r2, %r1;
+ld.param.s32 %r4, [__cudaparm__Z6updatePfS_i_size];
+set.lt.u32.s32 %r5, %r4, %r3;
+neg.s32 %r6, %r5;
+mul.lo.s32 %r7, %r4, %r4;
+sub.s32 %r8, %r7, %r4;
+sub.s32 %r9, %r8, 1;
+set.lt.u32.s32 %r10, %r3, %r9;
+neg.s32 %r11, %r10;
+and.b32 %r12, %r6, %r11;
+mov.u32 %r13, 0;
+setp.eq.s32 %p1, %r12, %r13;
+@%p1 bra $Lt_0_1282;
+.loc	14	65	0
+cvt.s64.s32 %rd1, %r3;
+mul.wide.s32 %rd2, %r3, 4;
+ld.param.u64 %rd3, [__cudaparm__Z6updatePfS_i_data];
+add.u64 %rd4, %rd2, %rd3;
+ld.global.f32 %f1, [%rd4+4];
+ld.global.f32 %f2, [%rd4+-4];
+.loc	14	48	0
+ld.param.s32 %r4, [__cudaparm__Z6updatePfS_i_size];
+.loc	14	65	0
+add.s32 %r14, %r4, %r3;
+cvt.s64.s32 %rd5, %r14;
+mul.wide.s32 %rd6, %r14, 4;
+add.u64 %rd7, %rd3, %rd6;
+ld.global.f32 %f3, [%rd7+0];
+sub.s32 %r15, %r3, %r4;
+cvt.s64.s32 %rd8, %r15;
+mul.wide.s32 %rd9, %r15, 4;
+add.u64 %rd10, %rd3, %rd9;
+ld.global.f32 %f4, [%rd10+0];
+add.f32 %f5, %f3, %f4;
+add.f32 %f6, %f2, %f5;
+add.f32 %f7, %f1, %f6;
+mov.f32 %f8, 0f3e800000; 
+	mul.f32 %f9, %f7, %f8;
+ld.param.u64 %rd11, [__cudaparm__Z6updatePfS_i_new_data];
+add.u64 %rd12, %rd11, %rd2;
+st.global.f32 [%rd12+0], %f9;
+$Lt_0_1282:
+.loc	14	68	0
+exit;
+$LDWend__Z6updatePfS_i:
+} 
+

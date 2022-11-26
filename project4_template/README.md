@@ -49,6 +49,19 @@ You may need to modify them to better visualize your result.
 
 
 
+# About CUDA Emulator
+
+We have prepared a CUDA Emulator Virtual Machine for you. You can **emulate CUDA or CUDA-GUI program** on your personal computer (**without Nvidia GPU!**).
+
+For details, please see this: `CSC4005_2022Fall_Demo/docs/CUDA Emulator Manual.md`.
+
+
+<br/>
+<br/>
+<br/>
+
+
+
 # Compile & Run
 
 ## Compile
