@@ -1,27 +1,28 @@
 # CSC4005 CUDA Emulator Manual
 
-Dear all,
+We have prepared a CUDA Emulator Virtual Machine for you. You can **emulate CUDA or CUDA-GUI program** on your personal computer (**without Nvidia GPU!**). 
 
-We have prepared a CUDA Emulator Virtual Machine for you. You can **emulate CUDA or CUDA-GUI program** on your personal computer (**without Nvidia GPU!**).
-
-
-This simulator must run on a new VM. Please see below.
-
+(Arm64 chips like Apple M1 M2 are not supported).
 
 
 Reference: https://github.com/gpgpu-sim/gpgpu-sim_distribution
 
  
+<br/>
+<br/>
+<br/>
 
 
+# Setting Up Virtual Machine
 
-## Setting Up Virtual Machine
+## 1. Download CUDA Emulator VM.
 
-1. Download CUDA Emulator VM.
+https://cowtransfer.com/s/b2339270c9224a
 
 
+## 2. Import.
 
-2. Import to VMware.
+Both VMWare and VirtualBox are OK.
 
 If it says `importing failed`, please click `Retry`.
 
@@ -29,21 +30,23 @@ If your host machine has 8 CPU cores, please allocate 2 cores to this VM.
 
 If your host machine has 4 CPU cores, please try to allocate 2 cores to this VM.
 
-3. Power on.
+## 3. Power on.
 
 If you find it black, just wait for a few seconds (it should not be black for several minutes). If so, please report.
 
 
 
-## Usage
+<br/>
+<br/>
+<br/>
 
-Username and password
+# Usage
 
 **Username: gpgpu-sim**
 
 **Password: gpgpu-sim**
 
-1. Open terminal.
+### Step 1: Open terminal.
 
 ![open terminal](./cuda-emu/01.png)
 
@@ -51,13 +54,13 @@ Once you see the prompt saying `setup_environment succeed`, you can directly run
 
 
 
-4. Compile your **CUDA-GUI** program
+## Step 2: Compile your **CUDA-GUI** program
 
 Here we provide a cuda implementation for CSC4005 Project 3 for demonstration.
 
 ![compile](./cuda-emu/02.png)
 
-Git clone the latest version of CSC4005_Demo. Go to `project3_template/cuda_emu_demo`. (**Notice that you must compile and run your program inside this directory, because it contains configuration of GTX480 GPU.**). You will find `cuda.cu` .
+`git clone` the latest version of `CSC4005_Demo`. Go to `project3_template/cuda_emu_demo`. (**Notice that you must compile and run your program inside this directory, because it contains configuration of GTX480 GPU.**). You will find `cuda.cu` .
 
 First go to this directory,
 
@@ -71,9 +74,12 @@ Then compile your CUDA-GUI program:
 nvcc cuda.cu -o cudag -lglut -lGLU -lGL -lm -O2 -DGUI
 ```
 
-Notice that `nvcc` and `gcc` on this VM does not support c++11, so you should avoid using newest features when you debug your CUDA code (like `chrono::high_resolution_clock`).
+Notice that `nvcc` and `gcc` on this VM does not support c++11, so you should avoid using newest features when you debug your CUDA code (like `chrono`).
 
 Then you will see `cudag` in this directory.
+
+
+## Step 3: Run
 
 Run it as you run a regular CUDA application:
 
@@ -97,17 +103,40 @@ Then you will see the bodies moving.
 
 Another information is, there will be debugging information displaying in terminal, it is not a signal of error.
 
-
-
-## Notice
+## Step 5: Notice
 
 As mentioned by authors of gpgpu-sim, some cuda api are not available for gpgpu-sim like `syncthreads()`. Please pay attention.
 
 
 
+## Step 6: Switch to Project 4
+
+For project 4, you need to copy `CSC4005_2022Fall_Demo/project4_template/src/cuda.cu` to `CSC4005_2022Fall_Demo/project4_template/cuda_emu_demo` first.
+
+Then you make sure you have removed everything about `chrono` in your cuda script, as well as any other new features in `C++11`. 
+
+Then you can compile your CUDA-GUI program by using
 
 
-## VSCode Remote to VM
+```bash
+nvcc cuda.cu -o cudag -lglut -lGLU -lGL -lm -O2 -DGUI
+```
+
+Then you run your CUDA-GUI program in **GUI Desktop** rather then VSCode by 
+
+
+```bash
+./cudag $size
+```
+
+
+<br/>
+<br/>
+<br/>
+
+
+
+# VSCode Remote to VM
 
 This requires some fussy operations.
 
@@ -143,7 +172,9 @@ Then you will have a good coding experience.
 
 
 
-
+<br/>
+<br/>
+<br/>
 
 
 
