@@ -1,34 +1,39 @@
 #include <GL/glut.h>
-#include <stdlib.h>
 
-void init(){
-    GLfloat mat_specular [] = { 1.0, 1.0, 1.0, 1.0 };
-    GLfloat mat_shininess [] = { 50.0 };
-    GLfloat light_position [] = { 1.0, 1.0, 1.0, 0.0 };
-    glClearColor(0.0, 0.0, 0.0, 0.0);
-    glShadeModel(GL_SMOOTH);
-    glMaterialfv(GL_FRONT, GL_SPECULAR, mat_specular);
-    glMaterialfv(GL_FRONT, GL_SHININESS, mat_shininess);
-    glLightfv(GL_LIGHT0, GL_POSITION, light_position);
-    glEnable(GL_LIGHTING);
-    glEnable(GL_LIGHT0);
-    glEnable(GL_DEPTH_TEST);
+int WIDTH = 400;
+int HEIGHT = 400;
+GLubyte* PixelBuffer = new GLubyte[WIDTH * HEIGHT * 3];
+
+void display()
+{
+    glClear(GL_COLOR_BUFFER_BIT);
+    glDrawPixels(WIDTH, HEIGHT, GL_RGB, GL_UNSIGNED_BYTE, PixelBuffer);
+    glutSwapBuffers(); 
 }
 
-void display(){
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    glutSolidSphere(1.0, 40, 50);
-    glFlush();
+void makePixel(int x, int y, int r, int g, int b, GLubyte* pixels, int width, int height)
+{
+    if (0 <= x && x < width && 0 <= y && y < height) {
+        int position = (x + y * width) * 3;
+        pixels[position] = r;
+        pixels[position + 1] = g;
+        pixels[position + 2] = b;
+    }
 }
 
-int main(int argc, char** argv){
+int main(int argc, char *argv[])
+{
     glutInit(&argc, argv);
-    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB | GLUT_DEPTH);
-    glutInitWindowSize(300, 300);
-    glutInitWindowPosition(100, 100);
-    glutCreateWindow(argv[0]);
-    init();
-    glutDisplayFunc(display);
+    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
+
+    glutInitWindowSize(WIDTH, HEIGHT); 
+    glutInitWindowPosition(100, 100); 
+
+    int MainWindow = glutCreateWindow("Hello Graphics!!"); 
+    glClearColor(0.0, 0.0, 0.0, 0);
+
+    makePixel(200,200,255,255,255,PixelBuffer, WIDTH, HEIGHT);
+    glutDisplayFunc(display); 
     glutMainLoop();
     return 0;
 }
