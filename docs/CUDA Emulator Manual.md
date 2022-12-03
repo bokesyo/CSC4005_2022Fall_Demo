@@ -130,6 +130,19 @@ Then you run your CUDA-GUI program in **GUI Desktop** rather then VSCode by
 ```
 
 
+## Update Dec 4, 2022
+
+Dear all, due to some reports about CUDA emulator, we suggest you to change the following parameters when you run CUDA GUI:
+
+1. change macro `resolution` to `100`.
+
+2. change macro `fire_size` to `30`.
+
+3. change command line arg `size` to `100`.
+
+Even we choose a small problem size, the rendering speed of CUDA emulator is still low (about `5s` to `10s` per frame). 
+
+
 <br/>
 <br/>
 <br/>
